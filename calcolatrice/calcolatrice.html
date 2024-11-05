@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<style>
+    #valore{
+      	height: 40px;
+	width: 46px;
+	border-radius: 10px;
+	background-color: white;
+    }
+    table{
+	margin-left: 3%;
+	margin-top: -30%;
+    }
+    #testo{
+        height: 40px;
+        width: 189px;
+        border: 2px solid;
+	margin-left: 4%;
+	background-color: white;
+	border-radius: 8px;
+    }	
+    #tabella{
+	border-radius: 10px;
+	width: 210px;
+ 	height: 250px;
+	background-color: gray;
+	border: 2px solid;
+    }
+
+</style>
+<body>
+<div id="tabella">
+<p id="testo"></p>
+<table>
+<tr>
+     <td> <input type="button" id="valore" value="1" onClick="scrivi('1')"></td>
+     <td> <input type="button" id="valore" value="2" onClick="scrivi('2')"></td> 
+     <td> <input type="button" id="valore" value="3" onClick="scrivi('3')"></td>
+     <td> <input type="button" id="valore" value="+" onClick="scrivi('+')"></td>
+</tr><br>
+<tr>
+    <td> <input type="button" id="valore" value="4" onClick="scrivi('4')"></td>
+    <td> <input type="button" id="valore" value="5" onClick="scrivi('5')"></td> 
+    <td> <input type="button" id="valore" value="6" onClick="scrivi('6')"></td>
+    <td> <input type="button" id="valore" value="-" onClick="scrivi('-')"></td>
+</tr><br>
+<tr>
+    <td> <input type="button" id="valore" value="7" onClick="scrivi('7')"></td>
+    <td> <input type="button" id="valore" value="8" onClick="scrivi('8')"></td> 
+    <td> <input type="button" id="valore" value="9" onClick="scrivi('9')"></td>
+    <td> <input type="button" id="valore" value="/" onClick="scrivi('/')"></td>
+</tr><br>
+<tr>
+    <td> <input type="button" id="valore" value="c" onClick="scrivi('c')"></td>
+    <td> <input type="button" id="valore" value="0" onClick="scrivi('0')"></td> 
+    <td> <input type="button" id="valore" value="=" onClick="operazione()"></td>
+    <td> <input type="button" id="valore" value="*" onClick="scrivi('*')"></td>
+</tr>
+</table>
+</div>
+<script>
+const un =["","",""];
+let i=0;
+    function scrivi(p1){
+	if(un[0]==''){
+	document.getElementById("testo").innerHTML  = ' ' ;
+	i=0;}
+	if(p1==('c')){
+	document.getElementById("testo").innerHTML  = ' ' ;
+	un[0]='';
+	un[1]='';
+	un[2]='';
+	i=0;
+	}else{
+    	document.getElementById("testo").innerHTML  += p1 ;
+	
+	if(p1 == '+' || p1 == '-' || p1 == '/' || p1 == '*'){
+	un[1]+=p1;
+	i+=2;
+	}else{
+	un[i]+=p1;}
+	}
+
+    }
+    function operazione(p1){
+    let ris;
+	switch(un[1]) {
+  		case '+':
+    			ris=parseFloat(un[0])+ parseFloat(un[2]);
+   			break;
+  		case '-':
+    			ris=parseFloat(un[0])- parseFloat(un[2]);
+    			break;
+  		case '*':
+    			ris=parseFloat(un[0])*parseFloat(un[2]);
+    			break;
+  		case '/':
+    			ris=parseFloat(un[0])/parseFloat(un[2]);
+    			break;
+  		default:
+    			ris='error';}
+	un[0]='';
+	un[1]='';
+	un[2]='';
+	document.getElementById("testo").innerHTML  = ris ;
+    }
+</script>
+</body>
+<html>
