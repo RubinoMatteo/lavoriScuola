@@ -1,4 +1,5 @@
 const un =["","",""];
+const riss = operazione();
 let i=0;
     function scrivi(p1){
 	if(un[0]==''){
@@ -21,19 +22,31 @@ let i=0;
 	}
 
     }
-    function operazione(p1){
+    function operazione(){
     let ris;
 	switch(un[1]) {
   		case '+':
+			if (un[0] == ''){
+				ris=parseFloat(riss)+ parseFloat(un[2]);
+			}
     			ris=parseFloat(un[0])+ parseFloat(un[2]);
    			break;
   		case '-':
+			if (un[0] == ''){
+				ris=parseFloat(riss)- parseFloat(un[2]);
+			}
     			ris=parseFloat(un[0])- parseFloat(un[2]);
     			break;
   		case '*':
+			if (un[0] == ''){
+				ris=parseFloat(riss)* parseFloat(un[2]);
+			}
     			ris=parseFloat(un[0])*parseFloat(un[2]);
     			break;
   		case '/':
+			if (un[0] == ''){
+				ris=parseFloat(riss)/ parseFloat(un[2]);
+			}
     			ris=parseFloat(un[0])/parseFloat(un[2]);
     			break;
   		default:
@@ -42,4 +55,5 @@ let i=0;
 	un[1]='';
 	un[2]='';
 	document.getElementById("testo").innerHTML  = ris ;
+	return ris;
     }
