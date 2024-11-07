@@ -1,27 +1,41 @@
 #valore{
-      	height: 40%;
-	width: 46%;
-	border-radius: 10px;
-	background-color: white;
-    }
-    table{
-	margin-left: 3%;
-	margin-top: -30%;
-    }
-    #testo{
-        height: 40px;
-        width: 189px;
-        border: 2px solid;
-	margin-left: 4%;
-	background-color: white;
-	border-radius: 8px;
-    }	
-    #tabella{
-	border-radius: 10px;
-	width: 210px;
- 	height: 250px;
-	background-color: gray;
-	border: 2px solid;
-	margin-left: 50%;
-	margin-top: 50%;
-    }
+	height: 100%;
+width: 92%;
+border-radius: 10px;
+background-color: white;
+}
+table{
+	height: 400px;
+width: 100%;
+}
+#testo{
+  height: 100px;
+  width: auto;
+  border: 2px solid;
+margin-left: 4%;
+margin-right: 4%;
+background-color: white;
+border-radius: 8px;
+}	
+div{
+border-radius: 10px;
+width: auto;
+height: 600px;
+background-color: gray;
+border: 2px solid;
+
+}
+@media screen and (min-width: 800px) {
+div {
+height: 700px;
+}
+table{
+	height: 500px;}
+}
+
+html {
+height: 100%;
+}
+body {
+min-height: 100%;
+}
