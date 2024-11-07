@@ -1,4 +1,5 @@
 	const un =["","",""];
+	let riss;
 	let i=0;
 	function scrivi(p1){
 	if(un[0]==''){
@@ -22,6 +23,7 @@
 
     }
     function operazione(){
+	riss = document.getElementById("testo").value ;
     let ris;
 	switch(un[1]) {
   		case '+':
@@ -56,4 +58,4 @@
 	document.getElementById("testo").innerHTML  = ris ;
 	return ris;
     }
-	let riss = document.getElementById("testo").value ;
+	
