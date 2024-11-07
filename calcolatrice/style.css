@@ -1,0 +1,25 @@
+#valore{
+      	height: 40px;
+	width: 46px;
+	border-radius: 10px;
+	background-color: white;
+    }
+    table{
+	margin-left: 3%;
+	margin-top: -30%;
+    }
+    #testo{
+        height: 40px;
+        width: 189px;
+        border: 2px solid;
+	margin-left: 4%;
+	background-color: white;
+	border-radius: 8px;
+    }	
+    #tabella{
+	border-radius: 10px;
+	width: 210px;
+ 	height: 250px;
+	background-color: gray;
+	border: 2px solid;
+    }
