@@ -1,5 +1,4 @@
 	const un =["","",""];
-	let riss = document.getElementById("testo").value ;
 	let i=0;
 	function scrivi(p1){
 	if(un[0]==''){
@@ -57,3 +56,4 @@
 	document.getElementById("testo").innerHTML  = ris ;
 	return ris;
     }
+	let riss = document.getElementById("testo").value ;
