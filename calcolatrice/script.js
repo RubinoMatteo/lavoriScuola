@@ -1,5 +1,5 @@
 	const un =["","",""];
-	const riss = document.getElementById("testo").value;
+	const riss = document.getElementById("testo").value ;
 	let i=0;
 	function scrivi(p1){
 	if(un[0]==''){
