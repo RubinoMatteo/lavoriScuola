@@ -8,6 +8,7 @@
 	table{
 		height: 400px;
 		width: 100%;
+		margin-left: 1%;
 	}
 
 	#testo{
@@ -40,7 +41,7 @@
 	html {
 		height: 100%;
 	}
-	
+
 	body {
 		min-height: 100%;
 	}
