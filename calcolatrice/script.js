@@ -1,7 +1,7 @@
-const un =["","",""];
-//const riss = operazione();
-let i=0;
-    function scrivi(p1){
+	const un =["","",""];
+	const riss = operazione();
+	let i=0;
+	function scrivi(p1){
 	if(un[0]==''){
 	document.getElementById("testo").innerHTML  = ' ' ;
 	i=0;}
@@ -26,34 +26,34 @@ let i=0;
     let ris;
 	switch(un[1]) {
   		case '+':
-			/*if (un[0] == ''){
+			if (un[0] == '')
 				ris=parseFloat(riss)+ parseFloat(un[2]);
-			}*/
+			else
     			ris=parseFloat(un[0])+ parseFloat(un[2]);
    			break;
   		case '-':
-			/*if (un[0] == ''){
+			if (un[0] == '')
 				ris=parseFloat(riss)- parseFloat(un[2]);
-			}*/
+			else
     			ris=parseFloat(un[0])- parseFloat(un[2]);
-    			break;
+    		break;
   		case '*':
-			/*if (un[0] == ''){
+			if (un[0] == '')
 				ris=parseFloat(riss)* parseFloat(un[2]);
-			}*/
+			else
     			ris=parseFloat(un[0])*parseFloat(un[2]);
-    			break;
+    		break;
   		case '/':
-			/*if (un[0] == ''){
+			if (un[0] == '')
 				ris=parseFloat(riss)/ parseFloat(un[2]);
-			}*/
+			else
     			ris=parseFloat(un[0])/parseFloat(un[2]);
-    			break;
+    		break;
   		default:
     			ris='error';}
 	un[0]='';
 	un[1]='';
 	un[2]='';
 	document.getElementById("testo").innerHTML  = ris ;
-	//return ris;
+	return ris;
     }
