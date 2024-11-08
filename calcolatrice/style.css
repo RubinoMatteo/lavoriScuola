@@ -1,8 +1,16 @@
+#valore1{
+	background-color: MediumSeaGreen;
+}
+#valore2{
+	background-color: DarkGrey;
+}
 #valore{
-	height: 100%;
+	background-color: LightGrey;
+}
+#valore,#valore2,#valore1{
+    height: 100%;
 	width: 92%;
 	border-radius: 10px;
-	background-color: white;
 	font-size: 150%;
 }
 table{
