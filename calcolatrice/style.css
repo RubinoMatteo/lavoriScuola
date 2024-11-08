@@ -1,22 +1,24 @@
 #valore{
-    height: 100%;
+	height: 100%;
 	width: 92%;
 	border-radius: 10px;
 	background-color: white;
+	font-size: 150%;
 }
 table{
-    height: 400px;
+	height: 380px;
 	width: 100%;
 	margin-left: 1%;
 }
 #testo{
-    height: 100px;
-    width: auto;
-    border: 2px solid;
+  	height: 100px;
+  	width: auto;
+  	border: 2px solid;
 	margin-left: 4%;
 	margin-right: 4%;
 	background-color: white;
 	border-radius: 8px;
+	font-size: 150%;
 }	
 div{
 	border-radius: 10px;
@@ -26,19 +28,27 @@ div{
 	border: 2px solid;
 }
 @media screen and (min-width: 800px) {
-  	div {
+	div {
 		margin-left:25%;
 		width: 50%;
 		height: 700px;
-  	}
+	}
 	table{
-		height: 500px;
+		height: 480px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	div {
+		height: 95vh;
+	}
+	table{
+		height: 65vh;
 	}
 }
 
 html {
-    	height: 100%;
+	height: 100%;
 }
 body {
-    	min-height: 100%;
+	min-height: 100%;
 }
