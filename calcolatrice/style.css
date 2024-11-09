@@ -47,7 +47,7 @@ div{
 }
 @media screen and (min-width: 1000px) {
 	div {
-		height: 95vh;
+		height: 100vh;
 	}
 	table{
 		height: 65vh;
