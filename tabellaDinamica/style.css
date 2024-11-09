@@ -2,13 +2,10 @@ th, td {
     border: 0,5px solid;
     background:white;
 }
-table{
-    border: 0,5px solid;
-	background:black;
-}
 #demo{
     float: center ;
-    
+    border: 0,5px solid;
+	background:black;
 }
 div{
     float: left;
