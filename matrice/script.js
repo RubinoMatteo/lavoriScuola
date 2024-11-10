@@ -6,13 +6,13 @@ if(document.getElementById("numeropari").value > 2 && document.getElementById("n
     a=4;
 }
 console.log(a)
-const matrice=[];
-for(let i=0;i<a;i++){
-    matrice.push(new Array());
-}
-for(let i=0;i<matrice.lengt;i++){
-    for(let j=0;j<matrice.lengt;j++){
-        matrice[i][j]=parseInt( Math.random()*100);
+const matrice = new Array(a);
+for(let i=0;i<matrice.length;i++){
+    matrice[i] = new Array(matrice.length);
+    for(let j=0;j<matrice[i].length;j++){
+        let array = matrice[i];
+        array[j] = parseInt( Math.random()*100);
+        
     }
 }
 const table = document.getElementById("demo");
@@ -25,6 +25,6 @@ matrice.forEach(element =>{
         colonna.appendChild(testo)
         riga.appendChild(colonna)
     })
-    
+
     table.appendChild(riga)
 })
