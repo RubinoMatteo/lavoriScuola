@@ -19,11 +19,12 @@ const table = document.getElementById("demo");
 matrice.forEach(element =>{
     const riga = document.createElement("tr");
     element.forEach(elemento => {
-console.log(element[elemento])
-        const colonna = document.createElement("td");
-        const testo = document.createTextNode(element[elemento]);
-        colonna.appendChild(testo);
-        riga.appendChild(colonna);
+        console.log(element[elemento])
+        const colonna = document.createElement("td")
+        const testo = document.createTextNode(element[elemento])
+        colonna.appendChild(testo)
+        riga.appendChild(colonna)
     })
-    table.appendChild(riga);
+    
+    table.appendChild(riga)
 })
