@@ -16,15 +16,15 @@ function creaTabella(){
     }
     const table = document.getElementById("demo");
     matrice.forEach(element =>{
-    const riga = document.createElement("tr");
-    Object.keys(element).forEach(elemento => {
-        const colonna = document.createElement("td");
-        const testo = document.createTextNode(element[elemento]);
-        colonna.appendChild(testo);
-        riga.appendChild(colonna);
+        const riga = document.createElement("tr");
+        Object.keys(element).forEach(elemento => {
+            const colonna = document.createElement("td");
+            const testo = document.createTextNode(element[elemento]);
+            colonna.appendChild(testo);
+            riga.appendChild(colonna);
+        })
+        table.appendChild(riga);
     })
-    table.appendChild(riga);
-})
 }
 function giraDestra(num){
     for(let i=1;i<num;i++){
