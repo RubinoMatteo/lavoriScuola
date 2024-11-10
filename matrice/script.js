@@ -8,7 +8,7 @@ if(document.getElementById("numeropari").value > 2 && document.getElementById("n
 console.log(a)
 const matrice=[];
 for(let i=0;i<a;i++){
-    matrice.push()=new Array();
+    matrice.push(new Array());
 }
 for(let i=0;i<matrice.lengt;i++){
     for(let j=0;j<matrice.lengt;j++){
