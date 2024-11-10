@@ -5,6 +5,7 @@ if(document.getElementById("numeropari").value > 2 && document.getElementById("n
 }else{
     a=4;
 }
+console.log(a)
 const matrice=[a];
 for(let i=0;i<matrice.lengt;i++){
     matrice[i]=new Array();
