@@ -18,7 +18,7 @@ for(let i=0;i<matrice.lengt;i++){
 const table = document.getElementById("demo");
 matrice.forEach(element =>{
     const riga = document.createElement("tr");
-    Object.keys(element).forEach(elemento => {
+    element.forEach(elemento => {
 console.log(element[elemento])
         const colonna = document.createElement("td");
         const testo = document.createTextNode(element[elemento]);
