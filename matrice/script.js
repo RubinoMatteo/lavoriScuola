@@ -1,5 +1,5 @@
 let a;
-if(document.getElementById("numeropari").value>2 && document.getElementById("numeropari").value % 2 == 0){
+if(document.getElementById("numeropari").value > 2 && document.getElementById("numeropari").value % 2 == 0){
    a=document.getElementById("numeropari").value;
 }else{
     a=4;
