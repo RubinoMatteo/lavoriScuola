@@ -9,22 +9,24 @@ console.log(a)
 const matrice = new Array(a);
 for(let i=0;i<matrice.length;i++){
     matrice[i] = new Array(matrice.length);
-    for(let j=0;j<matrice[i].length;j++){
+    for(let j=0;j<matrice.length;j++){
         let array = matrice[i];
         array[j] = parseInt( Math.random()*100);
         
     }
 }
+console.log( matrice)
+
+
 const table = document.getElementById("demo");
 matrice.forEach(element =>{
     const riga = document.createElement("tr");
-    element.forEach(elemento => {
-        console.log(element[elemento])
-        const colonna = document.createElement("td")
-        const testo = document.createTextNode(element[elemento])
-        colonna.appendChild(testo)
-        riga.appendChild(colonna)
+    Object.keys(element).forEach(elemento => {
+console.log(element[elemento])
+        const colonna = document.createElement("td");
+        const testo = document.createTextNode(element[elemento]);
+        colonna.appendChild(testo);
+        riga.appendChild(colonna);
     })
-
-    table.appendChild(riga)
+    table.appendChild(riga);
 })
