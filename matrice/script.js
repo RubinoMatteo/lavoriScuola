@@ -3,8 +3,10 @@ let matrice;
 function creaTabella(){
     if(document.getElementById("numeropari").value > 2 && document.getElementById("numeropari").value % 2 == 0){
         a = document.getElementById("numeropari").value;
-    }else{
+    }else if(document.getElementById("numeropari").value <4){
         a=4;
+    }else{
+        a = document.getElementById("numeropari").value-1;
     }
     matrice = new Array(a);
     for(let i=0;i<a;i++){
