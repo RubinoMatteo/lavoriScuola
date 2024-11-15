@@ -41,11 +41,11 @@ function giraDestra(){
 matrice[1][3],matrice[2][3],
 matrice[3][0],matrice[3][1],matrice[3][2],matrice[3][3],
 matrice[2][0],matrice[1][0]];
-    let salvami = girafuori[1];
+    let salvami = girafuori[0];
     girafuori.shift();
     girafuori.push(salvami);
     let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
-    let salvami2 = girafuori[1];
+    let salvami2 = girafuori[0];
     giradentro.unshift(salvami);
     for(let i=1;i<16;i++){
         if(i==6 && i==7){
@@ -77,10 +77,10 @@ function giraSinistra(){
     matrice[1][3],matrice[2][3],
     matrice[3][0],matrice[3][1],matrice[3][2],matrice[3][3],
     matrice[2][0],matrice[1][0]];
-        let salvami = girafuori[1];
+        let salvami = girafuori[0];
         girafuori.unshift(salvami);
         let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
-        let salvami2 = girafuori[1];
+        let salvami2 = girafuori[0];
         giradentro.shift();
         giradentro.push(salvami);
         for(let i=1;i<16;i++){
