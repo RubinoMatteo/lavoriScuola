@@ -56,20 +56,20 @@ matrice[2][0],matrice[1][0]];
         }
     }
     document.getElementById("e0").innerHTML=girafuori[0]
-    document.getElementById("e1").innerHTML=girafuori[0]
-    document.getElementById("e2").innerHTML=girafuori[0]
-    document.getElementById("e3").innerHTML=girafuori[0]
+    document.getElementById("e1").innerHTML=girafuori[1]
+    document.getElementById("e2").innerHTML=girafuori[2]
+    document.getElementById("e3").innerHTML=girafuori[3]
 
-    document.getElementById("e4").innerHTML=girafuori[0]
-    document.getElementById("e7").innerHTML=girafuori[0]
+    document.getElementById("e4").innerHTML=girafuori[4]
+    document.getElementById("e7").innerHTML=girafuori[5]
 
-    document.getElementById("e8").innerHTML=girafuori[0]
-    document.getElementById("e11").innerHTML=girafuori[0]
+    document.getElementById("e8").innerHTML=girafuori[6]
+    document.getElementById("e11").innerHTML=girafuori[7]
 
-    document.getElementById("e12").innerHTML=girafuori[0]
-    document.getElementById("e13").innerHTML=girafuori[0]
-    document.getElementById("e14").innerHTML=girafuori[0]
-    document.getElementById("e15").innerHTML=girafuori[0]
+    document.getElementById("e12").innerHTML=girafuori[8]
+    document.getElementById("e13").innerHTML=girafuori[9]
+    document.getElementById("e14").innerHTML=girafuori[10]
+    document.getElementById("e15").innerHTML=girafuori[11]
 
 }
 function giraSinistra(){
@@ -92,18 +92,18 @@ function giraSinistra(){
             }
         }
         document.getElementById("e0").innerHTML=girafuori[0]
-        document.getElementById("e1").innerHTML=girafuori[0]
-        document.getElementById("e2").innerHTML=girafuori[0]
-        document.getElementById("e3").innerHTML=girafuori[0]
+        document.getElementById("e1").innerHTML=girafuori[1]
+        document.getElementById("e2").innerHTML=girafuori[2]
+        document.getElementById("e3").innerHTML=girafuori[3]
     
-        document.getElementById("e4").innerHTML=girafuori[0]
-        document.getElementById("e7").innerHTML=girafuori[0]
+        document.getElementById("e4").innerHTML=girafuori[4]
+        document.getElementById("e7").innerHTML=girafuori[5]
     
-        document.getElementById("e8").innerHTML=girafuori[0]
-        document.getElementById("e11").innerHTML=girafuori[0]
+        document.getElementById("e8").innerHTML=girafuori[6]
+        document.getElementById("e11").innerHTML=girafuori[7]
     
-        document.getElementById("e12").innerHTML=girafuori[0]
-        document.getElementById("e13").innerHTML=girafuori[0]
-        document.getElementById("e14").innerHTML=girafuori[0]
-        document.getElementById("e15").innerHTML=girafuori[0]
+        document.getElementById("e12").innerHTML=girafuori[8]
+        document.getElementById("e13").innerHTML=girafuori[9]
+        document.getElementById("e14").innerHTML=girafuori[10]
+        document.getElementById("e15").innerHTML=girafuori[11]
 }
