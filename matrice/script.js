@@ -15,6 +15,10 @@ function creaTabella(){
         }
     }
     const table = document.getElementById("demo");
+    while (table.hasChildNodes()) {
+        table.removeChild(list.firstChild);
+    }
+    
     matrice.forEach(element =>{
         const riga = document.createElement("tr");
         Object.keys(element).forEach(elemento => {
