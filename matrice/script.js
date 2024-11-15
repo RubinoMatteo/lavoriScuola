@@ -17,6 +17,7 @@ function creaTabella(){
         }
     }
     const table = document.getElementById("demo");
+    
     while (table.hasChildNodes()) {
         table.removeChild(table.firstChild);
     }
