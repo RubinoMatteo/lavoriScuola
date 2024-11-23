@@ -1,7 +1,30 @@
 th, td {
     border: 1px solid;
+    width: 125px;
 }
 #demo{
     float: center;
     border-collapse: collapse;
+    border-radius: 10px;
+    margin: 1% 32%;
+    width: 500px;
+}
+@media screen and (min-width: 500px) {
+    #demo{
+        margin: 1% 20%;
+        width: 250px;
+    }
+}
+@media screen and (max-width: 1300px) {
+    #demo{
+        margin: 1% 38%;
+        width: 500px;
+    }
+}
+    
+@media screen and (max-width: 1250px) {
+    #demo{
+        margin: 1% 28%;
+        width: 500px;
+    }
 }
