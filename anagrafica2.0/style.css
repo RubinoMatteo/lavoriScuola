@@ -1,11 +1,4 @@
-/*th, td {
-    border: 1px solid;
-}
-#demo{
-    float: center;
-    border-collapse: collapse;
-}*/
-div{
+#dati{
     float: center;
     margin: 1% 32%;
 }
@@ -19,9 +12,11 @@ input{
     text-align: center;
 }
 button{
-    margin-left: 47%;
     float: center;
     width: 80px;
     height: 40px;
     border-radius: 10px;
+}
+#bottoni{
+    margin-left: 47%;
 }

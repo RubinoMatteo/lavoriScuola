@@ -1,4 +1,6 @@
-/*const array=[];
+const array=[];
+const key=[nome,cognome,indirizzo,citta];
+var index=0;
 function bottone()
 {
     array[0]= document.getElementById("nome").value;
@@ -10,6 +12,12 @@ function bottone()
     document.getElementById("città").value="";
     document.getElementById("indirizzo").value="";
     if(array[0]!==undefined||array[1]!==undefined||array[2]!==undefined||array[3]!==undefined){
-        document.getElementById("demo").innerHTML += "<tr><td>" + array[0] + "</td><td>" + array[1] + "</td><td>" + array[2] + "</td><td>" + array[3] + "</td></tr>";
+        for(let i = 0;i<array.length;i++){
+            localStorage.setItem(key[i]+index, array[i]);
+        }
+        index++;
     }
-}*/
+}
+function vai_alla_tabella(){
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/pagina2.html";
+}
