@@ -15,7 +15,7 @@ th, td {
         width: 250px;
     }
 }
-@media screen and (max-width: 1300px) {
+@media screen and (min-width: 1300px) {
     #demo{
         margin: 1% 38%;
         width: 500px;
