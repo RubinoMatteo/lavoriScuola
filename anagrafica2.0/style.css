@@ -7,7 +7,7 @@
 }*/
 div{
     float: center;
-    margin-left: 25%;
+    margin: 25% 10px;
 }
 input{
     border-radius: 10px;
