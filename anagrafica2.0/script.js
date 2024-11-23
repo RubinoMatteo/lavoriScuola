@@ -1,5 +1,5 @@
 const array=[];
-const key=[nome,cognome,indirizzo,citta];
+const key=["nome","cognome","indirizzo","citta"];
 var index=0;
 function bottone()
 {
