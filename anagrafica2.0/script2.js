@@ -10,6 +10,6 @@ tabella.innerHTML += "<tr>";
 for (i = 0; i < localStorage.length; i++) {
     tabella.innerHTML += "<td>" + array[i] + "</td>";
     if(i%4==0){
-        tabella.innerHTML += str + "</tr>";
+        tabella.innerHTML += "</tr>";
     }
 }
