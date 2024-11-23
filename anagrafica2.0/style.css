@@ -7,7 +7,7 @@
 }*/
 div{
     float: center;
-    margin-left: 35%;
+    margin-left: 25%;
 }
 input{
     border-radius: 10px;
@@ -19,5 +19,10 @@ input{
     text-align: center;
 }
 button{
+    margin-left: 45%;
     float: center;
+    margin: 15px;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
 }

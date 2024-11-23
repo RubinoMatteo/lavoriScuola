@@ -1,4 +1,4 @@
-const array=[];
+/*const array=[];
 function bottone()
 {
     array[0]= document.getElementById("nome").value;
@@ -12,4 +12,4 @@ function bottone()
     if(array[0]!==undefined||array[1]!==undefined||array[2]!==undefined||array[3]!==undefined){
         document.getElementById("demo").innerHTML += "<tr><td>" + array[0] + "</td><td>" + array[1] + "</td><td>" + array[2] + "</td><td>" + array[3] + "</td></tr>";
     }
-}
+}*/
