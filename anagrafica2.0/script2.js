@@ -1,5 +1,5 @@
 const array=[];
-const key=[nome,cognome,indirizzo,citta];
+const key=["nome","cognome","indirizzo","citta"];
 const tabella = document.getElementById("demo") ;
 for(let i = 0;i<(localStorage.length/4);i++){
     for(let j = 0;j<array.length;j++){
