@@ -8,12 +8,14 @@
 div{
     float: center;
     margin: 1% 25%;
+    background-color: blue;
 }
 input{
     border-radius: 10px;
     margin: 15px;
     width: 500px;
     height: 40px;
+    background-color: rgba(0, 0, 255, 0.48);
 }
 ::placeholder{
     text-align: center;
@@ -21,7 +23,6 @@ input{
 button{
     margin-left: 45%;
     float: center;
-    margin: 15px;
     width: 80px;
     height: 40px;
     border-radius: 10px;
