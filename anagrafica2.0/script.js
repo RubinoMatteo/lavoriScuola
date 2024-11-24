@@ -1,8 +1,7 @@
 const array=[];
 const key=["nome","cognome","indirizzo","citta"];
 var index=0;
-function bottone()
-{
+function bottone(){
     array[0]= document.getElementById("nome").value;
     array[1]= document.getElementById("cognome").value;
     array[2]= document.getElementById("indirizzo").value;
@@ -11,7 +10,7 @@ function bottone()
     document.getElementById("cognome").value="";
     document.getElementById("città").value="";
     document.getElementById("indirizzo").value="";
-    if(array[0] != "" || array[1] != "" || array[2] != "" || array[3] != "" ){
+    if(array[0] != "" && array[1] != "" && array[2] != "" && array[3] != "" ){
         for(let i = 0;i<array.length;i++){
             localStorage.setItem(key[i]+index, array[i]);
         }
