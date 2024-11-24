@@ -10,9 +10,9 @@ console.log(array)
 tabella.innerHTML += "<tr>";
 var str = ""
 for (i = 0; i < localStorage.length; i++) {
-    str += "<td>" + array[i] + "</td>";
     if(i%4==0){
         tabella.innerHTML += str + "</tr><tr>";
         str ="";
     }
+    str += "<td>" + array[i] + "</td>";
 }
