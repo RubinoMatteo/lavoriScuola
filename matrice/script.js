@@ -46,7 +46,7 @@ matrice[2][0],matrice[1][0]];
     girafuori.push(salvami);
     let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
     let salvami2 = girafuori[0];
-    giradentro.unshift(salvami);
+    giradentro.unshift(salvami2);
     for(let i=1;i<16;i++){
         if(i==6 && i==7){
             document.getElementById("e"+i).innerHTML=giradentro[i-6]
@@ -63,13 +63,13 @@ matrice[2][0],matrice[1][0]];
     document.getElementById("e7").innerHTML=girafuori[4]
     document.getElementById("e11").innerHTML=girafuori[5]
 
-    document.getElementById("e12").innerHTML=girafuori[6]
-    document.getElementById("e13").innerHTML=girafuori[7]
-    document.getElementById("e14").innerHTML=girafuori[8]
-    document.getElementById("e15").innerHTML=girafuori[9]
+    document.getElementById("e15").innerHTML=girafuori[6]
+    document.getElementById("e14").innerHTML=girafuori[7]
+    document.getElementById("e13").innerHTML=girafuori[8]
+    document.getElementById("e12").innerHTML=girafuori[9]
 
-    document.getElementById("e4").innerHTML=girafuori[10]
-    document.getElementById("e8").innerHTML=girafuori[11]
+    document.getElementById("e8").innerHTML=girafuori[10]
+    document.getElementById("e4").innerHTML=girafuori[11]
 
 }
 function giraSinistra(){
