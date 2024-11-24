@@ -16,3 +16,4 @@ for (i = 0; i < localStorage.length; i++) {
     }
     str += "<td>" + array[i] + "</td>";
 }
+tabella.innerHTML += str + "</tr><tr>";
