@@ -6,10 +6,11 @@ for(let i = 0;i<(localStorage.length/4);i++){
         array.push(localStorage.getItem(key[j]+i))
     }
 }
+console.log(array)
 tabella.innerHTML += "<tr>";
 for (i = 0; i < localStorage.length; i++) {
     tabella.innerHTML += "<td>" + array[i] + "</td>";
     if(i%4==0){
-        tabella.innerHTML += "</tr>";
+        tabella.innerHTML += "</tr><tr>";
     }
 }
