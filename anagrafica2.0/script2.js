@@ -8,9 +8,11 @@ for(let i = 0;i<(localStorage.length/4);i++){
 }
 console.log(array)
 tabella.innerHTML += "<tr>";
+var str = ""
 for (i = 0; i < localStorage.length; i++) {
-    tabella.innerHTML += "<td>" + array[i] + "</td>";
+    str += "<td>" + array[i] + "</td>";
     if(i%4==0){
-        tabella.innerHTML += "</tr><tr>";
+        tabella.innerHTML += str + "</tr><tr>";
+        str ="";
     }
 }
