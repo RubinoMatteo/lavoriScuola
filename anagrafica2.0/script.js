@@ -11,7 +11,7 @@ function bottone()
     document.getElementById("cognome").value="";
     document.getElementById("città").value="";
     document.getElementById("indirizzo").value="";
-    if(array[0] !== undefined || array[1] !== undefined || array[2] !== undefined || array[3] !== undefined ){
+    if(array[0] != "" || array[1] != "" || array[2] != "" || array[3] != "" ){
         for(let i = 0;i<array.length;i++){
             localStorage.setItem(key[i]+index, array[i]);
         }
