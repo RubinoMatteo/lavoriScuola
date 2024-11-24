@@ -41,9 +41,12 @@ function giraDestra(){
 matrice[1][3],matrice[2][3],
 matrice[3][0],matrice[3][1],matrice[3][2],matrice[3][3],
 matrice[2][0],matrice[1][0]];
+console.log(girafuori);
+console.log("");
     let salvami = girafuori[0];
     girafuori.shift();
     girafuori.push(salvami);
+    console.log(girafuori);
     let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
     let salvami2 = girafuori[0];
     giradentro.unshift(salvami2);
