@@ -50,7 +50,7 @@ console.log("");
     let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
     console.log(girafuori);
     console.log("");
-    let salvami2 = girafuori[0];
+    let salvami2 = giradentro[0];
     giradentro.unshift(salvami2);
     console.log(girafuori);
     for(let i=1;i<16;i++){
