@@ -1,6 +1,6 @@
 let a =4;
 let index =0;
-const matrice=new Array(a);
+let matrice=new Array(a);
 /*function creaTabella(){
     if(document.getElementById("numeropari").value > 2 && document.getElementById("numeropari").value % 2 == 0){
         a = document.getElementById("numeropari").value;
@@ -13,8 +13,7 @@ const matrice=new Array(a);
     for(let i=0;i<a;i++){
         matrice[i] = new Array(matrice.length);
         for(let j=0;j<a;j++){
-            let array = matrice[i];
-            array[j] = parseInt( Math.random()*100);
+            matrice[i][j] = parseInt( Math.random()*100);
         }
     }
     const table = document.getElementById("demo");
