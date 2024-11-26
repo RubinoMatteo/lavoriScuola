@@ -43,22 +43,19 @@ matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
 matrice[2][0],matrice[1][0]];
 console.log(girafuori);
 console.log("");
-    let salvami = girafuori[0];
-    girafuori.shift();
-    girafuori.push(salvami);
+    girafuori.push(girafuori.shift());
     console.log(girafuori);
     let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
     console.log(giradentro);
     console.log("");
-    let salvami2 = giradentro.pop();
-    giradentro.unshift(salvami2);
+    giradentro.unshift(giradentro.pop());
     console.log(giradentro);
     for(let i=1;i<16;i++){
-        if(i==6 && i==7){
+        if(i==5 && i==6){
             document.getElementById("e"+i).innerHTML=giradentro[i-6]
         }
-        else if(i==10 && i==11){
-            document.getElementById("e"+i).innerHTML=giradentro[i-8]
+        else if(i==9 && i==10){
+            document.getElementById("e"+i).innerHTML=giradentro[i-7]
         }
     }
     document.getElementById("e0").innerHTML=girafuori[0]
@@ -69,10 +66,10 @@ console.log("");
     document.getElementById("e7").innerHTML=girafuori[4]
     document.getElementById("e11").innerHTML=girafuori[5]
 
-    document.getElementById("e12").innerHTML=girafuori[6]
-    document.getElementById("e13").innerHTML=girafuori[7]
-    document.getElementById("e14").innerHTML=girafuori[8]
-    document.getElementById("e15").innerHTML=girafuori[9]
+    document.getElementById("e15").innerHTML=girafuori[6]
+    document.getElementById("e14").innerHTML=girafuori[7]
+    document.getElementById("e13").innerHTML=girafuori[8]
+    document.getElementById("e12").innerHTML=girafuori[9]
 
     document.getElementById("e8").innerHTML=girafuori[10]
     document.getElementById("e4").innerHTML=girafuori[11]
