@@ -37,17 +37,18 @@ const matrice=new Array(a);
     })
 //}
 function inserisci(){
-    let index = 1
+    let indice = 1
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            document.getElementById('e' + index).innerText = matrice[i][j]
-            index++
+            document.getElementById('e' + indice).innerText = matrice[i][j]
+            indice++
         }
     }
 }
 
 function giraSinistra(){
-    let girafuori=[matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
+    let girafuori=[
+        matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
         matrice[1][3],matrice[2][3],
         matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
         matrice[2][0],matrice[1][0]
@@ -64,13 +65,14 @@ function giraSinistra(){
 
     giradentro.unshift(giradentro.pop());
 
-    [matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]]=giradentro;
+    [matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]] = giradentro;
 
-    inserisci()
+    inserisci();
 
 }
 function giraDestra(){
-    let girafuori=[matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
+    let girafuori=[
+        matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
         matrice[1][3],matrice[2][3],
         matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
         matrice[2][0],matrice[1][0]
@@ -78,7 +80,6 @@ function giraDestra(){
 
         girafuori.unshift(girafuori.pop());
 
-        console.log(girafuori);
         [matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
         matrice[1][3],matrice[2][3],
         matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
@@ -88,8 +89,8 @@ function giraDestra(){
 
         giradentro.push(giradentro.shift());
 
-        [matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]]=giradentro;
+        [matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]] = giradentro;
 
-        inserisci()
+        inserisci();
     
 }
