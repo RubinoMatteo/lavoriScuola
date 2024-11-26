@@ -1,15 +1,16 @@
 th, td {
-    border: 1px solid;
-    border-radius: 10px;
     width: 125px;
     color: #565656;
+}
+th,td , #demo{
+    border: 1px solid;
+    border-radius: 10px;
 }
 body{
     background-color: #eeeff3 ;
 }
 #demo{
     float: center;
-    border-collapse: collapse;
     background-color: #eeeff3 ;
     margin: 1% 32%;
     width: 500px;
@@ -17,13 +18,13 @@ body{
 
 @media screen and (min-width: 1300px) {
     #demo{
-        margin: 1% 30%;
+        margin: 3% 30%;
     }
 }
     
 @media screen and (max-width: 1250px) {
     #demo{
-        margin: 1% 30%;
+        margin: 3% 26%;
     }
 }
 @media screen and (max-width: 500px) {
