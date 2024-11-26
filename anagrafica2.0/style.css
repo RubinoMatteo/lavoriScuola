@@ -2,6 +2,9 @@
     float: center;
     margin: 1% 32%;
 }
+body{
+    background-color: gainsboro;
+}
 input{
     border-radius: 10px;
     border-color: aquamarine;
@@ -30,14 +33,14 @@ button{
         height: 40px;
     }
     #dati{
-        margin: 1% 35%;
+        margin: 1% 30%;
     }
     button{
         width: 80px;
         height: 40px;
     }
     #bottoni{
-        margin-left: 48%;
+        margin-left: 45%;
     }
 }
     
@@ -54,7 +57,7 @@ button{
         height: 40px;
     }
     #bottoni{
-        margin-left: 40%;
+        margin-left: 38%;
     }
 }
 @media screen and (max-width: 500px) {
@@ -63,13 +66,13 @@ button{
         height: 40px;
     }
     #dati{
-        margin: 1% 15%;
+        margin: 1% 5%;
     }
     button{
         width: 80px;
         height: 40px;
     }
     #bottoni{
-        margin-left: 35%;
+        margin-left: 25%;
     }
 }
