@@ -36,7 +36,7 @@ const matrice=new Array(a);
         table.appendChild(riga);
     })
 //}
-function giraDestra(){
+function giraSinistra(){
     let girafuori=[matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
 matrice[1][3],matrice[2][3],
 matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
@@ -75,23 +75,26 @@ console.log("");
     document.getElementById("e4").innerHTML=girafuori[11]
 
 }
-function giraSinistra(){
+function giraDestra(){
     let girafuori=[matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
     matrice[1][3],matrice[2][3],
-    matrice[3][0],matrice[3][1],matrice[3][2],matrice[3][3],
+    matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
     matrice[2][0],matrice[1][0]];
-        let salvami = girafuori[0];
-        girafuori.unshift(salvami);
+    console.log(girafuori);
+    console.log("");
+        girafuori.unshift(girafuori.pop());
+        console.log(girafuori);
         let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
-        let salvami2 = girafuori[0];
-        giradentro.shift();
-        giradentro.push(salvami);
+        console.log(giradentro);
+        console.log("");
+        giradentro.push(giradentro.shift());
+        console.log(giradentro);
         for(let i=1;i<16;i++){
-            if(i==6 && i==7){
+            if(i==5 && i==6){
                 document.getElementById("e"+i).innerHTML=giradentro[i-6]
             }
-            else if(i==10 && i==11){
-                document.getElementById("e"+i).innerHTML=giradentro[i-8]
+            else if(i==9 && i==10){
+                document.getElementById("e"+i).innerHTML=giradentro[i-7]
             }
         }
         document.getElementById("e0").innerHTML=girafuori[0]
@@ -102,11 +105,12 @@ function giraSinistra(){
         document.getElementById("e7").innerHTML=girafuori[4]
         document.getElementById("e11").innerHTML=girafuori[5]
     
-        document.getElementById("e12").innerHTML=girafuori[6]
-        document.getElementById("e13").innerHTML=girafuori[7]
-        document.getElementById("e14").innerHTML=girafuori[8]
-        document.getElementById("e15").innerHTML=girafuori[9]
+        document.getElementById("e15").innerHTML=girafuori[6]
+        document.getElementById("e14").innerHTML=girafuori[7]
+        document.getElementById("e13").innerHTML=girafuori[8]
+        document.getElementById("e12").innerHTML=girafuori[9]
     
         document.getElementById("e8").innerHTML=girafuori[10]
         document.getElementById("e4").innerHTML=girafuori[11]
+    
 }
