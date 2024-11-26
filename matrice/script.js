@@ -39,7 +39,7 @@ const matrice=new Array(a);
 function giraDestra(){
     let girafuori=[matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
 matrice[1][3],matrice[2][3],
-matrice[3][0],matrice[3][1],matrice[3][2],matrice[3][3],
+matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][1],
 matrice[2][0],matrice[1][0]];
 console.log(girafuori);
 console.log("");
@@ -48,11 +48,11 @@ console.log("");
     girafuori.push(salvami);
     console.log(girafuori);
     let giradentro=[matrice[1][1],matrice[1][2],matrice[2][1],matrice[2][2]];
-    console.log(girafuori);
+    console.log(giradentro);
     console.log("");
     let salvami2 = giradentro[0];
     giradentro.unshift(salvami2);
-    console.log(girafuori);
+    console.log(giradentro);
     for(let i=1;i<16;i++){
         if(i==6 && i==7){
             document.getElementById("e"+i).innerHTML=giradentro[i-6]
