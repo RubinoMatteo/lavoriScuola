@@ -16,7 +16,13 @@ function bottone(){
         }
         index++;
     }*/
-    localStorage.setItem(index, array);
+    if(array[0] != "" && array[1] != "" && array[2] != "" && array[3] != "" ){
+        localStorage.setItem(index, array);
+        index++;
+    }
+    console.log(localstorage);
+    console.log(localstorage.getItem(index));
+
 }
 function vai_alla_tabella(){
     location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/pagina2.html";
