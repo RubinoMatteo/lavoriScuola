@@ -17,3 +17,6 @@ for (i = 0; i < localStorage.length; i++) {
     str += "<td>" + array[i] + "</td>";
 }
 tabella.innerHTML += str + "</tr><tr>";
+function indietro(){
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/anagrafica2.0.html";
+}
