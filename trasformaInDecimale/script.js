@@ -29,7 +29,7 @@ var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato")
 let ris =0
 for (let i =0;i<x.length;i++){
-    ris+=(parsedouble(x[x.length-i]))*Math.pow(2,i);
+    ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(2,i);
 }
 risultato.value=ris;
 }
@@ -40,7 +40,7 @@ var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato")
 let ris =0;
 for(let i =0;i<x.length;i++){
-    ris+=(parsedouble(x[x.length-i]))*Math.pow(8,i);
+    ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(8,i);
 }
 risultato.value = ris;
 }
@@ -51,7 +51,7 @@ var risultato = document.getElementById("risultato");
 let ris =0;
 let cifra =0;
 for(let i=0;i<x.length;i++){
- switch(x[x.length-i]) {
+ switch(x.charAt(x.length-i)) {
    case "A":
        cifra=10;
        break;
@@ -71,7 +71,7 @@ case "E":
        cifra=15;
        break;
    default:
-       cifra = parsedouble(x[x.length-i]);
+       cifra = parseFloat(x.charAt(x.length-i));
 }
 ris+=cifra*Math.pow(16,i); 
 }
