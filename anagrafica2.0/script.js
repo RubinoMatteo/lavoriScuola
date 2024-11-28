@@ -10,12 +10,13 @@ function bottone(){
     document.getElementById("cognome").value="";
     document.getElementById("città").value="";
     document.getElementById("indirizzo").value="";
-    if(array[0] != "" && array[1] != "" && array[2] != "" && array[3] != "" ){
+    /*if(array[0] != "" && array[1] != "" && array[2] != "" && array[3] != "" ){
         for(let i = 0;i<array.length;i++){
             localStorage.setItem(key[i]+index, array[i]);
         }
         index++;
-    }
+    }*/
+    localStorage.setItem(index, array);
 }
 function vai_alla_tabella(){
     location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/pagina2.html";

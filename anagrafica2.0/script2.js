@@ -1,12 +1,11 @@
 const array=[];
-const key=["nome","cognome","indirizzo","citta"];
+//const key=["nome","cognome","indirizzo","citta"];
 const tabella = document.getElementById("demo") ;
-for(let i = 0;i<(localStorage.length/4);i++){
+/*for(let i = 0;i<(localStorage.length/4);i++){
     for(let j = 0;j<key.length;j++){
         array.push(localStorage.getItem(key[j]+i))
     }
 }
-console.log(array)
 tabella.innerHTML += "<tr>";
 var str = ""
 for (i = 0; i < localStorage.length; i++) {
@@ -16,7 +15,12 @@ for (i = 0; i < localStorage.length; i++) {
     }
     str += "<td>" + array[i] + "</td>";
 }
-tabella.innerHTML += str + "</tr><tr>";
+tabella.innerHTML += str + "</tr><tr>";*/
+
+for(let i = 0;i<localStorage.length;i++){
+    array.push(localStorage.getItem(i));
+}
+console.log(array);
 function indietro(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/anagrafica2.0.html";
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/index.html";
 }
