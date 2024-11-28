@@ -1,6 +1,6 @@
 const array=[];
 const key=["nome","cognome","indirizzo","citta"];
-var index=0;
+var index = localStorage.length;
 function bottone(){
     array[0]= document.getElementById("nome").value;
     array[1]= document.getElementById("cognome").value;
