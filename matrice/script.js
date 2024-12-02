@@ -1,11 +1,11 @@
 let a;
 let index =0;
-let matrice=new Array(a);
+let matrice=[];
 let arr=[];
 const table = document.getElementById("demo");
 
-//function creaTabella(){
 function cambiaGrandezza(){
+    eliminaTabella();
     if(document.getElementById("numeropari").value > 2 && document.getElementById("numeropari").value % 2 == 0){
         a = document.getElementById("numeropari").value;
     }else if(document.getElementById("numeropari").value <4){
@@ -13,9 +13,12 @@ function cambiaGrandezza(){
     }else{
         a = document.getElementById("numeropari").value-1;
     }
+    genera(a,matrice);
+    generaTabella();
 }
 
-function genera(){
+function genera(a,matrice){
+    matrice=new Array(a)
     for(let i=0;i<a;i++){
         matrice[i] = new Array(matrice.length);
         for(let j=0;j<a;j++){
@@ -45,7 +48,6 @@ function generaTabella(){
     })
 }
 
-//}
 function dividiInArray(a,l,arr){
     let array=[]
     for (let i = 0; i < l; i++) {
@@ -75,52 +77,50 @@ function inserisci(){
     }
 }
 
+function mettiModifice(a,l,mod){
+    for (let i = 0; i < l; i++) {
+        for (let j = 0; j < l; j++) {
+            if(j != b-1 && j != 0){
+                if(j != b-1 && i == a && i == b-1 || j != 0 && i == a && i == b-1){
+                    matrice[i][j]=mod[l-i][j];
+                }else {
+                    mettiModifice(a+1,l-2,mod);
+                }
+            }else{
+                matrice[i][j]=mod[l-i][j];
+            }
+        }
+    }
+}
+
 function giraSinistra(){
-    let girafuori=[
-        matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
-        matrice[1][3],matrice[2][3],
-        matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
-        matrice[2][0],matrice[1][0]
-    ];
+    let mat = dividiInArray(0,a,arr);
 
-    girafuori.push(girafuori.shift());
+    for (let i=0 ;i<mat.length;i++){
+        if (i%2==0)
+            mat[i].unshift(mat[i].pop());
+        else
+            mat[i].push(mat[i].shift());
+    }
 
-    [matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
-    matrice[1][3],matrice[2][3],
-    matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
-    matrice[2][0],matrice[1][0]] = girafuori;
-
-    let giradentro=[matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]];
-
-    giradentro.unshift(giradentro.pop());
-
-    [matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]] = giradentro;
+    mettiModifice(0,a,mat);
 
     inserisci();
 
 }
 
 function giraDestra(){
-    let girafuori=[
-        matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
-        matrice[1][3],matrice[2][3],
-        matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
-        matrice[2][0],matrice[1][0]
-    ];
+    let mat = dividiInArray(0,a,arr);
 
-        girafuori.unshift(girafuori.pop());
+    for (let i=0 ;i<mat.length;i++){
+        if (i%2==0)
+            mat[i].push(mat[i].shift());
+        else
+            mat[i].unshift(mat[i].pop());
+    }
 
-        [matrice[0][0],matrice[0][1],matrice[0][2],matrice[0][3],
-        matrice[1][3],matrice[2][3],
-        matrice[3][3],matrice[3][2],matrice[3][1],matrice[3][0],
-        matrice[2][0],matrice[1][0]] = girafuori;
+    mettiModifice(0,a,mat);
 
-        let giradentro=[matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]];
+    inserisci();
 
-        giradentro.push(giradentro.shift());
-
-        [matrice[1][1],matrice[1][2],matrice[2][2],matrice[2][1]] = giradentro;
-
-        inserisci();
-    
 }
