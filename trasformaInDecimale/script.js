@@ -28,7 +28,8 @@ function binario () {
 var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato")
 let ris =0
-for (let i =0;i<x.length;i++){
+for (let i =1;i<=x.length;i++){
+    console.log(parseFloat(x.charAt(x.length-i)));
     ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(2,i);
 }
 console.log(ris);
@@ -40,7 +41,8 @@ function ottale (){
 var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato")
 let ris =0;
-for(let i =0;i<x.length;i++){
+for(let i =1;i<=x.length;i++){
+    console.log(parseFloat(x.charAt(x.length-i)));
     ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(8,i);
 }
 console.log(ris);
