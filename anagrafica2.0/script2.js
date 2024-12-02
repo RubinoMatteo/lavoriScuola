@@ -37,5 +37,5 @@ for (i = 0; i < cose.length; i++) {
 }
 tabella.innerHTML += str + "</tr><tr>";
 function indietro(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/index.html";
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/anagrafica2.0.html";
 }
