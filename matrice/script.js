@@ -36,7 +36,7 @@ let arr=[];
         table.appendChild(riga);
     })
 //}
-function dividiInArray(a,l){
+function dividiInArray(a,l,arr){
     let array=[]
     for (let i = 0; i < l; i++) {
         for (let j = 0; j < l; j++) {
@@ -44,17 +44,16 @@ function dividiInArray(a,l){
                 if(j != b-1 && i == a && i == b-1 || j != 0 && i == a && i == b-1){
                     array.push(matrice[i][j]);
                 }else {
-                    dividiInArray(a+1,l-2);
+                    arr=dividiInArray(a+1,l-2,arr);
                 }
             }else{
                 array.push(matrice[i][j]);
             }
         }
     }
-    arr.push(array);
+    return arr.push(array);
 }
-dividiInArray(0,a);
-console.lo(arr);
+console.log(dividiInArray(0,a,arr););
 function inserisci(){
     let indice = 0
     for (let i = 0; i < 4; i++) {
