@@ -41,9 +41,10 @@ function dividiInArray(a,l){
     for (let i = 0; i < l; i++) {
         for (let j = 0; j < l; j++) {
             if(j != b-1 && j != 0){
-                dividiInArray(a+1,l-2);
                 if(j != b-1 && i == a && i == b-1 || j != 0 && i == a && i == b-1){
                     array.push(matrice[i][j]);
+                }else {
+                    dividiInArray(a+1,l-2);
                 }
             }else{
                 array.push(matrice[i][j]);
