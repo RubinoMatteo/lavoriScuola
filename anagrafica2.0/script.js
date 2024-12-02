@@ -1,7 +1,7 @@
 const array=[];
 const key=["nome","cognome","indirizzo","citta"];
-var index = localStorage.length;
 function bottone(){
+    var index = localStorage.length;
     array[0]= document.getElementById("nome").value;
     array[1]= document.getElementById("cognome").value;
     array[2]= document.getElementById("indirizzo").value;
@@ -20,8 +20,6 @@ function bottone(){
         localStorage.setItem(index, array);
         index++;
     }
-    console.log(localstorage);
-    console.log(localstorage.getItem(index));
 
 }
 function vai_alla_tabella(){
