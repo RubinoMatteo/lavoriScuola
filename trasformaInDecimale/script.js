@@ -1,6 +1,6 @@
 function converti(){
     var testo = document.getElementById('d1').value;
-    var B=0;
+    /*var B=0;
     var O=0;
     var E=0;
     for(let i =0;i < testo.length;i++){
@@ -21,7 +21,21 @@ function converti(){
     }else{
         esadecimale();
         //document.getElementById("risultato").value = parseInt(testo,2).toString(16);
-    }
+    }*/
+    var bi = document.getElementById("binario");
+    var ot = document.getElementById("ottale");
+    var es = document.getElementById("esadecimale");
+    let d=" ";
+    if (bi.checked){
+        binario();
+        //document.getElementById("risultato").value = parseInt(testo,2);
+      }  else if (ot.checked){
+        ottale();
+        //document.getElementById("risultato").value = parseInt(testo,8);
+      }  else if (es.checked){
+        esadecimale();
+        //document.getElementById("risultato").value = parseInt(testo,2).toString(16);
+      }
 }
 
 function binario () {
