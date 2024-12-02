@@ -28,11 +28,12 @@ console.log(cose);
 tabella.innerHTML += "<tr>";
 var str = ""
 for (i = 0; i < cose.length; i++) {
-    if(i%4==0){
-        tabella.innerHTML += str + "</tr><tr>";
-        str ="";
+    for(let i =0;i<4;i++){
+        str += "<td>" + cose[i] + "</td>";
     }
-    str += "<td>" + cose[i] + "</td>";
+    
+    tabella.innerHTML += str + "</tr><tr>";
+    str ="";
 }
 tabella.innerHTML += str + "</tr><tr>";
 function indietro(){
