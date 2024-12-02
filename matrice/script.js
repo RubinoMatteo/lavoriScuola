@@ -1,6 +1,7 @@
 let a =4;
 let index =0;
 let matrice=new Array(a);
+let arr=[];
 /*function creaTabella(){
     if(document.getElementById("numeropari").value > 2 && document.getElementById("numeropari").value % 2 == 0){
         a = document.getElementById("numeropari").value;
@@ -35,11 +36,29 @@ let matrice=new Array(a);
         table.appendChild(riga);
     })
 //}
+function dividiInArray(a,l){
+    let array=[]
+    for (let i = 0; i < l; i++) {
+        for (let j = 0; j < l; j++) {
+            if(j != b-1 && j != 0){
+                dividiInArray(a+1,l-2);
+                if(j != b-1 && i == a && i == b-1 || j != 0 && i == a && i == b-1){
+                    array.push(matrice[i][j]);
+                }
+            }else{
+                array.push(matrice[i][j]);
+            }
+        }
+    }
+    arr.push(array);
+}
+dividiInArray(0,a);
+console.lo(arr);
 function inserisci(){
     let indice = 0
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            document.getElementById('e' + indice).innerText = matrice[i][j]
+            document.getElementById('e' + indice).innerHTML = matrice[i][j];
             indice++
         }
     }
