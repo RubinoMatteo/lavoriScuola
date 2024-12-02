@@ -16,3 +16,11 @@ input{
     width: 500px;
     height: 40px;
 }
+div.input{
+    border-color: #565656 ;
+    background-color: #eeeff3 ;
+}
+div{
+    width: 500px;
+    height: 40px;
+}

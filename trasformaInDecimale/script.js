@@ -90,7 +90,7 @@ case "E":
        cifra=15;
        break;
    default:
-       cifra = parseFloat(x.charAt(x.length-i));
+       cifra = parseFloat(x.charAt(x.length-i-1));
 }
 console.log(cifra);
 ris+=cifra*Math.pow(16,i); 
