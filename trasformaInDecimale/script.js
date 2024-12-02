@@ -53,7 +53,7 @@ var risultato = document.getElementById("risultato");
 let ris =0;
 let cifra =0;
 x=x.toUpperCase();
-for(let i=0;i<x.length;i++){
+for(let i=1;i<=x.length;i++){
  switch(x.charAt(x.length-i)) {
    case "A":
        cifra=10;
