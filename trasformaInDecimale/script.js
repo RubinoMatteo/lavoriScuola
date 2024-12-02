@@ -14,13 +14,13 @@ function converti(){
     }
     if(B>O&&B>E){
         binario();
-        //let x= parseInt(testo,2);
+        //document.getElementById("risultato").value = parseInt(testo,2);
     }else if(O>E&&O>B) {
         ottale();
-        //let x= parseInt(testo,8);
+        //document.getElementById("risultato").value = parseInt(testo,8);
     }else{
         esadecimale();
-        //let x= parseInt(testo,2).toString(16);
+        //document.getElementById("risultato").value = parseInt(testo,2).toString(16);
     }
 }
 
@@ -31,6 +31,7 @@ let ris =0
 for (let i =0;i<x.length;i++){
     ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(2,i);
 }
+console.log(ris);
 risultato.value=ris;
 }
 
@@ -42,6 +43,7 @@ let ris =0;
 for(let i =0;i<x.length;i++){
     ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(8,i);
 }
+console.log(ris);
 risultato.value = ris;
 }
 
@@ -50,6 +52,7 @@ var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato");
 let ris =0;
 let cifra =0;
+x=x.toUpperCase();
 for(let i=0;i<x.length;i++){
  switch(x.charAt(x.length-i)) {
    case "A":
@@ -73,8 +76,10 @@ case "E":
    default:
        cifra = parseFloat(x.charAt(x.length-i));
 }
+console.log(cifra);
 ris+=cifra*Math.pow(16,i); 
 }
+console.log(ris);
      
 risultato.value = ris;
 }
