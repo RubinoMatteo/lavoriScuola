@@ -28,9 +28,9 @@ function binario () {
 var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato")
 let ris =0
-for (let i =1;i<=x.length;i++){
+for (let i =0;i<=x.length-1;i++){
     console.log(parseFloat(x.charAt(x.length-i)));
-    ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(2,i);
+    ris+=(parseFloat(x.charAt(x.length-i-1)))*Math.pow(2,i);
 }
 console.log(ris);
 risultato.value=ris;
@@ -41,9 +41,9 @@ function ottale (){
 var x = document.getElementById("d1").value;
 var risultato = document.getElementById("risultato")
 let ris =0;
-for(let i =1;i<=x.length;i++){
+for(let i =0;i<=x.length-1;i++){
     console.log(parseFloat(x.charAt(x.length-i)));
-    ris+=(parseFloat(x.charAt(x.length-i)))*Math.pow(8,i);
+    ris+=(parseFloat(x.charAt(x.length-i-1)))*Math.pow(8,i);
 }
 console.log(ris);
 risultato.value = ris;
@@ -55,8 +55,8 @@ var risultato = document.getElementById("risultato");
 let ris =0;
 let cifra =0;
 x=x.toUpperCase();
-for(let i=1;i<=x.length;i++){
- switch(x.charAt(x.length-i)) {
+for(let i=0;i<=x.length-1;i++){
+ switch(x.charAt(x.length-i-1)) {
    case "A":
        cifra=10;
        break;
