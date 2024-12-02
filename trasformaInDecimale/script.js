@@ -12,10 +12,10 @@ function converti(){
             E++;
         }
     }
-    if(B>O&&B>E){
+    if(O==0&&E==0){
         binario();
         //document.getElementById("risultato").value = parseInt(testo,2);
-    }else if(O>E&&O>B) {
+    }else if(E==0&&O>B) {
         ottale();
         //document.getElementById("risultato").value = parseInt(testo,8);
     }else{
