@@ -28,10 +28,10 @@ console.log(cose);
 tabella.innerHTML += "<tr>";
 var str = ""
 for (i = 0; i < cose.length; i++) {
-    for(let i =0;i<4;i++){
-        str += "<td>" + cose[i] + "</td>";
+    for(let j =0;j<4;j++){
+        str += "<td>" + cose[i][j] + "</td>";
     }
-    
+
     tabella.innerHTML += str + "</tr><tr>";
     str ="";
 }
