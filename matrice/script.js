@@ -36,7 +36,7 @@ let matrice=new Array(a);
     })
 //}
 function inserisci(){
-    let indice = 1
+    let indice = 0
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
             document.getElementById('e' + indice).innerText = matrice[i][j]
