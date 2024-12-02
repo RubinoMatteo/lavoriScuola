@@ -46,7 +46,11 @@ for (let i =0;i<=x.length-1;i++){
     console.log(parseFloat(x.charAt(x.length-i)));
     ris+=(parseFloat(x.charAt(x.length-i-1)))*Math.pow(2,i);
 }
-console.log(ris);
+for(let i =0;i < x.length;i++){
+    if (x[i]>1){
+    ris='error: non é stato inserito un numero binario';
+    }
+}
 risultato.value=ris;
 }
 
@@ -59,7 +63,11 @@ for(let i =0;i<=x.length-1;i++){
     console.log(parseFloat(x.charAt(x.length-i)));
     ris+=(parseFloat(x.charAt(x.length-i-1)))*Math.pow(8,i);
 }
-console.log(ris);
+for(let i =0;i < x.length;i++){
+    if (x[i]>7){
+    ris='error: non é stato inserito un numero ottale';
+    }
+}
 risultato.value = ris;
 }
 

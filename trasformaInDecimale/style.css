@@ -8,7 +8,7 @@ button{
 body{
     background-color: #eeeff3 ;
 }
-input{ 
+#d1, #risultato{ 
     border-radius: 10px;
     border-color: #565656 ;
     background-color: #eeeff3 ;
@@ -16,11 +16,15 @@ input{
     width: 500px;
     height: 40px;
 }
-div.input{
+#binario, #esadecimale, #ottale{
     border-color: #565656 ;
     background-color: #eeeff3 ;
 }
 div{
     width: 500px;
     height: 40px;
+}
+label{
+    text-align: center;
+    color: #565656;
 }
