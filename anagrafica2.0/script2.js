@@ -24,6 +24,7 @@ for(let i = 0;i<localStorage.length;i++){
 for(let i = 0;i<array.length;i++){
    cose.push(array[i].split(","));
 }
+console.log(cose);
 tabella.innerHTML += "<tr>";
 var str = ""
 for (i = 0; i < cose.length; i++) {
