@@ -14,8 +14,10 @@ function genera(){
     let Ip = ipbin.join("");
     let net = Ip.slice(0,pl);
     let host = Ip.slice(pl,32);
-    let dnet = parseInt(net,2);
-    let dhost = parseInt(host,2)
+    let dnet = '';
+    for (let i =1;i<=net.length/8;i++){
+        dnet += parseInt(net.slice(i-1*8,i*8),2);
+    }
     let broadcast_dec = Math.pow(2,32-pl)-1;
     let broadcast = broadcast_dec.toString(2);
     for ( let i=1;i < broadcast_dec;i++){
