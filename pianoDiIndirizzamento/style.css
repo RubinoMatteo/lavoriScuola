@@ -1,0 +1,39 @@
+input{ 
+    border-radius: 10px;
+    border-color: #565656 ;
+    background-color: #eeeff3 ;
+    margin: 15px;
+    height: 40px;
+}
+#IP-Address{
+    width: 100px;
+}
+#prefixLength{
+    width: 40px;
+}
+button{
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #c3d8e2 ;
+}
+body{
+    background-color: #eeeff3 ;
+}
+th, td {
+    width: 125px;
+    border: 1px solid;
+    color: #565656;
+}
+#host{
+    color: blue;
+}#net{
+    color: red;
+}
+table{
+    border-collapse: collapse;
+    float: center;
+    background-color: #eeeff3 ;
+    margin: 1% 32%;
+    width: 500px;
+}
