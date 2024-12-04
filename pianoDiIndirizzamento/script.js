@@ -6,7 +6,8 @@ function genera(){
     let ipbin =[parseInt(ip[0]).toString(2),parseInt(ip[1]).toString(2),parseInt(ip[2]).toString(2),parseInt(ip[3]).toString(2)];
     for (let i =0;i<ipbin.length;i++){
         if(ipbin[i].length<8){
-            for (let j = 0;j<=(8-ipbin[i].length);j++){
+            let lun= ipbin[i].length;
+            for (let j = 0;j<(8-lun);j++){
                 ipbin[i]="0"+ipbin[i];
             }
         }
