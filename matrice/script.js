@@ -13,11 +13,11 @@ function cambiaGrandezza(){
     }else{
         a = document.getElementById("numeropari").value-1;
     }
-    genera(a,matrice);
+    matrice=genera(a);
     generaTabella();
 }
 
-function genera(a,matrice){
+function genera(a){
     matrice=new Array(a)
     for(let i=0;i<a;i++){
         matrice[i] = new Array(matrice.length);
@@ -25,6 +25,7 @@ function genera(a,matrice){
             matrice[i][j] = parseInt( Math.random()*100);
         }
     }
+    return matrice;
 }
 
 function eliminaTabella(){
