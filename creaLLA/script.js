@@ -1,7 +1,7 @@
 function generaLLA(){
     let MAC_A = document.getElementById("MAC-Address").value;;
     let IPv6 = document.getElementById("IPv6").value;;
-    if(MAC_A.length != 16||MAC_A.length != 21){
+    if(MAC_A.length != 16||MAC_A.length != 17){
         alert("MAC address non valido ");
         MAC_A = "";
     }
@@ -9,7 +9,7 @@ function generaLLA(){
     let prima_parte;
     let seconda_parte;
     let Host;
-    if (MAC_A.length == 21){
+    if (MAC_A.length == 17){
         let r = MAC_A.spilt(".");
         i = r.join("");
         prima_parte=i.slice(0,6)
