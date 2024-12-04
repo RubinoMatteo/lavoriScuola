@@ -3,8 +3,11 @@ function genera(){
     const IP = document.getElementById("IP-Address").value;
     const bin = document.getElementById("tabella");
     const dec = document.getElementById("dec");
-    let net = IP.toString(2).slice(0,pl);
-    let host = IP.toString(2).slice(pl,32);
+    let ip = IP.split(".");
+    let ipbin =[ip[0].toString(2),ip[1].toString(2),ip[2].toString(2),ip[3].toString(2)]
+    let Ip = ipbin.join("");
+    let net = Ip.slice(0,pl);
+    let host = Ip.slice(pl,32);
     let dnet = parseInt(net,2);
     let dhost = parseInt(host,2)
     let broadcast_dec = Math.pow(2,32-pl)-1;
