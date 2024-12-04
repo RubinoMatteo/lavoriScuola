@@ -1,8 +1,9 @@
 function generaLLA(){
-    const MAC_A = document.getElementById("MAC-Address").value;;
+    let MAC_A = document.getElementById("MAC-Address").value;;
     let IPv6 = document.getElementById("IPv6").value;;
     if(MAC_A.length != 16||MAC_A.length != 21){
         alert("MAC address non valido ");
+        MAC_A = "";
     }
     let i;
     let prima_parte;
