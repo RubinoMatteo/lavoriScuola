@@ -23,17 +23,18 @@ function genera(){
     let broadcast = broadcast_dec.toString(2);
     for ( let i=1;i < broadcast_dec;i++){
         dhost=i;
-        let bhost="";
+        let bhost=dhost.toString(2);
         if(dhost.toString(2).length<8){
-            let lun= dhost.toString(2).length;
+            let lun= bhost.length;
             for (let j = 0;j<(8-lun);j++){
-                bhost="0"+dhost.toString(2);
+                bhost+="0"+bhost;
             }
         }
         for (let i = 0;i<net.length/8;i++){
-            net.toSpliced((i+1)*8-i,0,".")
+           net += net.slice(i*8,(i+1)*8-i)+".";
+
         }
-        tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + bhosthost + "</td><td id='net'>" + dnet + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
+        tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + bhost + "</td><td id='net'>" + dnet + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
     }
     tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + broadcast + "</td><td id='net'>" + dnet + "</td><td id='host'>" + broadcast_dec + "</td><td>" + pl + "</td></tr>";
 }
