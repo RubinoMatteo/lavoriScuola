@@ -4,7 +4,14 @@ function genera(){
     const bin = document.getElementById("tabella");
     const dec = document.getElementById("dec");
     let ip = IP.split(".");
-    let ipbin =[ip[0].toString(2),ip[1].toString(2),ip[2].toString(2),ip[3].toString(2)]
+    let ipbin =[parseInt(ip[0]).toString(2),parseInt(ip[1]).toString(2),parseInt(ip[2]).toString(2),parseInt(ip[3]).toString(2)];
+    for (let i =0;i<ipbin.length;i++){
+        if(ipbin[i].length<8){
+            for (let j = 0;j<(8-ipbin[i].length);j++){
+                ipbin[i]="0"+ipbin[i];
+            }
+        }
+    }
     let Ip = ipbin.join("");
     let net = Ip.slice(0,pl);
     let host = Ip.slice(pl,32);
