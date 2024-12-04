@@ -12,7 +12,7 @@ input{
     width: 40px;
 }
 button{
-    width: 80px;
+    width: 150px;
     height: 40px;
     border-radius: 10px;
     background-color: #c3d8e2 ;
@@ -32,8 +32,10 @@ th, td {
 }
 table{
     border-collapse: collapse;
-    float: center;
     background-color: #eeeff3 ;
-    margin: 1% 32%;
     width: 500px;
+}
+#dec{
+    font: center ;
+    margin: 1% 15%;
 }
