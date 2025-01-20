@@ -2,7 +2,7 @@ const coda={};
 function inserisci()
 {
 coda.unshift( {nome: document.getElementById("nome").value ,
-    cognome: document.getElementById("cognome").value;})
+    cognome: document.getElementById("cognome").value});
 document.getElementById("nome").value="";
 document.getElementById("cognome").value="";
 }
