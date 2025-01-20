@@ -30,9 +30,12 @@ function genera(){
                 bhost+="0"+bhost;
             }
         }
+        let nett=["","",""]
         for (let i = 0;i<net.length/8;i++){
-           net += net.slice(i*8,(i+1)*8-i)+".";
-
+           nett[i]= net.substr(8*i,i*8+8)
+        }
+        console.log(nett)
+        let n= nett.join(".")
         }
         tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + bhost + "</td><td id='net'>" + dnet + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
     }
