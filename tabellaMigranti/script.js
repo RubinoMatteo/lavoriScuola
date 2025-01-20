@@ -20,13 +20,17 @@ function leggiFile(input){
 }
 function creaTab(tab){
     let righe= tab.split("\n")
+    let colonne
+    let colonne1
     for (let i = 0; i < righe.length; i++) {
-        const colonne = righe[i].split(',')
+        colonne = righe[i].split(',')
     }
     for (let i = 0; i < colonne.length; i++) {
-        const colonne1 = colonne[i].slice(1,-1)
+        colonne1 = colonne[i].slice(1,-1)
     }
     for (let i = 0; i < colonne.length; i++) {
-        ocument.getElementById("demo").innerHTML += "<tr><td>" + colonne[0] + "</td><td>" + matrice[1] + "</td></tr>";
+        if(i%2==0){
+            document.getElementById("demo").innerHTML += "<tr><td>" + colonne1[i] + "</td><td>" + colonne1[i+1] + "</td></tr>";
+        }
     }
 }
