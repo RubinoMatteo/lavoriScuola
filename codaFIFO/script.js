@@ -10,6 +10,6 @@ function preleva()
 {
     let coda2=coda.reverse();
     let uscito =coda2.shift();
-    document.getElementById("testo").innerHTML  = uscito.nome +"," +uscito.cognome;
+    document.getElementById("text").innerHTML  = uscito.nome +"," +uscito.cognome;
     coda.pop();
 }
