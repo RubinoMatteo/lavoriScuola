@@ -21,6 +21,12 @@ function genera(){
     }
     let broadcast_dec = Math.pow(2,32-pl)-1;
     let broadcast = broadcast_dec.toString(2);
+    let nett=["","",""]
+    for (let i = 0;i<net.length/8;i++){
+       nett[i]= net.substr(8*i,i*8+8)
+    }
+    console.log(nett)
+    let n= nett.join(".")
     for ( let i=1;i < broadcast_dec;i++){
         dhost=i;
         let bhost=dhost.toString(2);
@@ -29,13 +35,6 @@ function genera(){
             for (let j = 0;j<(8-lun);j++){
                 bhost+="0"+bhost;
             }
-        }
-        let nett=["","",""]
-        for (let i = 0;i<net.length/8;i++){
-           nett[i]= net.substr(8*i,i*8+8)
-        }
-        console.log(nett)
-        let n= nett.join(".")
         }
         tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + bhost + "</td><td id='net'>" + dnet + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
     }
