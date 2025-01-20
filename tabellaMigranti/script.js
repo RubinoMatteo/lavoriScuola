@@ -33,4 +33,5 @@ function creaTab(tab){
             document.getElementById("demo").innerHTML += "<tr><td>" + colonne1[i] + "</td><td>" + colonne1[i+1] + "</td></tr>";
         }
     }
+    console.log(colonne1)
 }
