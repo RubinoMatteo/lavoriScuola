@@ -4,6 +4,10 @@ body {
     padding: 0;
     font-family: 'Inter';
     background-image: url('aurora-boreale.jpg');
+    color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
 .grid {
@@ -17,8 +21,10 @@ body {
     gap: 1.5rem;
     flex-direction: column;
     padding: 1.5rem 1rem;
-    border: 2px solid black;
     border-radius: 1.5rem;
+    border: 2px solid black;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
 }
 
 .card h3, .card p, .card a {
