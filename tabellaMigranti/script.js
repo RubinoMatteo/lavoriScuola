@@ -16,6 +16,7 @@ function leggiFile(input){
     lettoreF.onload = function() {
     let contenuto = lettoreF.result; // Contenuto del file letto
     creaTab(contenuto);
+    console.log(contenuto)
     }
 }
 function creaTab(tab){
@@ -34,4 +35,6 @@ function creaTab(tab){
         }
     }
     console.log(colonne1)
+    console.log(colonne)
+    console.log(righe)
 }
