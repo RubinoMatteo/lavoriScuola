@@ -18,7 +18,7 @@ body {
     flex-direction: column;
     padding: 1.5rem 1rem;
     border: 2px solid black;
-    border-radius: 3rem;
+    /*border-radius: 3rem;*/
 }
 
 .card h3, .card p, .card a {
