@@ -21,13 +21,13 @@ function leggiFile(input){
 }
 function creaTab(tab){
     let righe= tab.split("\n")
-    let colonne
-    let colonne1
+    let colonne=[]
+    let colonne1=[]
     for (let i = 0; i < righe.length; i++) {
-        colonne += righe[i].split(',')
+        colonne[i] = righe[i].split(',')
     }
     for (let i = 0; i < colonne.length; i++) {
-        colonne1 += colonne[i].slice(1,-1)
+        colonne1[i] = colonne[i].slice(1,-1)
     }
     for (let i = 0; i < colonne.length; i++) {
         if(i%2==0){
