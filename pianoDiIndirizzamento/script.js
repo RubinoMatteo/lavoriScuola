@@ -24,6 +24,8 @@ function genera(){
     let nett=["","",""]
     for (let i = 0;i<net.length/8;i++){
        nett[i]= net.substr(8*i,i*8+8)
+       console.log(net)
+       console.log(n)
     }
     console.log(nett)
     let n= nett.join(".")
