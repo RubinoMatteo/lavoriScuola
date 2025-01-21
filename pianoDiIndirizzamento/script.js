@@ -34,9 +34,10 @@ function genera(){
     for ( let i=1;i < broadcast_dec;i++){
         dhost=i;
         let bhost=dhost.toString(2);
-        if(dhost.toString(2).length<8){
+        let sl=32-pl
+        if(dhost.toString(2).length<sl){
             let lun= bhost.length;
-            for (let j = 0;j<(8-lun);j++){
+            for (let j = 0;j<(sl-lun);j++){
                 bhost="0"+bhost;
             }
         }
