@@ -28,9 +28,9 @@ function genera(){
     let n= nett.join(".")
     let dnett=["","",""]
     for (let i = 0;i<dnet.length/3;i++){
-        dnett[i]= net.substr(3*i,3)
+        dnett[i]= dnet.substr(3*i,3)
      }
-     let dn= nett.join(".")
+     let dn= dnett.join(".")
     for ( let i=1;i < broadcast_dec;i++){
         dhost=i;
         let bhost=dhost.toString(2);
