@@ -25,10 +25,10 @@ function genera(){
     for (let i = 0;i<net.length/8;i++){
        nett[i]= net.substr(8*i,i*8+8)
        console.log(net)
-       console.log(n)
     }
     console.log(nett)
     let n= nett.join(".")
+    console.log(n)
     for ( let i=1;i < broadcast_dec;i++){
         dhost=i;
         let bhost=dhost.toString(2);
