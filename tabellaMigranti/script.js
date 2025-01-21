@@ -23,7 +23,7 @@ function creaTab(tab){
     let righe= tab.split("\n")
     let colonne=[]
     let colonne1=[]
-    for (let i = 0; i < righe.length*2; i+2) {
+    /*for (let i = 0; i < righe.length*2; i+2) {
         for (let j = 0; j < righe.length; j++) {
         colonne[i] = righe[j].split(',')[0]
         colonne[i+1] = righe[j].split(',')[1]}
@@ -35,8 +35,8 @@ function creaTab(tab){
         if(i%2==0){
             document.getElementById("demo").innerHTML += "<tr><td>" + colonne1[i] + "</td><td>" + colonne1[i+1] + "</td></tr>";
         }
-    }
-    /*for (let i = 0; i < righe.length; i++) {
+    }*/
+    for (let i = 0; i < righe.length; i++) {
         colonne[i] = righe[i].split(',')
     }
     for (let i = 0; i < colonne.length; i++) {
@@ -45,7 +45,7 @@ function creaTab(tab){
     }
     for (let i = 0; i < colonne.length; i++) {
             document.getElementById("demo").innerHTML += "<tr><td>" + colonne1[i][0] + "</td><td>" + colonne1[i][1] + "</td></tr>";
-    }*/
+    }
     console.log(colonne1)
     console.log(colonne)
     console.log(righe)
