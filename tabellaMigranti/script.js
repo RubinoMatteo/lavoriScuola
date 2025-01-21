@@ -24,10 +24,10 @@ function creaTab(tab){
     let colonne
     let colonne1
     for (let i = 0; i < righe.length; i++) {
-        colonne = righe[i].split(',')
+        colonne += righe[i].split(',')
     }
     for (let i = 0; i < colonne.length; i++) {
-        colonne1 = colonne[i].slice(1,-1)
+        colonne1 += colonne[i].slice(1,-1)
     }
     for (let i = 0; i < colonne.length; i++) {
         if(i%2==0){
