@@ -24,11 +24,13 @@ function genera(){
     let nett=["","",""]
     for (let i = 0;i<net.length/8;i++){
        nett[i]= net.substr(8*i,8)
-       console.log(net)
     }
-    console.log(nett)
     let n= nett.join(".")
-    console.log(n)
+    let dnett=["","",""]
+    for (let i = 0;i<dnet.length/3;i++){
+        dnett[i]= net.substr(3*i,3)
+     }
+     let dn= nett.join(".")
     for ( let i=1;i < broadcast_dec;i++){
         dhost=i;
         let bhost=dhost.toString(2);
@@ -38,7 +40,7 @@ function genera(){
                 bhost="0"+bhost;
             }
         }
-        tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + bhost + "</td><td id='net'>" + dnet + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
+        tabella.innerHTML += "<tr><td id='net'>" + n + "</td><td id='host'>" + bhost + "</td><td id='net'>" + dn + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
     }
-    tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + broadcast + "</td><td id='net'>" + dnet + "</td><td id='host'>" + broadcast_dec + "</td><td>" + pl + "</td></tr>";
+    tabella.innerHTML += "<tr><td id='net'>" + n + "</td><td id='host'>" + broadcast + "</td><td id='net'>" + dn + "</td><td id='host'>" + broadcast_dec + "</td><td>" + pl + "</td></tr>";
 }
