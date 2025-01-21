@@ -33,7 +33,7 @@ function genera(){
         if(dhost.toString(2).length<8){
             let lun= bhost.length;
             for (let j = 0;j<(8-lun);j++){
-                bhost+="0"+bhost;
+                bhost="0"+bhost;
             }
         }
         tabella.innerHTML += "<tr><td id='net'>" + net + "</td><td id='host'>" + bhost + "</td><td id='net'>" + dnet + "</td><td id='host'>" + dhost + "</td><td>" + pl + "</td></tr>";
