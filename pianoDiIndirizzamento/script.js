@@ -23,7 +23,7 @@ function genera(){
     let broadcast = broadcast_dec.toString(2);
     let nett=["","",""]
     for (let i = 0;i<net.length/8;i++){
-       nett[i]= net.substr(8*i,i*8+8)
+       nett[i]= net.substr(8*i,8)
        console.log(net)
     }
     console.log(nett)
