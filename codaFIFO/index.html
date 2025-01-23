@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form name="modulo" method="get" action="">
-        <p id="dati">        
-            <input type="text" id="nome" placeholder="nome"><br>
-            <input type="text" id="cognome" placeholder="cognome"><br>
-        </p>
-        <p id="bottoni">
-            <button onClick="inserisci()"> metti in coda  </button>
-            <button onClick="inserisci()"> preleva  </button>
-        </p>
-    </form>
-    <input type="text" name="IPv6" readonly="readonly" id="testo" size="20">
+    <div id="dati">        
+        <input type="text" id="nome" placeholder="nome"><br>
+        <input type="text" id="cognome" placeholder="cognome"><br>
+    </div>
+    <div id="bottoni">
+        <button onClick="inserisci()"> metti in coda  </button>
+        <button onClick="inserisci()"> preleva  </button>
+    </div>
+    <div>
+        <input type="text" name="IPv6" readonly="readonly" id="testo" size="20">
+    </div>
 </body>
 <script type="text/javascript" src="script.js"></script>
 </html>
