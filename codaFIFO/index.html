@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://rubinomatteo.github.io/lavoriScuola/rubi.jpg" type="image/jpg" />
     <link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-    <div id="dati">        
-        <input type="text" id="nome" placeholder="nome"><br>
-        <input type="text" id="cognome" placeholder="cognome"><br>
-    </div>
-    <div id="bottoni">
-        <button onClick="inserisci()"> metti in coda  </button>
-        <button onClick="inserisci()"> preleva  </button>
-    </div>
-    <div id="dati"> 
-        <input type="text" name="IPv6" readonly="readonly" id="testo" size="20">
-    </div>
+        <div id="dati">        
+            <input type="text" id="nome" placeholder="nome"><br>
+            <input type="text" id="cognome" placeholder="cognome"><br>
+        </div>
+        <div id="bottoni">
+            <button onClick="inserisci()"> metti in coda  </button>
+            <button onClick="preleva()"> preleva  </button>
+        </div>
+<div id="dati">
+    <input type="text" name="testo" readonly="readonly" id="testo" size="20" placeholder="coda">
+</div>
 </body>
-<script type="text/javascript" src="script.js"></script>
 </html>
