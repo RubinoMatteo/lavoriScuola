@@ -39,5 +39,6 @@ input{
 #mycanvas{
     display: grid;
     place-items: center;
+    border:1px solid black;
     box-shadow: 2px 2px 20px rgb(128, 0, 81);
 }
