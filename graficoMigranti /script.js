@@ -66,12 +66,13 @@ function creaGraf(tab){
     ctx.moveTo(40,50);
 
     // Set an end-point
+    max=Math.round(massimo/1000)*1000;
     for (let i =0;i<num.length;i++){
 
-        ctx.lineTo(massimo/500*i,50);
+        ctx.lineTo(max/10*i,50);
         ctx.font = "7px Arial";
         ctx.fillStyle = "red";
-        ctx.fillText("200000",25,45);
+        ctx.fillText(max/10*i,25,45);
     }
     // Draw it
     ctx.stroke();
