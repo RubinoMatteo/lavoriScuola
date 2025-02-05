@@ -46,7 +46,7 @@ function creaGraf(tab){
     ctx.beginPath();
 
     // Set a start-point
-    ctx.moveTo(50,500);
+    ctx.moveTo(50,450);
 
     // Set an end-point
     ctx.lineTo(50,0);
@@ -54,7 +54,7 @@ function creaGraf(tab){
     ctx.moveTo(1000,450);
 
     // Set an end-point
-    ctx.lineTo(0,450);
+    ctx.lineTo(50,450);
     // Set a start-point
 
 	  ctx.font = "10px Arial";
