@@ -35,21 +35,14 @@ function creaGraf(tab){
     let num=[]
     for (let i = 2; i < tab.length; i++) {
         if (i%2==0){
-            anno+=tab[i]
+            anno.push(tab[i])
+            num.push(Number(tab[i+1]))
+        }
+    }
             console.log(anno)
-            num+=tab[i+1]
             console.log(num)
-        }
-    }
-    let massimo= function(num){
-        let max=num[0]
-        for(let i = 1;i<num.length;i++){
-            if(max<num[i]){
-                max=num[i]
-            }
-        }
-        return max
-    }
+    let massimo= massi(num);
+            console.log(massimo)
     ctx.beginPath();
 
     // Set a start-point
@@ -64,24 +57,49 @@ function creaGraf(tab){
     ctx.lineTo(0,450);
     // Set a start-point
 
+	  ctx.font = "10px Arial";
+            ctx.fillStyle = "red";
+            ctx.fillText('0',40,465);
     // Set an end-point
     max=Math.round(massimo/1000)*1000;
-    w=1000
+    w=950
     h=450
+    Ux=w/(anno.length+1)
+    Uy=h/max
+console.log(Ux+';'+Uy)
     for (let i =0;i<anno.length;i++){
-        ctx.moveTo(w/num.length*i,40);
-        ctx.lineTo(w/num.length*i,50);
-        ctx.font = "7px Arial";
+        ctx.moveTo(w/(anno.length+1)*i+50+w/anno.length,h);
+        ctx.lineTo(w/(anno.length+1)*i+50+w/anno.length,h+10);
+        ctx.font = "10px Arial";
         ctx.fillStyle = "red";
-        ctx.fillText(anno[i],mx/10*i-3,max+15);
+        ctx.fillText(anno[i],w/(anno.length+1)*i+50+w/anno.length-12,h+18);//w/10*(i+1)-3
     }
-    for (let i =1;i<10;i++){
-        ctx.moveTo(50,h/10*i);
-            ctx.lineTo(40,h/10*i);
-            ctx.font = "7px Arial";
+    for (let i =1;i<11;i++){
+        ctx.moveTo(50,h/11*i);
+            ctx.lineTo(40,h/11*i);
+            ctx.font = "10px Arial";
             ctx.fillStyle = "red";
-            ctx.fillText(max/10*(10-i),35,h/10*i-3);
+            ctx.fillText(max/10*(11-i),15,h/11*i-3);
         }
+
+	X=50;
+	Y=450;
+	ctx.moveTo(X,Y);
+for (let i =0;i<num.length;i++){
+	X+=Ux
+	Y=450-parseInt(num[i]*Uy);
+            console.log(X+','+Y)
+	ctx.lineTo(X,Y);
+}
     // Draw it
     ctx.stroke();
 }
+function massi(num){
+        let max=num[0]
+        for(let i = 1;i<num.length;i++){
+            if(num[i]>max){
+                max=num[i]
+            }
+        }
+        return max
+    }
