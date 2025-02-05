@@ -65,7 +65,7 @@ function creaGraf(tab){
     w=950
     h=450
     Ux=w/(anno.length+1)
-    Uy=h/max
+    Uy=410/max
 console.log(Ux+';'+Uy)
     for (let i =0;i<anno.length;i++){
         ctx.moveTo(w/(anno.length+1)*i+50+w/anno.length,h);
