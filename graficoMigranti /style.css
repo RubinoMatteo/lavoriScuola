@@ -36,3 +36,8 @@ input{
     text-align: center;
     color: #565656;
 }
+#mycanvas{
+    display: grid;
+    place-items: center;
+    box-shadow: 2px 2px 20px rgb(128, 0, 81);
+}
