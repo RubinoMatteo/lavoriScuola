@@ -63,17 +63,25 @@ function creaGraf(tab){
     // Set an end-point
     ctx.lineTo(0,450);
     // Set a start-point
-    ctx.moveTo(40,50);
 
     // Set an end-point
     max=Math.round(massimo/1000)*1000;
-    for (let i =0;i<num.length;i++){
-
-        ctx.lineTo(max/10*i,50);
+    w=1000
+    h=450
+    for (let i =0;i<anno.length;i++){
+        ctx.moveTo(w/num.length*i,40);
+        ctx.lineTo(w/num.length*i,50);
         ctx.font = "7px Arial";
         ctx.fillStyle = "red";
-        ctx.fillText(max/10*i,25,45);
+        ctx.fillText(anno[i],mx/10*i-3,max+15);
     }
+    for (let i =1;i<10;i++){
+        ctx.moveTo(50,h/10*i);
+            ctx.lineTo(40,h/10*i);
+            ctx.font = "7px Arial";
+            ctx.fillStyle = "red";
+            ctx.fillText(max/10*(10-i),35,h/10*i-3);
+        }
     // Draw it
     ctx.stroke();
 }
