@@ -92,7 +92,7 @@ for (let i =0;i<num.length;i++){
 	ctx.lineTo(X,Y);
     ctx.font = "10px Arial";
     ctx.fillStyle = "red";
-    ctx.fillText(X-10,Y,num[i]);
+    ctx.fillText(num[i],X-10,Y);
 }
     // Draw it
     ctx.stroke();
