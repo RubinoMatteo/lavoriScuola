@@ -61,7 +61,7 @@ function creaGraf(tab){
             ctx.fillStyle = "red";
             ctx.fillText('0',40,465);
     // Set an end-point
-    max=Math.round(massimo/1000)*1000;
+    max=Math.round(massimo/10000)*10000;
     w=950
     h=450
     Ux=w/(anno.length+1)
@@ -90,6 +90,9 @@ for (let i =0;i<num.length;i++){
 	Y=450-parseInt(num[i]*Uy);
             console.log(X+','+Y)
 	ctx.lineTo(X,Y);
+    ctx.font = "10px Arial";
+    ctx.fillStyle = "red";
+    ctx.fillText(X-10,Y,num[i]);
 }
     // Draw it
     ctx.stroke();
