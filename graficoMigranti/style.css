@@ -1,9 +1,13 @@
 div{
     float: left;
 }
-th, td {
+td {
     width: 125px;
     color: #565656;
+}
+th {
+    width: 125px;
+    color: #c3d8e2;
 }
 th,td , #demo{
     border: 1px solid;

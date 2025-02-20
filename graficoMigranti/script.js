@@ -21,7 +21,7 @@ function creaTab(tab){
         	colonne1[2*i+j] = colonne[i][j].replaceAll('"','')
     	}
     }
-    for (let i = 0; i < colonne1.length; i++) {
+    for (let i = 1; i < colonne1.length; i++) {
 	if (i%2==0){
             document.getElementById("demo").innerHTML += "<tr><td>" + colonne1[i] + "</td><td>" + colonne1[i+1] + "</td></tr>";
 	}
