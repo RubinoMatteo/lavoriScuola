@@ -10,9 +10,9 @@ const  array = [{
     sesso: "sesso"
 }];
 function scrivi(){
-    if(localStorage.lengt!=0){
+    /*if(localStorage.lengt!=0){
         array=JSON.parse(localStorage.getItem("data"))
-    }
+    }*/
     const userData = {
         nome: document.getElementById("nome").value,
         cognome: document.getElementById("cognome").value,
