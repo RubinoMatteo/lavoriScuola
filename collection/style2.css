@@ -12,6 +12,7 @@ body{
 #demo{
     float: center;
     background-color: #eeeff3 ;
+    border-color: black;
     margin: 1% 32%;
     width: 500px;
 }
