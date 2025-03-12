@@ -7,7 +7,7 @@ td {
 }
 th {
     width: 125px;
-    color: #c3d8e2;
+    color: rgb(103, 228, 219);
 }
 th,td , #demo{
     border: 1px solid;
