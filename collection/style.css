@@ -18,7 +18,7 @@ select{
     border-color: #565656 ;
     background-color: #eeeff3 ;
     margin: 15px;
-    width: 3560px;
+    width: 500px;
     height: 40px;
 }
 ::placeholder, #defoult{
@@ -42,7 +42,7 @@ button{
         height: 40px;
     }
     select{
-        width: 350px;
+        width: 500px;
         height: 40px;
     }
     #dati{
@@ -63,7 +63,7 @@ button{
         height: 40px;
     }
     select{
-        width: 250px;
+        width: 350px;
         height: 40px;
     }
     #dati{
@@ -83,7 +83,7 @@ button{
         height: 40px;
     }
     select{
-        width: 150px;
+        width: 250px;
         height: 40px;
     }
     #dati{
