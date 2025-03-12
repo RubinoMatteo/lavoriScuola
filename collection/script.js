@@ -24,7 +24,7 @@ function scrivi(){
         alert("riempi tutti i campi");
     }else{
         array.push(userData);
-    }
+    
     document.getElementById("nome").value = "";
     document.getElementById("cognome").value = "";
     document.getElementById("indirizzo").value = "";
@@ -32,4 +32,5 @@ function scrivi(){
             document.getElementById("sesso").value = "";
     const data = JSON.stringify(array);
             localStorage.setItem("data", data);
+    }
 }
