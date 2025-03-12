@@ -2,7 +2,13 @@ function tabella(){
     location.href = "https://rubinomatteo.github.io/lavoriScuola/collection/index2.html";
 }
 
-const array = [];
+const array = [{
+    nome: nome,
+    cognome: cognome,
+    indirizzo: indirizzo,
+    età: età,
+    sesso: sesso
+}];
 function scrivi(){
     const userData = {
         nome: document.getElementById("nome").value,
