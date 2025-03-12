@@ -2,7 +2,7 @@ function tabella(){
     location.href = "https://rubinomatteo.github.io/lavoriScuola/collection/index2.html";
 }
 
-let  array = [{
+const  array = [{
     nome: "nome",
     cognome: "cognome",
     indirizzo: "indirizzo",
