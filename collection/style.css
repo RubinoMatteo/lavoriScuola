@@ -5,15 +5,7 @@
 body{
     background-color: #eeeff3 ;
 }
-input{ 
-    border-radius: 10px;
-    border-color: #565656 ;
-    background-color: #eeeff3 ;
-    margin: 15px;
-    width: 500px;
-    height: 40px;
-}
-select{
+input,select{ 
     border-radius: 10px;
     border-color: #565656 ;
     background-color: #eeeff3 ;
@@ -37,11 +29,7 @@ button{
 }
 
 @media screen and (min-width: 1300px) {
-    input{
-        width: 500px;
-        height: 40px;
-    }
-    select{
+    input,select{
         width: 500px;
         height: 40px;
     }
@@ -58,11 +46,7 @@ button{
 }
     
 @media screen and (max-width: 1250px) {
-    input{
-        width: 350px;
-        height: 40px;
-    }
-    select{
+    input,select{
         width: 350px;
         height: 40px;
     }
@@ -78,11 +62,7 @@ button{
     }
 }
 @media screen and (max-width: 500px) {
-    input{
-        width: 250px;
-        height: 40px;
-    }
-    select{
+    input,select{
         width: 250px;
         height: 40px;
     }
