@@ -17,7 +17,11 @@ function scrivi(){
         età: document.getElementById("età").value,
         sesso: document.getElementById("sesso").value
     };
-    array.push(userData);
+    if(userData.nome==""||userData.cognome==""||userData.indirizzo==""||userData.età==""||userData.sesso==""){
+        alert("riempi tutti i campi");
+    }else{
+        array.push(userData);
+    }
     document.getElementById("nome").value = "";
     document.getElementById("cognome").value = "";
     document.getElementById("indirizzo").value = "";
