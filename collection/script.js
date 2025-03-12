@@ -2,7 +2,7 @@ function tabella(){
     location.href = "https://rubinomatteo.github.io/lavoriScuola/collection/index2.html";
 }
 
-const array = [{
+let  array = [{
     nome: "nome",
     cognome: "cognome",
     indirizzo: "indirizzo",
@@ -10,6 +10,9 @@ const array = [{
     sesso: "sesso"
 }];
 function scrivi(){
+    if(localStorage.lengt!=0){
+        array=JSON.parse(localStorage.getItem("data"))
+    }
     const userData = {
         nome: document.getElementById("nome").value,
         cognome: document.getElementById("cognome").value,
