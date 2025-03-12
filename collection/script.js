@@ -3,11 +3,11 @@ function tabella(){
 }
 
 const array = [{
-    nome: nome,
-    cognome: cognome,
-    indirizzo: indirizzo,
-    età: età,
-    sesso: sesso
+    nome: "nome",
+    cognome: "cognome",
+    indirizzo: "indirizzo",
+    età: "età",
+    sesso: "sesso"
 }];
 function scrivi(){
     const userData = {
