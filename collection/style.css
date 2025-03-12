@@ -13,18 +13,15 @@ input{
     width: 500px;
     height: 40px;
 }
-label{
-    margin-right: 13%;
-}
 select{
     border-radius: 10px;
     border-color: #565656 ;
     background-color: #eeeff3 ;
-    float: center;
-    width: 80px;
+    margin: 15px;
+    width: 500px;
     height: 40px;
 }
-::placeholder{
+::placeholder, #defoult{
     text-align: center;
     color: #565656;
 }
