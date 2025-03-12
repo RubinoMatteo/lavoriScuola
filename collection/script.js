@@ -1,9 +1,9 @@
-function vai_alla_tabella(){
+function tabella(){
     location.href = "https://rubinomatteo.github.io/lavoriScuola/collection/index2.html";
 }
 
 const array=[];
-function bottone(){
+function scrivi(){
     array+={ nome:document.getElementById("nome").value
         cognome:document.getElementById("cognome").value
         indirizzo:document.getElementById("indirizzo").value
