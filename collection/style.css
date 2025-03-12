@@ -13,6 +13,17 @@ input{
     width: 500px;
     height: 40px;
 }
+label{
+    margin-right: 13%;
+}
+select{
+    border-radius: 10px;
+    border-color: #565656 ;
+    background-color: #eeeff3 ;
+    float: center;
+    width: 80px;
+    height: 40px;
+}
 ::placeholder{
     text-align: center;
     color: #565656;
