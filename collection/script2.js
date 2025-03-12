@@ -3,7 +3,7 @@ const LS=JSON.parse(text);
 console.log (LS);
 const table = document.createElement("table");
 generaTabella(LS);
-document.querySelector("body").appendChild("table");
+document.querySelector("body").appendChild(table);
 
 
 function generaTabella(arrObj){
