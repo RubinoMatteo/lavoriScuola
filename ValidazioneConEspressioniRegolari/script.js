@@ -5,7 +5,7 @@ function valida() {
    var comune = document.maschera.comune.value;
    var cap = document.maschera.cap.value;
    var telefono = document.maschera.telefono.value;
-   var codice = document.maschera.codice.value;
+   var codice = document.maschera.codice.value.toUpperCase();
    var email = document.maschera.email.value;
    var password = document.maschera.password.value;
    var conferma = document.maschera.conferma.value;
@@ -53,7 +53,7 @@ function valida() {
 
    var espr_valiCF = /^([A-Z]{6})+([0-9]{2})+([ABCDEHLMPRST]{1})+([0-9]{2})+([A-Z]{1})+([0-9]{3})+([A-Z]{1})+$/; 
    if (!espr_valiCF.test(codice) || codice === "") {
-      alert("Devi inserire un codice fiscale corretto - non controllo se coerente con i dati precedenti");
+      alert("Devi inserire un codice fiscale corretto is consignlia in MAIUSCOLO - non controllo se coerente con i dati precedenti");
       document.maschera.codice.focus();
       test6 = false;
    }
