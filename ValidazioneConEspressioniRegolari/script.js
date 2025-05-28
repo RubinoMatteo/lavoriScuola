@@ -94,6 +94,8 @@ function valida() {
       localStorage.setItem("em", email);
       localStorage.setItem("pwd", password);
       localStorage.setItem("con", conferma);
+      
+        window.location.href = "destinazione.html";
    }
 
    return test1 && test2 && test3 && test4 && test5 && test6 && test7 && test8 && test9 && test10;
