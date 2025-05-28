@@ -8,4 +8,4 @@ document.getElementById('email').innerText = localStorage.getItem('em');
 
 
 document.getElementById('password').innerText = localStorage.getItem('pwd');
-document.getElementById('conferma').innerText = localStorage.getItem('con');
+/*document.getElementById('conferma').innerText = localStorage.getItem('con');*/
