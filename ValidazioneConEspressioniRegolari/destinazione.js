@@ -3,6 +3,7 @@ document.getElementById('cognome').innerText = localStorage.getItem('cognom');
 document.getElementById('comune').innerText = localStorage.getItem('com');
 document.getElementById('cap').innerText = localStorage.getItem('c');
 document.getElementById('telefono').innerText = localStorage.getItem('tel');
+document.getElementById('codice').innerText = localStorage.getItem('CF');
 document.getElementById('email').innerText = localStorage.getItem('em');
 
 
