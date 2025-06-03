@@ -39,7 +39,7 @@ tr:last-child td {
     border-bottom: none;
 }
 
-input[type="button"] {
+button {
     display: block;
     margin: 20px auto;
     width: 80px;
