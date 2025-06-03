@@ -49,8 +49,7 @@ input[type="password"]:focus {
     color: #565656;
 }
 
-input[type="submit"],
-input[type="button"] {
+input[type="submit"]{
     display: block;
     margin: 20px auto;
     width: 80px;
