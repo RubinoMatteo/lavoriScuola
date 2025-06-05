@@ -21,8 +21,8 @@
             <p><label>Telefono</label><input type="text" name="telefono"></p>
             <p><label>Codice fiscale</label><input type="text" name="codice"></p>
             <p><label>Email:</label><input type="text" name="email"></p>
-            <p><label>Password</label><input type="password" name="password"></p>
-            <p><label>Conferma password:</label><input type="password" name="conferma"></p>
+            <p><label>Password</label><input type="password" name="password" id="pwd"><input type="checkbox" onclick="pwd.type = this.checked ? 'text':'password'"></p>
+            <p><label>Conferma password:</label><input type="password" name="conferma" id="cpwd"><input type="checkbox" onclick="cpwd.type = this.checked ? 'text':'password'"></p>
             <br>
             <p>
                 <input type="submit" value="Invia">
