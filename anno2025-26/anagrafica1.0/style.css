@@ -116,7 +116,7 @@ button:active {
 }
 
 /* Tabella */
-#demo {
+.table {
     width: 100%;
     max-width: 1200px;
     margin: 30px auto;
@@ -126,7 +126,7 @@ button:active {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-#demo table ,#demo1 table ,#demo2 table ,#demo3 table ,#demo4 table {
+.table table {
     width: 100%;
     border-collapse: collapse;
 }
