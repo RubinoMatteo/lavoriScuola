@@ -72,21 +72,21 @@ function generazione() {
         if (this.readyState == 4 && this.status == 200) {
         var myObj = JSON.parse(this.responseText);
         for (x in myObj.elenco) {
-            stampa3 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>";
+            stampa4 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>";
             if(myObj.elenco.DN >= 2013)
-                stampa3 +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
             else if (myObj.elenco.DN >= 1997) {
-                stampa3 +="<td>" + "Generazione Z" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Generazione Z" + "</td>" + "</tr>";
             } else if(myObj.elenco.DN >= 1981)
-                stampa3 +="<td>" + "Millenials" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Millenials" + "</td>" + "</tr>";
             else if (myObj.elenco.DN >= 1965) {
-                stampa3 +="<td>" + "Generazione X" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Generazione X" + "</td>" + "</tr>";
             } else if(myObj.elenco.DN >= 1946)
-                stampa3 +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
             else if (myObj.elenco.DN >= 1928) {
-                stampa3 +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
             } else
-                stampa3 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
+                stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
         }
         document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
     }
