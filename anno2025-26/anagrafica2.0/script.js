@@ -30,6 +30,20 @@ xmlhttp.onreadystatechange = function () {
 
 };
 
+function inizio(){
+    xmlhttp.open("GET", "elenco.json", true);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            for (x in myObj.elenco) {
+                stampa += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
+            }
+            document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+        }
+    };
+}
+
 function ricercaEta() {
     var minEta= document.getElementById("anni").value;
     xmlhttp.open("GET", "elenco.json", true);
