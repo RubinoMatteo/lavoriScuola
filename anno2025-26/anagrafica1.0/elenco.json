@@ -132,6 +132,48 @@
         "cognome":"Curzio",
         "anni":57,
         "DN": 1968
+    },
+    {
+        "nome":"Greatest",
+        "cognome":"Generation",
+        "anni":110,
+        "DN": 1915
+    },
+    {
+        "nome":"Generazione",
+        "cognome":"Silenziosa",
+        "anni":85,
+        "DN": 1940
+    },
+    {
+        "nome":"Baby",
+        "cognome":"Boomers",
+        "anni":75,
+        "DN": 1950
+    },
+    {
+        "nome":"Generazione",
+        "cognome":"X",
+        "anni":57,
+        "DN": 1968
+    },
+    {
+        "nome":"Millenials",
+        "cognome":"Generazione Y",
+        "anni":30,
+        "DN": 1995
+    },
+    {
+        "nome":"Generazione",
+        "cognome":"Z",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Generazione",
+        "cognome":"Alpha",
+        "anni":10,
+        "DN": 2015
     }
     ]
     }
