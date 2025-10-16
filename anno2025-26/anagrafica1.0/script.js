@@ -4,6 +4,7 @@ var x = 0;
 var stampa = "";
 var stampa2 = "";
 var stampa3 = "";
+var stampa4 = "";
 
 var xmlhttp = new XMLHttpRequest();
 
