@@ -131,7 +131,7 @@ button:active {
     border-collapse: collapse;
 }
 
-#demo th ,#demo1 th ,#demo2 th ,#demo3 th ,#demo4 th {
+.table th {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 15px;
@@ -142,25 +142,25 @@ button:active {
     font-size: 14px;
 }
 
-#demo td ,#demo1 td ,#demo2 td ,#demo3 td ,#demo4 td {
+.table td {
     padding: 12px 15px;
     border-bottom: 1px solid #e2e8f0;
     color: #4a5568;
 }
 
-#demo tr:last-child td ,#demo1 tr:last-child td ,#demo2 tr:last-child td ,#demo3 tr:last-child td ,#demo4 tr:last-child td {
-    border-bottom: nontr:last-child tde;
+.table tr:last-child td {
+    border-bottom: none;
 }
 
-#demo tr:hover ,#demo1 tr:hover ,#demo2 tr:hover ,#demo3 tr:hover ,#demo4 tr:hover {
+.table tr:hover {
     background: #f7fafc;
 }
 
-#demo tr:nth-child(even) ,#demo1 tr:nth-child(even) ,#demo2 tr:nth-child(even) ,#demo3 tr:nth-child(even) ,#demo4 tr:nth-child(even) {
+.table tr:nth-child(even) {
     background: #fafafa;
 }
 
-#demo tr:nth-child(even):hover ,#demo1 tr:nth-child(even):hover ,#demo2 tr:nth-child(even):hover ,#demo3 tr:nth-child(even):hover ,#demo4 tr:nth-child(even):hover {
+.table tr:nth-child(even):hover {
     background: #f0f0f0;
 }
 
