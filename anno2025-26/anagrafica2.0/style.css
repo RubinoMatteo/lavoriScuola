@@ -36,7 +36,7 @@ td {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #00d4aa 0%, #00a8cc 50%, #0080b8 100%);
     min-height: 100vh;
     padding: 20px;
     color: #333;
@@ -85,16 +85,16 @@ input[type="text"] {
 input[type="number"]:focus,
 input[type="text"]:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #00d4aa;
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
 }
 
 /* Bottoni */
 button {
     width: 100%;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #00d4aa 0%, #00a8cc 50%, #0080b8 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -108,7 +108,7 @@ button {
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 212, 170, 0.5);
 }
 
 button:active {
@@ -132,7 +132,7 @@ button:active {
 }
 
 #demo th {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #00d4aa 0%, #00a8cc 50%, #0080b8 100%);
     color: white;
     padding: 15px;
     text-align: left;
