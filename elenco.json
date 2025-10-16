@@ -1,0 +1,138 @@
+{
+    "elenco" :
+    [
+    {
+        "nome":"Andrea",
+        "cognome":"Bellucco",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Matteo Tommaso",
+        "cognome":"Caenazzo",
+        "anni":17,
+        "DN": 2007
+    },
+    {
+        "nome":"Riccardo",
+        "cognome":"Dal Bello",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Francesco",
+        "cognome":"Follatello",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Davide",
+        "cognome":"Gostoli",
+        "anni":18,
+        "DN": 2006
+    },
+    {
+        "nome":"Marco",
+        "cognome":"Imboldi",
+        "anni":19,
+        "DN": 2006
+    },
+    {
+        "nome":"Daniele",
+        "cognome":"Kim",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Simone",
+        "cognome":"Kristo",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Cristian",
+        "cognome":"Luongo",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Oscar",
+        "cognome":"Martella",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Samuele",
+        "cognome":"Max",
+        "anni":17,
+        "DN": 2007
+    },
+    {
+        "nome":"Stefano",
+        "cognome":"Merigo",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Filippo",
+        "cognome":"Monteverdi",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Marco",
+        "cognome":"Moroni",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Davide",
+        "cognome":"Piaggi",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Tamer",
+        "cognome":"Qaddura",
+        "anni":19,
+        "DN": 2006
+    },
+    {
+        "nome":"Alessandro",
+        "cognome":"Re",
+        "anni":17,
+        "DN": 2007
+    },
+    {
+        "nome":"Matteo",
+        "cognome":"Rubino",
+        "anni":17,
+        "DN": 2007
+    },
+    {
+        "nome":"Giuseppe",
+        "cognome":"Vaccaro",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Francesco",
+        "cognome":"Vivaldo",
+        "anni":18,
+        "DN": 2007
+    },
+    {
+        "nome":"Paolo",
+        "cognome":"Petrozzi",
+        "anni":61,
+        "DN": 1964
+    },
+    {
+        "nome":"Gianfrancesco",
+        "cognome":"Curzio",
+        "anni":57,
+        "DN": 1968
+    }
+    ]
+    }
+    
