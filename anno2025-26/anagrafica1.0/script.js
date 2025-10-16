@@ -73,17 +73,17 @@ function generazione() {
         var myObj = JSON.parse(this.responseText);
         for (x in myObj.elenco) {
             stampa4 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>";
-            if(myObj.elenco.DN >= 2013)
+            if(myObj.elenco[x].DN >= 2013)
                 stampa4 +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
-            else if (myObj.elenco.DN >= 1997) {
+            else if (myObj.elenco[x].DN >= 1997) {
                 stampa4 +="<td>" + "Generazione Z" + "</td>" + "</tr>";
-            } else if(myObj.elenco.DN >= 1981)
+            } else if(myObj.elenco[x].DN >= 1981)
                 stampa4 +="<td>" + "Millenials" + "</td>" + "</tr>";
-            else if (myObj.elenco.DN >= 1965) {
+            else if (myObj.elenco[x].DN >= 1965) {
                 stampa4 +="<td>" + "Generazione X" + "</td>" + "</tr>";
-            } else if(myObj.elenco.DN >= 1946)
+            } else if(myObj.elenco[x].DN >= 1946)
                 stampa4 +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
-            else if (myObj.elenco.DN >= 1928) {
+            else if (myObj.elenco[x].DN >= 1928) {
                 stampa4 +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
             } else
                 stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
