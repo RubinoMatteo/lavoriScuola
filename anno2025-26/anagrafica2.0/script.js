@@ -25,6 +25,7 @@ xmlhttp.onreadystatechange = function () {
         }
 
         document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+        stampa="";
 
     }
 
@@ -40,6 +41,7 @@ function inizio(){
                 stampa += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
             }
             document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+            stampa="";
         }
     };
 }
@@ -57,6 +59,7 @@ function ricercaEta() {
                 }
             }
             document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + stampa2;
+            stampa2="";
         }
     };
 }
@@ -74,6 +77,7 @@ function ricercaIniziale() {
                     }
                 }
             document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa3;
+            stampa3="";
         }   
     };
 }
@@ -103,6 +107,7 @@ function generazione() {
                 stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
         }
         document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
+        stampa4="";
     }
     };
 }

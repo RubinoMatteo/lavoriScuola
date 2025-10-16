@@ -25,6 +25,7 @@ xmlhttp.onreadystatechange = function () {
         }
 
         document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+        stampa="";
 
     }
 
@@ -43,6 +44,7 @@ function ricercaEta() {
                 }
             }
             document.getElementById("demo2").innerHTML = "<tr>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + stampa2;
+            stampa2="";
         }
     };
 }
@@ -60,6 +62,7 @@ function ricercaIniziale() {
                     }
                 }
             document.getElementById("demo3").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa3;
+            stampa3="";
         }   
     };
 }
@@ -89,6 +92,7 @@ function generazione() {
                 stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
         }
         document.getElementById("demo4").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
+        stampa4="";
     }
     };
 }
