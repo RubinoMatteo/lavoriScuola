@@ -47,7 +47,7 @@ function ricercaEta() {
 }
 
 function ricercaIniziale() {
-    var iniziale= document.getElementById("iniziale").value;
+    var iniziale= document.getElementById("iniziale").value.toUpperCase();
     xmlhttp.open("GET", "elenco.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
