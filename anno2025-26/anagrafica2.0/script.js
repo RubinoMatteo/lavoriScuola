@@ -38,9 +38,9 @@ function inizio(){
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
             for (x in myObj.elenco) {
-                stampa += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
+                stampa += `<tr><td> ${myObj.elenco[x].nome} </td><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td><td> ${myObj.elenco[x].DN} </td></tr>`;
             }
-            document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cocgnome </th><th> anni </th><th> Data di Nascita </th></tr> ${stampa}`;
             stampa="";
         }
     };
@@ -55,17 +55,17 @@ function ricercaEta() {
             var myObj = JSON.parse(this.responseText);
             for (x in myObj.elenco) {
                 if (myObj.elenco[x].anni >= minEta) {
-                    stampa2 += "<tr>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "</tr>";
+                    stampa2 += `<tr><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td></tr`;
                 }
             }
-            document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + stampa2;
+            document.getElementById("demo").innerHTML = `<tr><th> cocgnome </th><th> anni </th></tr> ${stampa2}`;
             stampa2="";
         }
     };
 }
 
 function ricercaIniziale() {
-    var iniziale= document.getElementById("iniziale").value.toUpperCase();
+    var iniziale= document.getElementById("iniziale").value.charAt[0].toUpperCase()+document.getElementById("iniziale").value.charAt[0].slice(1);
     xmlhttp.open("GET", "elenco.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
@@ -73,10 +73,10 @@ function ricercaIniziale() {
             var myObj = JSON.parse(this.responseText);
                 for (x in myObj.elenco) {
                     if (myObj.elenco[x].cognome.startsWith(iniziale)) {
-                        stampa3 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
+                        stampa3 += `<tr><td> ${myObj.elenco[x].nome} </td><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td><td> ${myObj.elenco[x].DN} </td></tr>`;
                     }
                 }
-            document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa3;
+            document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cocgnome </th><th> anni </th><th> Data di Nascita </th></tr> ${stampa3}`;
             stampa3="";
         }   
     };
@@ -90,23 +90,23 @@ function generazione() {
         if (this.readyState == 4 && this.status == 200) {
         var myObj = JSON.parse(this.responseText);
         for (x in myObj.elenco) {
-            stampa4 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>";
+            stampa4 += `<tr><td> ${myObj.elenco[x].nome} </td><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td><td> ${myObj.elenco[x].DN} </td>`;
             if(myObj.elenco[x].DN >= 2013)
-                stampa4 +="<td>" + "Generazione Alpha" + "</td>" + "</tr>";
+                stampa4 +=`<td> Generazione Alpha </td></tr>`;
             else if (myObj.elenco[x].DN >= 1997) {
-                stampa4 +="<td>" + "Generazione Z" + "</td>" + "</tr>";
+                stampa4 +=`<td> Generazione Z </td></tr>`;
             } else if(myObj.elenco[x].DN >= 1981)
-                stampa4 +="<td>" + "Millenials" + "</td>" + "</tr>";
+                stampa4 +=`<td> Millenials </td></tr>`;
             else if (myObj.elenco[x].DN >= 1965) {
-                stampa4 +="<td>" + "Generazione X" + "</td>" + "</tr>";
+                stampa4 +=`<td> Generazione X </td></tr>`;
             } else if(myObj.elenco[x].DN >= 1946)
-                stampa4 +="<td>" + "Baby Boomers" + "</td>" + "</tr>";
+                stampa4 +=`<td> Baby Boomers </td></tr>`;
             else if (myObj.elenco[x].DN >= 1928) {
-                stampa4 +="<td>" + "Generazione Silenziosa" + "</td>" + "</tr>";
+                stampa4 +=`<td> Generazione Silenziosa </td></tr>`;
             } else
-                stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
+                stampa4 +=`<td> Greatest Generation </td></tr>`;
         }
-        document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
+        document.getElementById("demo").innerHTML = `<tr><th> nome </th><th> cocgnome </th><th> anni </th><th> Data di Nascita </th><th> generazione </th></tr> ${stampa4}`;
         stampa4="";
     }
     };
