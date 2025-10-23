@@ -20,11 +20,11 @@ xmlhttp.onreadystatechange = function () {
 
         for (x in myObj.elenco) {
 
-            stampa += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
+            stampa += `<tr><td> ${myObj.elenco[x].nome} </td><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td><td> ${myObj.elenco[x].DN} </td></tr>`;
 
         }
 
-        document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+        document.getElementById("demo").innerHTML =`<tr><th> nome </th><th> cocgnome </th><th> anni </th><th> Data di Nascita </th></tr> ${stampa}`;
         stampa="";
 
     }
@@ -72,7 +72,7 @@ function ricercaIniziale() {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
                 for (x in myObj.elenco) {
-                    if (myObj.elenco[x].cognome.charAt(0) == iniziale) {
+                    if (myObj.elenco[x].cognome.startsWith(iniziale)) {
                         stampa3 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
                     }
                 }
