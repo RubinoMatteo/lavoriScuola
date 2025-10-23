@@ -55,7 +55,7 @@ function ricercaEta() {
             var myObj = JSON.parse(this.responseText);
             for (x in myObj.elenco) {
                 if (myObj.elenco[x].anni >= minEta) {
-                    stampa2 += `<tr><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td></tr`;
+                    stampa2 += `<tr><td> ${myObj.elenco[x].cognome} </td><td> ${myObj.elenco[x].anni} </td></tr>`;
                 }
             }
             document.getElementById("demo").innerHTML = `<tr><th> cocgnome </th><th> anni </th></tr> ${stampa2}`;
@@ -66,9 +66,9 @@ function ricercaEta() {
 
 function ricercaIniziale() {
     if(document.getElementById("iniziale").value.length > 1)
-        var iniziale= document.getElementById("iniziale").value.charAt[0].toUpperCase() + document.getElementById("iniziale").value.slice(1);
+        var iniziale= document.getElementById("iniziale").value.charAt(0).toUpperCase() + document.getElementById("iniziale").value.slice(1);
     else
-        var iniziale= document.getElementById("iniziale").value.charAt[0].toUpperCase();
+        var iniziale= document.getElementById("iniziale").value.charAt(0).toUpperCase();
     xmlhttp.open("GET", "elenco.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
