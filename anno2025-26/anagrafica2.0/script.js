@@ -48,6 +48,7 @@ function inizio(){
 
 function ricercaEta() {
     var minEta= document.getElementById("anni").value;
+    document.getElementById("anni").value="";
     xmlhttp.open("GET", "elenco.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
@@ -65,10 +66,13 @@ function ricercaEta() {
 }
 
 function ricercaIniziale() {
-    if(document.getElementById("iniziale").value.length > 1)
+    if(document.getElementById("iniziale").value.length > 1){
         var iniziale= document.getElementById("iniziale").value.charAt(0).toUpperCase() + document.getElementById("iniziale").value.slice(1);
-    else
+        document.getElementById("iniziale").value="";
+    }else{
         var iniziale= document.getElementById("iniziale").value.charAt(0).toUpperCase();
+        document.getElementById("iniziale").value="";
+    }
     xmlhttp.open("GET", "elenco.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
