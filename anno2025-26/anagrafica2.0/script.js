@@ -65,7 +65,10 @@ function ricercaEta() {
 }
 
 function ricercaIniziale() {
-    var iniziale= document.getElementById("iniziale").value.charAt[0].toUpperCase()+document.getElementById("iniziale").value.charAt[0].slice(1);
+    if(document.getElementById("iniziale").value.length > 1)
+        var iniziale= document.getElementById("iniziale").value.charAt[0].toUpperCase() + document.getElementById("iniziale").value.slice(1);
+    else
+        var iniziale= document.getElementById("iniziale").value.charAt[0].toUpperCase();
     xmlhttp.open("GET", "elenco.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
