@@ -2,7 +2,7 @@
 // salva_dati.php
 
 // Imposta l'header per il content type
-header('Content-Type: application/json; charset=utf-8');
+/*header('Content-Type: application/json; charset=utf-8');
 
 // Abilita la visualizzazione degli errori (solo per sviluppo!)
 error_reporting(E_ALL);
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         'message' => 'Metodo non consentito. Usa POST.'
     ]);
     exit;
-}
+}*/
 
 // Recupera i dati dal form
 $dati = [
@@ -35,7 +35,7 @@ $dati = [
 ];
 
 // Validazione base dei campi obbligatori
-$campiObbligatori = ['nome', 'cognome', 'dataNascita', 'luogoNascita', 'indirizzo', 'citta', 'cap'];
+/*$campiObbligatori = ['nome', 'cognome', 'dataNascita', 'luogoNascita', 'indirizzo', 'citta', 'cap'];
 foreach ($campiObbligatori as $campo) {
     if (empty($dati[$campo])) {
         http_response_code(400);
@@ -45,7 +45,7 @@ foreach ($campiObbligatori as $campo) {
         ]);
         exit;
     }
-}
+}*/
 
 
 // Leggi i dati esistenti dal file JSON (se esiste)
