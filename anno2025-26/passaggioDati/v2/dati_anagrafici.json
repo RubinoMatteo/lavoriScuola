@@ -1,9 +1,12 @@
-{
-    "nome": "Matteo",
-    "cognome": "Rubino",
-    "dataNascita": "2007-12-12",
-    "luogoNascita": "Milano",
-    "indirizzo": "Via ",
-    "citta": "Rho",
-    "cap": "20017"
-}
+{"archivio":
+[
+{"nome": "Matteo","cognome": "Rubino","dataNascita": "2007-12-12","luogoNascita": "Milano","indirizzo": "Via ","citta": "Rho","cap": "20017"}
+,{"nome":"mario","cognome":"rossi","dataNascita":"2025-10-05","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"00100"}
+,{"nome":"marco","cognome":"imboldi","dataNascita":"2025-10-05","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"00100"}
+,{"nome":"mario","cognome":"imboldi","dataNascita":"1992-06-08","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"00100"}
+,{"nome":"marco","cognome":"rossi","dataNascita":"2025-04-06","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"22323"}
+,{"nome":"marco","cognome":"rossi","dataNascita":"2025-04-06","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"22323"}
+,{"nome":"mario","cognome":"rossi","dataNascita":"2025-09-29","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"00100"}
+,{"nome":"marco","cognome":"rossi","dataNascita":"2025-10-08","luogoNascita":"milano","indirizzo":"via sanzio 2","citta":"roma","cap":"22323"}
+,{"nome":"gianfrancesco","cognome":"curzio","dataNascita":"2020-01-05","luogoNascita":"salerno","indirizzo":"via giuseppe garibaldi","citta":"rho","cap":"20017"}
+]}
