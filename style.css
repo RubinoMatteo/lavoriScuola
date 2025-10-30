@@ -55,6 +55,20 @@ body {
     background: rgba(0, 0, 0, 0.5);
 }
 
+.button1 {
+    width: fit-content;
+    padding: 0.1rem;
+    border: 2px solid black;
+    color: black;
+    text-decoration: none;
+    flex-direction: column;
+    display: flex;
+    border-radius: 1.5rem;
+}
+.button1:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 @media screen and (max-width: 825px) {
     body {
         margin: 2rem 1.5rem;
