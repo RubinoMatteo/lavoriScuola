@@ -24,7 +24,7 @@ xmlhttp.onreadystatechange = function () {
 
         }
 
-        document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
+        document.getElementById("demo").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa;
         stampa="";
 
     }
@@ -43,7 +43,7 @@ function ricercaEta() {
                     stampa2 += "<tr>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "</tr>";
                 }
             }
-            document.getElementById("demo2").innerHTML = "<tr>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + stampa2;
+            document.getElementById("demo2").innerHTML = "<tr>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "</tr>" + stampa2;
             stampa2="";
         }
     };
@@ -61,7 +61,7 @@ function ricercaIniziale() {
                         stampa3 += "<tr>" + "<td>" + myObj.elenco[x].nome + "</td>" + "<td>" + myObj.elenco[x].cognome + "</td>" + "<td>" + myObj.elenco[x].anni + "</td>" + "<td>" + myObj.elenco[x].DN + "</td>" + "</tr>";
                     }
                 }
-            document.getElementById("demo3").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa3;
+            document.getElementById("demo3").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "</tr>" + stampa3;
             stampa3="";
         }   
     };
@@ -91,7 +91,7 @@ function generazione() {
             } else
                 stampa4 +="<td>" + "Greatest Generation" + "</td>" + "</tr>";
         }
-        document.getElementById("demo4").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cocgnome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
+        document.getElementById("demo4").innerHTML = "<tr>" + "<th>" + "nome" + "</th>" + "<th>" + "cognome" + "</th>" + "<th>" + "anni" + "</th>" + "<th>" + "Data di Nascita" + "</th>" + "<th>" + "generazione" + "</th>" + "</tr>" + stampa4;
         stampa4="";
     }
     };
