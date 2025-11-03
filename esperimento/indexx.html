@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coca-Cola carta prodotto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #151515;
+            --clr: #e61d2b;
+            padding: 20px;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+            transition-delay: 0.5s;
+        }
+
+        .card:hover {
+            width: 600px;
+            transition-delay: 0.5s;
+        }
+
+        .card .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card .circle::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: #191919;
+            border: 8px solid var(--clr);
+            transition: 0.5s, background 0.5s;
+            transition-delay: 0.75s, 1s;
+            filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+        }
+
+        .card:hover .circle::before {
+            transition-delay: 0.5s;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background: var(--clr);
+        }
+
+        .card .circle .logo {
+            position: relative;
+            width: 250px;
+            transition: 0.5s;
+            transition-delay: 0.5s;
+        }
+
+        .card:hover .circle .logo {
+            transform: scale(0);
+            transition-delay: 0s;
+        }
+
+        .card .Product_img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0) rotate(315deg);
+            height: 300px;
+            transition: 0.5s ease-in-out;
+        }
+
+        .card:hover .Product_img {
+            transition-delay: 0.75s;
+            top: 25%;
+            left: 75%;
+            height: 450px;
+            transform: translate(-50%, -50%) scale(1) rotate(15deg);
+        }
+
+        .card .content {
+            position: absolute;
+            width: 50%;
+            left: 20%;
+            padding: 20px;
+            opacity: 0;
+            transition: 0.5s;
+            visibility: hidden;
+        }
+
+        .card:hover .content {
+            transition-delay: 0.75s;
+            opacity: 1;
+            visibility: visible;
+            left: 20px;
+        }
+
+        .card .content h2 {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 2.5em;
+            line-height: 1em;
+        }
+
+        .card .content p {
+            color: #fff;
+        }
+
+        .card .content a {
+            position: relative;
+            color: #151515;
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        
+        /* Tablet e schermi medi (max 768px) */
+        @media (max-width: 768px) {
+            .card {
+                width: 280px;
+                height: 320px;
+            }
+
+            .card:hover {
+                width: 500px;
+            }
+
+            .card .circle::before {
+                width: 300px;
+                height: 300px;
+            }
+
+            .card .circle .logo {
+                width: 200px;
+            }
+
+            .card .Product_img {
+                height: 250px;
+            }
+
+            .card:hover .Product_img {
+                height: 350px;
+                left: 70%;
+            }
+
+            .card .content h2 {
+                font-size: 2em;
+            }
+
+            .card .content p {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Smartphone (max 640px) */
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 320px;
+                height: 400px;
+            }
+
+            .card:hover {
+                width: 100%;
+                max-width: 320px;
+                height: 550px;
+            }
+
+            .card .circle::before {
+                width: 280px;
+                height: 280px;
+            }
+
+            .card .circle .logo {
+                width: 180px;
+            }
+
+            .card .Product_img {
+                height: 220px;
+            }
+
+            .card:hover .Product_img {
+                top: 30%;
+                left: 50%;
+                height: 280px;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+
+            .card .content {
+                width: 90%;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+
+            .card:hover .content {
+                top: 65%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .card .content h2 {
+                font-size: 1.8em;
+            }
+
+            .card .content p {
+                font-size: 0.85em;
+                margin: 10px 0;
+            }
+        }
+
+        /* Smartphone piccoli (max 480px) */
+        @media (max-width: 480px) {
+            .card {
+                max-width: 280px;
+                height: 380px;
+            }
+
+            .card:hover {
+                max-width: 280px;
+                height: 520px;
+            }
+
+            .card .circle::before {
+                width: 250px;
+                height: 250px;
+            }
+
+            .card .circle .logo {
+                width: 160px;
+            }
+
+            .card .Product_img {
+                height: 200px;
+            }
+
+            .card:hover .Product_img {
+                height: 250px;
+                top: 28%;
+            }
+
+            .card .content h2 {
+                font-size: 1.5em;
+            }
+
+            .card .content p {
+                font-size: 0.8em;
+            }
+
+            .card .content a {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="circle">
+            <svg class="logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="80" fill="#e61d2b"/>
+                <text x="100" y="120" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">Coca</text>
+            </svg>
+        </div>
+        <svg class="Product_img" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="20" width="40" height="160" rx="5" fill="#e61d2b"/>
+            <ellipse cx="50" cy="20" rx="20" ry="8" fill="#cc1a26"/>
+            <text x="50" y="110" font-family="Arial" font-size="12" fill="white" text-anchor="middle" transform="rotate(-90 50 110)">Coca-Cola</text>
+        </svg>
+        <div class="content">
+            <h2>Coca-Cola</h2>
+            <p>Goditi il gusto classico e rinfrescante della Coca-Cola, amato da generazioni. La bevanda perfetta per ogni momento.</p>
+            <a href="#">compra ora</a>
+        </div>
+    </div>
+</body>
+</html>
