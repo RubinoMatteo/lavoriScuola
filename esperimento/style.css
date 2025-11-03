@@ -66,7 +66,7 @@ body {
     background: var(--clr);
 }
 
-.car .circle .logo {
+.card .circle .logo {
     position: relative;
     width: 250px;
     transition: 0.5s;
@@ -78,7 +78,7 @@ body {
     transition-delay: 0s;
 }
 
-.card .product_img {
+.card .Product_img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -87,7 +87,7 @@ body {
     transition: 0.5s ease-in-out;
 }
 
-.card:hover .product_img {
+.card:hover .Product_img {
     transition-delay: 0.75s;
     top: 25%;
     left: 75%;
