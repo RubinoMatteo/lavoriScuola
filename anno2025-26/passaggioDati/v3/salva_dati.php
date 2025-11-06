@@ -167,7 +167,7 @@ fclose($file_w);
         
         <div class="info-box">
             <h3>Contenuto JSON Codificato:</h3>
-            <div class="json-display"><?php echo htmlspecialchars($txt); ?></div>
+            <div class="json-display"><?php echo htmlspecialchars(json_encode($data["archivio"][count($data["archivio"]) - 1])); ?></div>
         </div>
         
         <div class="message">
@@ -198,4 +198,5 @@ fclose($file_w);
         </div>
     </div>
 </body>
+
 </html>
