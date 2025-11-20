@@ -21,7 +21,7 @@ xmlhttp.open("GET", "samsung.json", true);
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
             for (x in myObj.elenco) 
-                stampa += `<div class="card"><h3>${myObj.samsung[x].name}</h3><p>${myObj.samsung[x].memory}</p><p>${myObj.samsung[x].os}</p><img src="${myObj.samsung[x].image}" alt="samsung"></div>`;
+                stampa += `<div class="card"><h3>${myObj.samsung[x].name}</h3><p>${myObj.samsung[x].memory}</p><p>${myObj.samsung[x].os}</p><img src="${myObj.samsung[x].image}" alt="samsung"> <a target="_blank" class="button" onclick="acquista(${myObj.samsung[x].name})" > U+1F6D2 </a></div>`;
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa="";
         }
@@ -47,7 +47,7 @@ function apple(){
                 var memory = iPhone[x].getElementsByTagName("memory")[0].childNodes[0].nodeValue;
                 var os = iPhone[x].getElementsByTagName("os")[0].childNodes[0].nodeValue;
                 var image = iPhone[x].getElementsByTagName("image")[0].childNodes[0].nodeValue;
-                stampa+=`<div class="card"><h3>${name}</h3><p>${memory}</p><p>${os}</p><img src="${image}" alt="iPhone"></div>`;
+                stampa+=`<div class="card"><h3>${name}</h3><p>${memory}</p><p>${os}</p><img src="${img}" alt="iPhone"> <a target="_blank" class="button" onclick="acquista(${name})" > U+1F6D2 </a></div> `;
             }
             
             document.getElementById("demo").innerHTML = `${stampa}`;
