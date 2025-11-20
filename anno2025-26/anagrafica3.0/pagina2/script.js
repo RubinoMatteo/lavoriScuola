@@ -53,7 +53,34 @@ function apple(){
                     <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
                 </div>*/
 };
+let colonne1
+function leggiFile(input){
+
+    let file = input.files[0] //presa in input del file
+    let lettoreF = new FileReader() //creazione oggetto filereader
+    lettoreF.readAsText(file);
+    
+    lettoreF.onload = function() {
+    let contenuto = lettoreF.result; // Contenuto del file letto
+    dividi(contenuto);
+    }
+}
+function dividi(cnt){
+    let righe= cnt.split("\n")
+    let colonne=[]
+    colonne1=[]
+    for (let i = 0; i < righe.length; i++) {
+        colonne[i] = righe[i].split(',')
+    }
+    for (let i = 1; i < colonne.length; i++) {
+        for (let j = 0; j < colonne[i].length; j++) {
+        	colonne1[2*i+j] = colonne[i][j].replaceAll('"','')
+    	}
+    }
+}
 function huawei(){
+    leggiFile(huawei.csv)
+    alert(colonne1);
 /*<div class="card">
                     <h3>samsung</h3>
                     <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
