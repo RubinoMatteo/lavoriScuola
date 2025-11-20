@@ -5,8 +5,8 @@ switch(localStorage.getItem(0)) {
   case "apple":
     apple();
     break;
-    case "hauawei":
-    hauawei();
+    case "huawei":
+    huawei();
     break;
   default:
     errore();
@@ -57,7 +57,7 @@ function apple(){
                     <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
                 </div>*/
 };
-function hauawei(){
+function huawei(){
 /*<div class="card">
                     <h3>samsung</h3>
                     <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
