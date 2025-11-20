@@ -12,6 +12,7 @@ switch(localStorage.getItem(0)) {
     errore();
 }
 function samsung(){
+    var xmlhttp = new XMLHttpRequest();
     var stampa = "";
 const section = document.getElementById("demo") ;
 xmlhttp.open("GET", "samsung.json", true);
@@ -31,6 +32,7 @@ xmlhttp.open("GET", "samsung.json", true);
                 </div>*/
 };
 function apple(){
+    var xmlhttp = new XMLHttpRequest();
     var stampa = "";
     const section = document.getElementById("demo") ;
     xmlhttp.open("GET", "apple.xml", true);
