@@ -23,5 +23,5 @@ function bottone(){
 
 }
 function vai_alla_tabella(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/pagina2.html";
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2024-25/anagrafica2.0/pagina2.html";
 }

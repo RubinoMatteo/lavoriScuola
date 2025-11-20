@@ -10,5 +10,5 @@ document.getElementById('email').innerText = localStorage.getItem('em');
 document.getElementById('password').innerText = localStorage.getItem('pwd');
 /*document.getElementById('conferma').innerText = localStorage.getItem('con');*/
 function indietro(){
-    window.location.href = "https://rubinomatteo.github.io/lavoriScuola/ValidazioneConEspressioniRegolari";
+    window.location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2024-25/ValidazioneConEspressioniRegolari";
 }
