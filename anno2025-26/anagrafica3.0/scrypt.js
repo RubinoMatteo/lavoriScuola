@@ -1,10 +1,13 @@
 
 function samsung(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/pagina2.html";
+    localStorage.setItem(0, "samsung");
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2025-26/pagina2/index.html";
 }
 function apple(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/anagrafica2.0/pagina2.html";
+    localStorage.setItem(0, "apple");
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2025-26/pagina2/index.html";
 }
 function hauawei(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/pagina2/index.html";
+    localStorage.setItem(0, "hauawei");
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2025-26/pagina2/index.html";
 }
