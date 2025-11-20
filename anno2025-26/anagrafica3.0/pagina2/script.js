@@ -14,27 +14,21 @@ switch(localStorage.getItem(0)) {
 function samsung(){
     var xmlhttp = new XMLHttpRequest();
     var stampa = "";
-const section = document.getElementById("demo") ;
 xmlhttp.open("GET", "samsung.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
-            for (x in myObj.elenco) 
+            for (x in myObj.samsung) 
                 stampa += `<div class="card"><h3>${myObj.samsung[x].name}</h3><p>${myObj.samsung[x].memory}</p><p>${myObj.samsung[x].os}</p><img src="${myObj.samsung[x].image}" alt="samsung"> <a target="_blank" class="button" onclick="acquista(${myObj.samsung[x].name})" > U+1F6D2 </a></div>`;
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa="";
         }
     };
-/*<div class="card">
-                    <h3>samsung</h3>
-                    <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
-                </div>*/
 };
 function apple(){
     var xmlhttp = new XMLHttpRequest();
     var stampa = "";
-    const section = document.getElementById("demo") ;
     xmlhttp.open("GET", "apple.xml", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
