@@ -4,61 +4,61 @@
       "name": "Samsung Galaxy S25",
       "memory": "12 GB RAM",
       "os": "Android 15",
-      "image": "https://placehold.co/20x20?text=Galaxy+S25"
+      "image": "https://placehold.co/200x200?text=Galaxy+S25"
     },
     {
       "name": "Samsung Galaxy S25+",
       "memory": "12 GB RAM",
       "os": "Android 15",
-      "image": "https://placehold.co/20x20?text=Galaxy+S25+"
+      "image": "https://placehold.co/200x200?text=Galaxy+S25+"
     },
     {
       "name": "Samsung Galaxy S25 Ultra",
       "memory": "12 GB RAM",
       "os": "Android 15",
-      "image": "https://placehold.co/20x20?text=S25+Ultra"
+      "image": "https://placehold.co/200x200?text=S25+Ultra"
     },
     {
       "name": "Samsung Galaxy Z Fold 7",
       "memory": "12–16 GB RAM",
       "os": "Android 16 (One UI 8)",
-      "image": "https://placehold.co/20x20?text=Z+Fold+7"
+      "image": "https://placehold.co/200x200?text=Z+Fold+7"
     },
     {
       "name": "Samsung Galaxy Z Flip 7",
       "memory": "12 GB RAM",
       "os": "Android 16 (One UI 8)",
-      "image": "https://placehold.co/20x20?text=Z+Flip+7"
+      "image": "https://placehold.co/200x200?text=Z+Flip+7"
     },
     {
       "name": "Samsung Galaxy A56 5G",
       "memory": "8 GB RAM",
       "os": "Android 15 (One UI 7)",
-      "image": "https://placehold.co/20x20?text=A56+5G"
+      "image": "https://placehold.co/200x200?text=A56+5G"
     },
     {
       "name": "Samsung Galaxy A36 5G",
       "memory": "6–8 GB RAM",
       "os": "Android 16 (One UI 8)",
-      "image": "https://placehold.co/20x20?text=A36+5G"
+      "image": "https://placehold.co/200x200?text=A36+5G"
     },
     {
       "name": "Samsung Galaxy A26 5G",
       "memory": "4–8 GB RAM",
       "os": "Android 16 (One UI 8)",
-      "image": "https://placehold.co/20x20?text=A26+5G"
+      "image": "https://placehold.co/200x200?text=A26+5G"
     },
     {
       "name": "Samsung Galaxy M36 5G",
       "memory": "6–8 GB RAM",
       "os": "Android 15 (One UI 7)",
-      "image": "https://placehold.co/20x20?text=M36+5G"
+      "image": "https://placehold.co/200x200?text=M36+5G"
     },
     {
       "name": "Samsung Galaxy A16 5G",
       "memory": "Dati memoria non ufficiali",
       "os": "Dati OS non ufficiali",
-      "image": "https://placehold.co/20x20?text=A16+5G"
+      "image": "https://placehold.co/200x200?text=A16+5G"
     }
   ]
 }

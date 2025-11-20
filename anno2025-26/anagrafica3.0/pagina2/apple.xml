@@ -4,69 +4,69 @@
         <name>iPhone 17</name>
         <memory>8 GB RAM</memory>
         <os>iOS 26</os>
-        <image>https://placehold.co/20x20?text=iPhone+17</image>
+        <image>https://placehold.co/200x200?text=iPhone+17</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 17 Pro Max</name>
         <memory>~12 GB RAM</memory>
         <os>iOS 26</os>
-        <image>https://placehold.co/20x20?text=iPhone+17+Pro+Max</image>
+        <image>https://placehold.co/200x200?text=iPhone+17+Pro+Max</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 17 Pro</name>
         <memory>~12 GB RAM</memory>
         <os>iOS 26</os>
-        <image>https://placehold.co/20x20?text=iPhone+17+Pro</image>
+        <image>https://placehold.co/200x200?text=iPhone+17+Pro</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone Air</name>
         <memory>~12 GB RAM</memory>
         <os>iOS 26</os>
-        <image>https://placehold.co/20x20?text=iPhone+Air</image>
+        <image>https://placehold.co/200x200?text=iPhone+Air</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 16 Plus</name>
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
-        <image>https://placehold.co/20x20?text=iPhone+16+Plus</image>
+        <image>https://placehold.co/200x200?text=iPhone+16+Plus</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 16 Pro</name>
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
-        <image>https://placehold.co/20x20?text=iPhone+16+Pro</image>
+        <image>https://placehold.co/200x200?text=iPhone+16+Pro</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 16 Pro Max</name>
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
-        <image>https://placehold.co/20x20?text=iPhone+16+Pro+Max</image>
+        <image>https://placehold.co/200x200?text=iPhone+16+Pro+Max</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 16e</name>
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
-        <image>https://placehold.co/20x20?text=iPhone+16e</image>
+        <image>https://placehold.co/200x200?text=iPhone+16e</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 15</name>
         <memory>6 GB RAM</memory>
         <os>iOS 17</os>
-        <image>https://placehold.co/20x20?text=iPhone+15</image>
+        <image>https://placehold.co/200x200?text=iPhone+15</image>
     </iPhone>
 
     <iPhone>
         <name>iPhone 15 Plus</name>
         <memory>6 GB RAM</memory>
         <os>iOS 17</os>
-        <image>https://placehold.co/20x20?text=iPhone+15+Plus</image>
+        <image>https://placehold.co/200x200?text=iPhone+15+Plus</image>
     </iPhone>
 </iPhones>
