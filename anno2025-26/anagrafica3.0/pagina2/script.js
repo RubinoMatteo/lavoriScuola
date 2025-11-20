@@ -1,11 +1,11 @@
 switch(localStorage.getItem(0)) {
-  case samsung:
+  case "samsung":
     samsung();
     break;
-  case apple:
+  case "apple":
     apple();
     break;
-    case hauawei:
+    case "hauawei":
     hauawei();
     break;
   default:
