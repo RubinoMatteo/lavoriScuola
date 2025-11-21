@@ -18,7 +18,7 @@ function creaTab(tab){
     }
     for (let i = 0; i < colonne.length; i++) {
         for (let j = 0; j < colonne[i].length; j++) {
-        	colonne1[i][j] = colonne[i][j].replaceAll('"','')
+        	colonne1[2*i+j] = colonne[i][j].replaceAll('"','')
     	}
     }
     for (let i = 0; i < colonne1.length; i++) {
