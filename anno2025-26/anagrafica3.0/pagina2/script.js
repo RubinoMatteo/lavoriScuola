@@ -79,6 +79,9 @@ function huawei(){
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
             console.log(huawei);
+            for (let i = 0; i < huawei.length; i++) {
+                stampa+=`<div class="card"><h3>${huawei[i][0]}</h3><p>${huawei[i][1]}</p><p>${huawei[i][2]}</p><img id="img" src="${huawei[i][3]}" alt="iPhone"> <a target="_blank" class="button" onclick="acquista(${huawei[i][0]})" > &#x1f6d2; </a></div> `;
+            }
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
         }
