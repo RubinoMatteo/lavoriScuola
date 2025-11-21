@@ -31,6 +31,17 @@ body {
     color: black;
 }
 
+.card1 {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+    width: 14rem;
+}
+
 .card h3, .card p, .card a {
     margin: 0;
 }
