@@ -60,6 +60,7 @@ function dividi(cnt){
     for (let i = 0; i < righe.length; i++) {
         colonne[i] = righe[i].split(',')
     }
+    console.log(colonne);
     for (let i = 1; i < colonne.length; i++) {
         for (let j = 0; j < colonne[i].length; j++) {
         	colonne1[2*i+j] = colonne[i][j].replaceAll('"','')
