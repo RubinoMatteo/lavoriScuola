@@ -73,7 +73,7 @@ function huawei(){
             var huawei = dividi(xmlDoc);
             console.log(huawei);
             for (let i = 1; i < huawei.length; i++) {
-                stampa+=`<div class="card"><h3>${huawei[i][0]}</h3><p>${huawei[i][1]}</p><p>${huawei[i][2]}</p><img id="img" src="${huawei[i][3]}" alt="iPhone"> <a target="_blank" class="button" onclick="acquista('${huawei[i][0]}')" > &#x1f6d2; </a></div> `;
+                stampa+=`<div class="card"><h3>${huawei[i][0]}</h3><p>${huawei[i][1]}</p><p>${huawei[i][2]}</p><img id="img" src="${huawei[i][3]}" alt="iPhone"> <a target="_blank" class="button" onclick="acquista('${huawei[i]})" > &#x1f6d2; </a></div> `;
             }
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
@@ -87,9 +87,10 @@ function huawei(){
 function errore(){
     document.getElementById("demo").innerHTML = `<h1>error 404</h1><br><p>pagina non trovata</p>`;
 };
-var array=[];
+var carrello=[];
 let quantità=0;
-function acquista(nome){
-    array[quantità]= nome;
+function acquista(obj){
+    carrello[quantità]= obj;
     quantità++;
+    console.log(carrello);
 };
