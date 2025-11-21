@@ -70,7 +70,7 @@ function dividi(cnt){
 function huawei(){
     var xmlhttp = new XMLHttpRequest();
     var stampa = "";
-    xmlhttp.open("GET", "apple.xml", true);
+    xmlhttp.open("GET", "huawei.csv", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
