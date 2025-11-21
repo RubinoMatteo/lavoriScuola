@@ -65,6 +65,7 @@ function dividi(cnt){
         	colonne1[2*i+j] = colonne[i][j].replaceAll('"','')
     	}
     }
+    console.log(colonne1);
     return colonne1;
 }
 function huawei(){
