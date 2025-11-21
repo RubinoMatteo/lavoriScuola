@@ -56,18 +56,11 @@ function apple(){
 function dividi(cnt){
     let righe= cnt.split("\n")
     let colonne=[]
-    let colonne1=[]
     for (let i = 0; i < righe.length; i++) {
         colonne[i] = righe[i].split(',')
     }
     console.log(colonne);
-    for (let i = 1; i < colonne.length; i++) {
-        for (let j = 0; j < colonne[i].length; j++) {
-        	colonne1[i][j] = colonne[i][j].replaceAll('"','')
-    	}
-    }
-    console.log(colonne1);
-    return colonne1;
+    return colonne;
 }
 function huawei(){
     var xmlhttp = new XMLHttpRequest();
@@ -79,7 +72,7 @@ function huawei(){
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
             console.log(huawei);
-            for (let i = 0; i < huawei.length; i++) {
+            for (let i = 1; i < huawei.length; i++) {
                 stampa+=`<div class="card"><h3>${huawei[i][0]}</h3><p>${huawei[i][1]}</p><p>${huawei[i][2]}</p><img id="img" src="${huawei[i][3]}" alt="iPhone"> <a target="_blank" class="button" onclick="acquista(${huawei[i][0]})" > &#x1f6d2; </a></div> `;
             }
             document.getElementById("demo").innerHTML = `${stampa}`;
