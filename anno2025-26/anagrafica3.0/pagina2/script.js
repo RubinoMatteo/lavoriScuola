@@ -89,7 +89,7 @@ function huawei(){
 function errore(){
     document.getElementById("demo").innerHTML = `<h1>error 404</h1><br><p>pagina non trovata</p>`;
 };
-var array;
+var array=[];
 function acquista(nome){
     array+= nome;
 };
