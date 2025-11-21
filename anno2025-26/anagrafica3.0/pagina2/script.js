@@ -59,7 +59,6 @@ function dividi(cnt){
     for (let i = 0; i < righe.length; i++) {
         colonne[i] = righe[i].split(',')
     }
-    console.log(colonne);
     return colonne;
 }
 function huawei(){
@@ -71,7 +70,6 @@ function huawei(){
         if (this.readyState == 4 && this.status == 200) {
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
-            console.log(huawei);
             for (let i = 1; i < huawei.length; i++) {
                 stampa+=`<div class="card"><h3>${huawei[i][0]}</h3><p>${huawei[i][1]}</p><p>${huawei[i][2]}</p><img id="img" src="${huawei[i][3]}" alt="iPhone"> <a target="_blank" class="button" onclick="acquista('${huawei[i]})" > &#x1f6d2; </a></div> `;
             }
