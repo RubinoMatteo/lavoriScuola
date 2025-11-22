@@ -73,8 +73,8 @@ function huawei(){
             for (let i = 1; i < huawei.length; i++) {
                 stampa+=`<div class="card">
                             <h3>${huawei[i][0]}</h3>
-                            <p><h3>Memoria</h3> ${huawei[i][1]}</p>
-                            <p><h3>Sistema Operativo</h3> ${huawei[i][2]}</p>
+                            <p>${huawei[i][1]}</p>
+                            <p><b>S.O.</b>:${huawei[i][2]}</p>
                             <img id="img" src="${huawei[i][3]}" alt="iPhone"> 
                             <a target="_blank" class="button" onclick="acquista('${huawei[i][0]}')" > &#x1f6d2; </a>
                             </div> `;
