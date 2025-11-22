@@ -124,6 +124,7 @@ function scarica(event){
     const blob = new Blob([stringaJson], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     linkScarica.href = url;
+    linkScarica.download = "carrello_acquisti.json";
     linkScarica.click();
     setTimeout(() => {
         URL.revokeObjectURL(url);
