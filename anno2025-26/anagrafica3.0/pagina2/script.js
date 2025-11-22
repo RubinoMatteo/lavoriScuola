@@ -151,3 +151,107 @@ function scarica(event){
     }, 1000);
     localStorage.clear();
 }
+function scaricacsv(event) {
+    event.preventDefault();
+    
+    const stringaJson = localStorage.getItem("1");
+    if (!stringaJson) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
+
+    let dati;
+    try {
+        dati = JSON.parse(stringaJson);
+    } catch (e) {
+        alert("Errore: dati non validi!");
+        return;
+    }
+
+    // Se non è un array, lo trasformo in array
+    if (!Array.isArray(dati)) {
+        dati = [dati];
+    }
+
+    // Ottieni le colonne (chiavi)
+    const colonne = Object.keys(dati[0]);
+
+    // Crea il contenuto CSV
+    const righe = [];
+    righe.push(colonne.join(";")); // intestazione
+
+    dati.forEach(obj => {
+        const valori = colonne.map(col => String(obj[col]).replace(/;/g, ",")); // evita rottura colonne
+        righe.push(valori.join(";"));
+    });
+
+    const csvContent = righe.join("\n");
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "carrello_acquisti.csv";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    localStorage.clear();
+}
+function scaricaxml(event) {
+    event.preventDefault();
+
+    const stringaJson = localStorage.getItem("1");
+    if (!stringaJson) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
+
+    let dati;
+    try {
+        dati = JSON.parse(stringaJson);
+    } catch (e) {
+        alert("Errore: dati non validi!");
+        return;
+    }
+
+    // Se non è un array, lo trasformo in array
+    if (!Array.isArray(dati)) {
+        dati = [dati];
+    }
+
+    // Costruzione XML
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<carrello>\n`;
+
+    dati.forEach(item => {
+        xml += "  <item>\n";
+        for (const chiave in item) {
+            const valore = String(item[chiave])
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            xml += `    <${chiave}>${valore}</${chiave}>\n`;
+        }
+        xml += "  </item>\n";
+    });
+
+    xml += "</carrello>";
+
+    // Download
+    const blob = new Blob([xml], { type: "application/xml" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "carrello_acquisti.xml";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    localStorage.clear();
+}
