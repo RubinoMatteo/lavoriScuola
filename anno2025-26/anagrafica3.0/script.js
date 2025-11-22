@@ -1,5 +1,5 @@
 array=[];
-array[0]= localStorage.getItem(1) !== null? localStorage.getItem(1) : {name:"nome",memory:"memoria",OS:"Sistema Operativo"};
+array[0]= localStorage.getItem(1) !== null? JSON.parse(localStorage.getItem(1)) : {name:"nome",memory:"memoria",OS:"Sistema Operativo"};
 localStorage.setItem(1, JSON.stringify(array));
 function samsung(){
     localStorage.setItem(0, "samsung");
