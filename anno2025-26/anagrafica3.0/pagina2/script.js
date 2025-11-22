@@ -116,7 +116,11 @@ const linkScarica = document.getElementById('linkScaricaJson');
 });*/
 function download(event){
     event.preventDefault();
-    const stringaJson = localStorage.getItem(1); 
+    const stringaJson = localStorage.getItem("1"); 
+    if (!stringaJson) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
     const blob = new Blob([stringaJson], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     linkScarica.href = url;
