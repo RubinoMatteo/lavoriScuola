@@ -1,5 +1,5 @@
 array=[];
-array[0]="il mio carrello"
+array[0]={name:"n",memory:"m",OS:"S"};
 localStorage.setItem(1, JSON.parse(array));
 function samsung(){
     localStorage.setItem(0, "samsung");
