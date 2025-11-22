@@ -1,4 +1,4 @@
-switch(localStorage.getItem(0)) {
+switch(sessionStorage.getItem(0)) {
   case "samsung":
     samsung();
     break;
@@ -96,27 +96,27 @@ function errore(){
 var carrello=[];
 let quantità=0;
 function acquista(n,m,S){
-    carrello=JSON.parse(localStorage.getItem(1));
-    quantità=JSON.parse(localStorage.getItem(1)).length;
+    carrello=JSON.parse(sessionStorage.getItem(1));
+    quantità=JSON.parse(sessionStorage.getItem(1)).length;
     carrello[quantità]= {name:n,memory:m,OS:S};
     quantità++;
-    localStorage.setItem(1, JSON.stringify(carrello, null, 2));
+    sessionStorage.setItem(1, JSON.stringify(carrello, null, 2));
     console.log(carrello);
 };
 const linkScarica = document.getElementById('linkScaricaJson');
 /*linkScarica.addEventListener('click', function(event) {
-    const stringaJson = localStorage.getItem(1); 
+    const stringaJson = sessionStorage.getItem(1); 
     const blob = new Blob([stringaJson], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     linkScarica.href = url;
     setTimeout(() => {
         URL.revokeObjectURL(url);
     }, 1000);
-    localStorage.clear();
+    sessionStorage.clear();
 });*//*
 function scarica(event){
     event.preventDefault();
-    const stringaJson = localStorage.getItem(1); 
+    const stringaJson = sessionStorage.getItem(1); 
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
@@ -129,11 +129,10 @@ function scarica(event){
     setTimeout(() => {
         URL.revokeObjectURL(url);
     }, 1000);
-    localStorage.clear();
 }*/
 function scarica(event){
     event.preventDefault();
-    const stringaJson = localStorage.getItem("1"); 
+    const stringaJson = sessionStorage.getItem("1"); 
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
@@ -149,12 +148,11 @@ function scarica(event){
     setTimeout(() => {
         URL.revokeObjectURL(url);
     }, 1000);
-    setTimeout(() => localStorage.clear(), 1000000);
 }
 function scaricacsv(event) {
     event.preventDefault();
     
-    const stringaJson = localStorage.getItem("1");
+    const stringaJson = sessionStorage.getItem("1");
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
@@ -198,13 +196,11 @@ function scaricacsv(event) {
     a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-    setTimeout(() => localStorage.clear(), 1000000);
 }
 function scaricaxml(event) {
     event.preventDefault();
 
-    const stringaJson = localStorage.getItem("1");
+    const stringaJson = sessionStorage.getItem("1");
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
@@ -252,6 +248,4 @@ function scaricaxml(event) {
     a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-    setTimeout(() => localStorage.clear(), 1000000);
 }
