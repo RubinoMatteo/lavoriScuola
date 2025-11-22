@@ -103,8 +103,8 @@ function acquista(n,m,S){
     sessionStorage.setItem(1, JSON.stringify(carrello, null, 2));
     console.log(carrello);
 };
-const linkScarica = document.getElementById('linkScaricaJson');
-/*linkScarica.addEventListener('click', function(event) {
+/*const linkScarica = document.getElementById('linkScaricaJson');
+linkScarica.addEventListener('click', function(event) {
     const stringaJson = sessionStorage.getItem(1); 
     const blob = new Blob([stringaJson], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -151,13 +151,11 @@ function scarica(event){
 }
 function scaricacsv(event) {
     event.preventDefault();
-    
     const stringaJson = sessionStorage.getItem("1");
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
     }
-
     let dati;
     try {
         dati = JSON.parse(stringaJson);
@@ -165,18 +163,12 @@ function scaricacsv(event) {
         alert("Errore: dati non validi!");
         return;
     }
-
-    // Se non è un array, lo trasformo in array
     if (!Array.isArray(dati)) {
         dati = [dati];
     }
-
-    // Ottieni le colonne (chiavi)
     const colonne = Object.keys(dati[0]);
-
-    // Crea il contenuto CSV
     const righe = [];
-    righe.push(colonne.join(";")); // intestazione
+    righe.push(colonne.join(";"));
 
     dati.forEach(obj => {
         const valori = colonne.map(col => String(obj[col]).replace(/;/g, ",")); // evita rottura colonne
@@ -199,13 +191,11 @@ function scaricacsv(event) {
 }
 function scaricaxml(event) {
     event.preventDefault();
-
     const stringaJson = sessionStorage.getItem("1");
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
     }
-
     let dati;
     try {
         dati = JSON.parse(stringaJson);
@@ -213,15 +203,7 @@ function scaricaxml(event) {
         alert("Errore: dati non validi!");
         return;
     }
-
-    // Se non è un array, lo trasformo in array
-    if (!Array.isArray(dati)) {
-        dati = [dati];
-    }
-
-    // Costruzione XML
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<carrello>\n`;
-
     dati.forEach(item => {
         xml += "  <item>\n";
         for (const chiave in item) {
@@ -233,19 +215,14 @@ function scaricaxml(event) {
         }
         xml += "  </item>\n";
     });
-
     xml += "</carrello>";
-
-    // Download
     const blob = new Blob([xml], { type: "application/xml" });
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
     a.href = url;
     a.download = "carrello_acquisti.xml";
     document.body.appendChild(a);
     a.click();
     a.remove();
-
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
