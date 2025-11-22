@@ -115,7 +115,7 @@ function acquista(n,m,S){
 };
 
 const linkScarica = document.getElementById('linkScaricaJson');
-linkScarica.addEventListener('click', function(event) {
+/*linkScarica.addEventListener('click', function(event) {
     
     // Converti l'oggetto JavaScript in una stringa JSON formattata
     const stringaJson = localStorage.getItem(1); 
@@ -140,4 +140,14 @@ linkScarica.addEventListener('click', function(event) {
         URL.revokeObjectURL(url);
     }, 1000); // Rilascia l'URL dopo 1 secondo
     localStorage.clear();
-});
+});*/
+function download(){
+    const stringaJson = localStorage.getItem(1); 
+    const blob = new Blob([stringaJson], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    linkScarica.href = url;
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000); // Rilascia l'URL dopo 1 secondo
+    localStorage.clear();
+}
