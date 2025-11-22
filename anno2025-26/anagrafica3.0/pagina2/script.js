@@ -114,7 +114,7 @@ const linkScarica = document.getElementById('linkScaricaJson');
     }, 1000);
     localStorage.clear();
 });*/
-function download(event){
+function scarica(event){
     event.preventDefault();
     const stringaJson = localStorage.getItem("1"); 
     if (!stringaJson) {
