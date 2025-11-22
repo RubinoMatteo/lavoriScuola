@@ -107,7 +107,7 @@ var carrello=[];
 let quantità=0;
 function acquista(n,m,S,i){
     carrello=JSON.parse(localStorage.getItem(1));
-    quantità=JSON.parse(localStorage.getItem(1)).length;
+    quantità+=JSON.parse(localStorage.getItem(1)).length;
     carrello[quantità]= {name:n,memory:m,"OS":OS,"img":img};
     quantità++;
     localStorage.setItem(1, JSON.stringify(carrello));
