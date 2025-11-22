@@ -113,7 +113,7 @@ const linkScarica = document.getElementById('linkScaricaJson');
         URL.revokeObjectURL(url);
     }, 1000);
     localStorage.clear();
-});*/
+});*//*
 function scarica(event){
     event.preventDefault();
     const stringaJson = localStorage.getItem(1); 
@@ -130,7 +130,7 @@ function scarica(event){
         URL.revokeObjectURL(url);
     }, 1000);
     localStorage.clear();
-}
+}*/
 function scarica(event){
     event.preventDefault();
     const stringaJson = localStorage.getItem("1"); 
