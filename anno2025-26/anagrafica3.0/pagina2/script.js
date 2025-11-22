@@ -149,7 +149,7 @@ function scarica(event){
     setTimeout(() => {
         URL.revokeObjectURL(url);
     }, 1000);
-    localStorage.clear();
+    setTimeout(() => localStorage.clear(), 1000000);
 }
 function scaricacsv(event) {
     event.preventDefault();
@@ -199,7 +199,7 @@ function scaricacsv(event) {
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-    localStorage.clear();
+    setTimeout(() => localStorage.clear(), 1000000);
 }
 function scaricaxml(event) {
     event.preventDefault();
@@ -253,5 +253,5 @@ function scaricaxml(event) {
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-    localStorage.clear();
+    setTimeout(() => localStorage.clear(), 1000000);
 }
