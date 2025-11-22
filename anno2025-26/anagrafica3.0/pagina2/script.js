@@ -25,7 +25,7 @@ xmlhttp.open("GET", "samsung.json", true);
                             <p><b>Memoria</b>:${myObj.samsung[x].memory}</p>
                             <p><b>S.O.</b>:${myObj.samsung[x].os}</p>
                             <img id="img" src="${myObj.samsung[x].image}" alt="samsung"> 
-                            <a target="_blank" class="button" onclick="acquista('${myObj.samsung[x].name}','${myObj.samsung[x].memory}','${myObj.samsung[x].os}','${myObj.samsung[x].image}')" > &#128722; </a>
+                            <a target="_blank" class="button" onclick="acquista('${myObj.samsung[x].name}','${myObj.samsung[x].memory}','${myObj.samsung[x].os}')" > &#128722; </a>
                         </div>`;
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa="";
@@ -52,7 +52,7 @@ function apple(){
                             <p><b>Memoria</b>:${memory}</p>
                             <p><b>S.O.</b>:${os}</p>
                             <img id="img" src="${image}" alt="iPhone"> 
-                            <a target="_blank" class="button" onclick="acquista('${name}','${memory}','${os}','${image}')" > &#x1f6d2; </a>
+                            <a target="_blank" class="button" onclick="acquista('${name}','${memory}','${os}')" > &#x1f6d2; </a>
                         </div> `;
             }
             
@@ -88,7 +88,7 @@ function huawei(){
                             <p><b>Memoria</b>:${huawei[i][1]}</p>
                             <p><b>S.O.</b>:${huawei[i][2]}</p>
                             <img id="img" src="${huawei[i][3]}" alt="iPhone"> 
-                            <a target="_blank" class="button" onclick="acquista('${huawei[i][0]}','${huawei[i][1]}','${huawei[i][2]}','${huawei[i][3]}')" > &#x1f6d2; </a>
+                            <a target="_blank" class="button" onclick="acquista('${huawei[i][0]}','${huawei[i][1]}','${huawei[i][2]}')" > &#x1f6d2; </a>
                             </div> `;
             }
             document.getElementById("demo").innerHTML = `${stampa}`;
@@ -105,10 +105,10 @@ function errore(){
 };
 var carrello=[];
 let quantità=0;
-function acquista(n,m,S,i){
+function acquista(n,m,S){
     carrello=JSON.parse(localStorage.getItem(1));
     quantità+=JSON.parse(localStorage.getItem(1)).length;
-    carrello[quantità]= {name:n,memory:m,"OS":OS,"img":img};
+    carrello[quantità]= {name:n,memory:m,OS:S};
     quantità++;
     localStorage.setItem(1, JSON.stringify(carrello));
     console.log(carrello);
