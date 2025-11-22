@@ -1,0 +1,38 @@
+linkScarica.addEventListener('click', function(event) {
+    
+    // Converti l'oggetto JavaScript in una stringa JSON formattata
+    const stringaJson = localStorage.getItem(1); 
+    
+    // Crea un Blob con il contenuto JSON e specifica il tipo MIME corretto
+    const blob = new Blob([stringaJson], { type: 'application/json' });
+    
+    // Genera un URL temporaneo che punta al Blob
+    const url = URL.createObjectURL(blob);
+    
+    // Imposta l'attributo 'href' del link con l'URL temporaneo
+    // L'attributo 'download' (che hai già nell'HTML) gestirà il nome del file
+    linkScarica.href = url;
+    
+    // Nota importante: il browser gestirà automaticamente il download a questo punto
+    // grazie al fatto che abbiamo impostato href e download prima che l'azione di default del click avvenga.
+
+    // Opzionale, ma consigliato: rilascia l'URL dell'oggetto dopo un breve ritardo
+    // per liberare memoria. Visto che il browser inizia subito il download, 
+    // un timeout breve è sicuro.
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000); // Rilascia l'URL dopo 1 secondo
+    localStorage.clear();
+});
+
+
+linkScarica.addEventListener('click', function(event) {
+    const stringaJson = localStorage.getItem(1); 
+    const blob = new Blob([stringaJson], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    linkScarica.href = url;
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000);
+    localStorage.clear();
+});

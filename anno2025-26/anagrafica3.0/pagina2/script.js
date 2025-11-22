@@ -41,7 +41,6 @@ function apple(){
         if (this.readyState == 4 && this.status == 200) {
             var xmlDoc = this.responseXML;
             var iPhone = xmlDoc.getElementsByTagName("iPhone");
-
             for (x = 0; x < iPhone.length; x++) {
                 var name = iPhone[x].getElementsByTagName("name")[0].childNodes[0].nodeValue;
                 var memory = iPhone[x].getElementsByTagName("memory")[0].childNodes[0].nodeValue;
@@ -54,16 +53,11 @@ function apple(){
                             <img id="img" src="${image}" alt="iPhone"> 
                             <a target="_blank" class="button" onclick="acquista('${name}','${memory}','${os}')" > &#x1f6d2; </a>
                         </div> `;
-            }
-            
+            }            
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
         }
     };
-/*<div class="card">
-                    <h3>samsung</h3>
-                    <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
-                </div>*/
 };
 function dividi(cnt){
     let righe= cnt.split("\n")
@@ -95,10 +89,6 @@ function huawei(){
             stampa = "";
         }
     };
-/*<div class="card">
-                    <h3>samsung</h3>
-                    <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
-                </div>*/
 };
 function errore(){
     document.getElementById("demo").innerHTML = `<h1>error 404</h1><br><p>pagina non trovata</p>`;
@@ -113,41 +103,26 @@ function acquista(n,m,S){
     localStorage.setItem(1, JSON.stringify(carrello, null, 2));
     console.log(carrello);
 };
-
 const linkScarica = document.getElementById('linkScaricaJson');
 /*linkScarica.addEventListener('click', function(event) {
-    
-    // Converti l'oggetto JavaScript in una stringa JSON formattata
     const stringaJson = localStorage.getItem(1); 
-    
-    // Crea un Blob con il contenuto JSON e specifica il tipo MIME corretto
     const blob = new Blob([stringaJson], { type: 'application/json' });
-    
-    // Genera un URL temporaneo che punta al Blob
     const url = URL.createObjectURL(blob);
-    
-    // Imposta l'attributo 'href' del link con l'URL temporaneo
-    // L'attributo 'download' (che hai già nell'HTML) gestirà il nome del file
     linkScarica.href = url;
-    
-    // Nota importante: il browser gestirà automaticamente il download a questo punto
-    // grazie al fatto che abbiamo impostato href e download prima che l'azione di default del click avvenga.
-
-    // Opzionale, ma consigliato: rilascia l'URL dell'oggetto dopo un breve ritardo
-    // per liberare memoria. Visto che il browser inizia subito il download, 
-    // un timeout breve è sicuro.
     setTimeout(() => {
         URL.revokeObjectURL(url);
-    }, 1000); // Rilascia l'URL dopo 1 secondo
+    }, 1000);
     localStorage.clear();
 });*/
-function download(){
+function download(event){
+    event.preventDefault();
     const stringaJson = localStorage.getItem(1); 
     const blob = new Blob([stringaJson], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     linkScarica.href = url;
+    linkScarica.click();
     setTimeout(() => {
         URL.revokeObjectURL(url);
-    }, 1000); // Rilascia l'URL dopo 1 secondo
+    }, 1000);
     localStorage.clear();
 }
