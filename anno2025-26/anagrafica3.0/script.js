@@ -1,6 +1,6 @@
 array=[];
 array[0]={name:"n",memory:"m",OS:"S"};
-localStorage.setItem(1, JSON.parse(array));
+localStorage.setItem(1, JSON.stringify(array));
 function samsung(){
     localStorage.setItem(0, "samsung");
     location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2025-26/anagrafica3.0/pagina2/index.html";
