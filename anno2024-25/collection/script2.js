@@ -20,5 +20,5 @@ function generaTabella(arrObj){
 }
 
 function indietro(){
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/collection/index.html";
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2024-25/collection/index.html";
 }

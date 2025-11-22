@@ -1,5 +1,5 @@
 function tabella() {
-    location.href = "https://rubinomatteo.github.io/lavoriScuola/collection/index2.html";
+    location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2024-25/collection/index2.html";
 }
 
 const array = [{
