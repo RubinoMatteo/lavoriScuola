@@ -116,7 +116,7 @@ const linkScarica = document.getElementById('linkScaricaJson');
 });*/
 function scarica(event){
     event.preventDefault();
-    const stringaJson = localStorage.getItem("1"); 
+    const stringaJson = localStorage.getItem(1); 
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
@@ -126,6 +126,26 @@ function scarica(event){
     linkScarica.href = url;
     linkScarica.download = "carrello_acquisti.json";
     linkScarica.click();
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000);
+    localStorage.clear();
+}
+function scarica(event){
+    event.preventDefault();
+    const stringaJson = localStorage.getItem("1"); 
+    if (!stringaJson) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
+    const blob = new Blob([stringaJson], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "carrello_acquisti.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
     setTimeout(() => {
         URL.revokeObjectURL(url);
     }, 1000);
