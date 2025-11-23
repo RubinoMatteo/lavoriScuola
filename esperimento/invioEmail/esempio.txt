@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Invio Email Frontend</title>
+</head>
+<body>
+    <h1>Contattaci</h1>
+    <form id="contactForm">
+        <label for="recipient">Destinatario:</label>
+        <input type="email" id="recipient" value="tuaemail@esempio.com" readonly><br><br>
+        
+        <label for="subject">Oggetto:</label>
+        <input type="text" id="subject"><br><br>
+        
+        <label for="message">Messaggio:</label>
+        <textarea id="message" rows="4"></textarea><br><br>
+        
+        <button type="submit">Invia Email</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------
+scrypt
+----------------------------------------------------------------------------------------------------------
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impedisce l'invio classico del form
+
+    const recipient = document.getElementById('recipient').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    // Codifica i valori per l'URL
+    const mailtoLink = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    // Apre il client di posta predefinito dell'utente
+    window.open(mailtoLink, '_blank');
+});
