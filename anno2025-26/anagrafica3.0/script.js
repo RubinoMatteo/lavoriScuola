@@ -15,36 +15,57 @@ function huawei(){
 }
 
 function vediCarrello(){
-    const output = document.getElementById("visualizza");
+const output = document.getElementById("dati");
 
-// Recupero del JSON dalla key "1"
+// Legge il JSON dalla chiave "1"
 const rawData = sessionStorage.getItem("1");
 
 if (rawData) {
-    let data;
+    let dataArray;
 
     try {
-        data = JSON.parse(rawData); // Converte il JSON in oggetto
+        dataArray = JSON.parse(rawData); // Trasforma in array di oggetti
     } catch (e) {
-        output.innerHTML = "<p style='color: red;'>Errore nel leggere i dati</p>";
+        output.innerHTML = "<p style='color: red;'>Errore nel leggere il JSON</p>";
         throw e;
     }
 
-    let ul = document.createElement("ul");
-    ul.style.listStyle = "none";
-    ul.style.padding = "0";
+    // Se non è un array → errore
+    if (!Array.isArray(dataArray)) {
+        output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
+        return;
+    }
 
-    // Itera sulle coppie chiave/valore del JSON
-    Object.entries(data).forEach(([key, value]) => {
-        let li = document.createElement("li");
-        li.style.padding = "8px 0";
-        li.style.borderBottom = "1px solid #e2e8f0";
+    // Stampa ogni oggetto come una sezione a blocchi
+    dataArray.forEach((item, index) => {
 
-        li.innerHTML = `<strong style="color: #667eea;">${key}:</strong> ${value}`;
-        ul.appendChild(li);
+        let ul = document.createElement("ul");
+        ul.style.listStyle = "none";
+        ul.style.padding = "0";
+        ul.style.margin = "15px 0";
+        ul.style.border = "1px solid #e2e8f0";
+        ul.style.borderRadius = "8px";
+        ul.style.padding = "10px";
+
+        // Aggiungi un titolo (opzionale)
+        if (index === 0) {
+            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Intestazione</h4>`;
+        } else {
+            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
+        }
+
+        // Stampa chiavi e valori dell’oggetto
+        Object.entries(item).forEach(([key, value]) => {
+            let li = document.createElement("li");
+            li.style.padding = "6px 0";
+            li.style.borderBottom = "1px solid #e2e8f0";
+
+            li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
+            ul.appendChild(li);
+        });
+
+        output.appendChild(ul);
     });
-
-    output.appendChild(ul);
 
 } else {
     output.innerHTML = `<p style="color: #999;">Nessun dato ricevuto</p>`;
