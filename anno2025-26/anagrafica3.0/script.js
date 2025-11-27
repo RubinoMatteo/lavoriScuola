@@ -1,3 +1,5 @@
+document.getElementById("visualizza").style.background ="none";
+
 array=[];
 sessionStorage.getItem(1) !== null? array=JSON.parse(sessionStorage.getItem(1)) : array[0]={name:"nome",memory:"memoria",OS:"Sistema Operativo"};
 sessionStorage.setItem(1, JSON.stringify(array, null, 2));
@@ -16,6 +18,7 @@ function huawei(){
 
 function vediCarrello(){
 const output = document.getElementById("visualizza");
+document.getElementById("visualizza").style.background ="rgba(255, 255, 255, 0.3)";
 const rawData = sessionStorage.getItem("1");
 if (rawData) {
     let dataArray;
