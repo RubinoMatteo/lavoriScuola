@@ -11,6 +11,15 @@ switch(sessionStorage.getItem(0)) {
   default:
     errore();
 }
+function scrivi(nome,memory,os,image){
+    return`<div class="card">
+                            <h3>${nome}</h3>
+                            <p><b>Memoria</b>:${memory}</p>
+                            <p><b>S.O.</b>:${os}</p>
+                            <img id="img" src="${image}" alt="samsung"> 
+                            <a target="_blank" class="button" onclick="acquista('${name}','${memory}','${os}')" > &#128722; </a>
+                        </div>`;
+}
 function samsung(){
     var xmlhttp = new XMLHttpRequest();
     var stampa = "";
@@ -20,13 +29,7 @@ xmlhttp.open("GET", "samsung.json", true);
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
             for (x in myObj.samsung) 
-                stampa += `<div class="card">
-                            <h3>${myObj.samsung[x].name}</h3>
-                            <p><b>Memoria</b>:${myObj.samsung[x].memory}</p>
-                            <p><b>S.O.</b>:${myObj.samsung[x].os}</p>
-                            <img id="img" src="${myObj.samsung[x].image}" alt="samsung"> 
-                            <a target="_blank" class="button" onclick="acquista('${myObj.samsung[x].name}','${myObj.samsung[x].memory}','${myObj.samsung[x].os}')" > &#128722; </a>
-                        </div>`;
+                stampa += scrivi(myObj.samsung[x].name,myObj.samsung[x].memory,myObj.samsung[x].os,myObj.samsung[x].image);
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa="";
         }
@@ -224,5 +227,91 @@ function scaricaxml(event) {
     document.body.appendChild(a);
     a.click();
     a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function scaricaPDF(event) {
+    event.preventDefault();
+
+    const stringaJson = sessionStorage.getItem("1");
+    if (!stringaJson) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
+
+    let dati;
+    try {
+        dati = JSON.parse(stringaJson);
+    } catch (e) {
+        alert("Errore: dati non validi!");
+        return;
+    }
+
+    if (!Array.isArray(dati)) {
+        dati = [dati];
+    }
+
+    const colonne = Object.keys(dati[0]);
+
+    // Costruzione del contenuto testuale
+    let contenuto = "Carrello acquisti\n\n";
+    contenuto += colonne.join(" | ") + "\n";
+
+    dati.forEach(obj => {
+        const valori = colonne.map(col => String(obj[col]));
+        contenuto += valori.join(" | ") + "\n";
+    });
+
+    // Convertiamo il testo in PDF minimale
+    const pdf = `
+%PDF-1.1
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
+   /Contents 4 0 R /Resources << >>
+>>
+endobj
+
+4 0 obj
+<< /Length ${contenuto.length + 50} >>
+stream
+BT
+/F1 12 Tf
+50 800 Td
+${contenuto.replace(/\n/g, " T*\n")}
+ET
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000010 00000 n 
+0000000060 00000 n 
+0000000114 00000 n 
+0000000220 00000 n 
+trailer
+<< /Size 5 /Root 1 0 R >>
+startxref
+330
+%%EOF
+`;
+
+    const blob = new Blob([pdf], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "carrello_acquisti.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
