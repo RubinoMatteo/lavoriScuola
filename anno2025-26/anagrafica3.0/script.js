@@ -13,3 +13,6 @@ function huawei(){
     sessionStorage.setItem(0, "huawei");
     location.href = "https://rubinomatteo.github.io/lavoriScuola/anno2025-26/anagrafica3.0/pagina2/index.html";
 }
+
+function vediCarrello(){
+}

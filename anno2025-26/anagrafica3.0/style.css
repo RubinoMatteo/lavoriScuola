@@ -30,6 +30,21 @@ body {
     margin: 0;
 }
 
+.card1 {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+    width: 14rem;
+}
+
+.card1 h3, .card1 p, .card1 a {
+    margin: 0;
+}
+
 .button {
     width: fit-content;
     padding: 0.5rem;
