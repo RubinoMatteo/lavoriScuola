@@ -252,7 +252,7 @@ function scaricaPDF(event) {
 
     const colonne = Object.keys(dati[0]);
 
-    // Costruzione del contenuto testuale
+    // Contenuto testuale
     let contenuto = "Carrello acquisti\n\n";
     contenuto += colonne.join(" | ") + "\n";
 
@@ -261,57 +261,82 @@ function scaricaPDF(event) {
         contenuto += valori.join(" | ") + "\n";
     });
 
-    // Convertiamo il testo in PDF minimale
-    const pdf = `
-%PDF-1.1
-1 0 obj
+    //
+    // CREAZIONE PDF CON OFFSET CORRETTI
+    //
+
+    const objects = [];
+
+    // Oggetto 1 – Catalog
+    objects.push(`1 0 obj
 << /Type /Catalog /Pages 2 0 R >>
 endobj
+`);
 
-2 0 obj
+    // Oggetto 2 – Pages
+    objects.push(`2 0 obj
 << /Type /Pages /Kids [3 0 R] /Count 1 >>
 endobj
+`);
 
-3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]
-   /Contents 4 0 R /Resources << >>
->>
+    // Oggetto 3 – Page
+    objects.push(`3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R >>
 endobj
+`);
 
-4 0 obj
-<< /Length ${contenuto.length + 50} >>
-stream
-BT
+    // Oggetto 4 – Contenuto pagina
+    const textStream = `BT
 /F1 12 Tf
 50 800 Td
 ${contenuto.replace(/\n/g, " T*\n")}
-ET
+ET`;
+
+    objects.push(`4 0 obj
+<< /Length ${textStream.length} >>
+stream
+${textStream}
 endstream
 endobj
+`);
 
-xref
-0 5
-0000000000 65535 f 
-0000000010 00000 n 
-0000000060 00000 n 
-0000000114 00000 n 
-0000000220 00000 n 
-trailer
-<< /Size 5 /Root 1 0 R >>
+    //
+    // Costruzione PDF con offset calcolati
+    //
+    let pdf = "%PDF-1.4\n";
+    const offsets = [0];
+
+    for (let obj of objects) {
+        offsets.push(pdf.length);
+        pdf += obj;
+    }
+
+    const xrefPos = pdf.length;
+
+    pdf += "xref\n";
+    pdf += `0 ${objects.length + 1}\n`;
+    pdf += "0000000000 65535 f \n";
+
+    for (let i = 1; i < offsets.length; i++) {
+        pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
+    }
+
+    pdf += `trailer
+<< /Size ${objects.length + 1} /Root 1 0 R >>
 startxref
-330
-%%EOF
-`;
+${xrefPos}
+%%EOF`;
 
+    //
+    // Download via Blob
+    //
     const blob = new Blob([pdf], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
     a.download = "carrello_acquisti.pdf";
-    document.body.appendChild(a);
     a.click();
-    a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
