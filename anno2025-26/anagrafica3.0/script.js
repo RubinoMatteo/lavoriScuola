@@ -15,7 +15,7 @@ function huawei(){
 }
 
 function vediCarrello(){
-const output = document.getElementById("dati");
+const output = document.getElementById("visualizza");
 
 // Legge il JSON dalla chiave "1"
 const rawData = sessionStorage.getItem("1");
