@@ -15,36 +15,38 @@ function huawei(){
 }
 
 function vediCarrello(){
-const output = document.createElement("div");
-output.className="card"
-const rawData = sessionStorage.getItem("1");
-if (rawData) {
-    let dataArray;
-    try {
-        dataArray = JSON.parse(rawData); 
-    } catch (e) {
-        output.innerHTML = "<p style='color: red;'>Errore nel leggere il JSON</p>";
-        throw e;
-    }
-    if (!Array.isArray(dataArray)) {
-        output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
-        return;
-    }
-    dataArray.forEach((item, index) => {
-        let ul = document.createElement("ul");
-        if (index === 0) {
-            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Intestazione</h4>`;
-        } else {
-            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
+    let carrello = document.getElementById("carrello");
+    const output = document.createElement("div");
+    output.className="card";
+    const rawData = sessionStorage.getItem("1");
+        if (rawData) {
+        let dataArray;
+        try {
+            dataArray = JSON.parse(rawData); 
+        } catch (e) {
+            output.innerHTML = "<p style='color: red;'>Errore nel leggere il JSON</p>";
+            throw e;
         }
-        Object.entries(item).forEach(([key, value]) => {
-            let li = document.createElement("li");
-            li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
-            ul.appendChild(li);
+        if (!Array.isArray(dataArray)) {
+            output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
+            return;
+        }
+        dataArray.forEach((item, index) => {
+            let ul = document.createElement("ul");
+            if (index === 0) {
+                ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Intestazione</h4>`;
+            } else {
+                ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
+            }
+            Object.entries(item).forEach(([key, value]) => {
+                let li = document.createElement("li");
+                li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
+                ul.appendChild(li);
+            });
+            output.appendChild(ul);
         });
-        output.appendChild(ul);
-    });
-} else {
-    output.innerHTML = `<p style="color: #999;">Nessun dato ricevuto</p>`;
-}
+    } else {
+        output.innerHTML = `<p style="color: #999;">Nessun dato ricevuto</p>`;
+    }
+    carrello.appendChild(output);
 }
