@@ -1,0 +1,13 @@
+{
+    "persona": [
+        {
+            "nome": "Matteo",
+            "cognome": "Rubino",
+            "dataNascita": "2007-12-12",
+            "luogoNascita": "Milano",
+            "indirizzo": "Via",
+            "citta": "Rho",
+            "cap": "20017"
+        }
+    ]
+}
