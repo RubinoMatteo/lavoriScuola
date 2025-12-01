@@ -17,7 +17,7 @@ function scrivi(nome,memory,os,image){
                             <p><b>Memoria</b>:${memory}</p>
                             <p><b>S.O.</b>:${os}</p>
                             <img id="img" src="${image}" alt="samsung"> 
-                            <a target="_blank" class="button" onclick="acquista('${name}','${memory}','${os}')" > &#128722; </a>
+                            <a target="_blank" class="button" onclick="acquista('${nome}','${memory}','${os}')" > &#128722; </a>
                         </div>`;
 }
 function samsung(){
@@ -49,13 +49,7 @@ function apple(){
                 var memory = iPhone[x].getElementsByTagName("memory")[0].childNodes[0].nodeValue;
                 var os = iPhone[x].getElementsByTagName("os")[0].childNodes[0].nodeValue;
                 var image = iPhone[x].getElementsByTagName("image")[0].childNodes[0].nodeValue;
-                stampa+=`<div class="card">
-                            <h3>${name}</h3>
-                            <p><b>Memoria</b>:${memory}</p>
-                            <p><b>S.O.</b>:${os}</p>
-                            <img id="img" src="${image}" alt="iPhone"> 
-                            <a target="_blank" class="button" onclick="acquista('${name}','${memory}','${os}')" > &#x1f6d2; </a>
-                        </div> `;
+                stampa+=scrivi(name,memory,os,image);
             }            
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
@@ -80,13 +74,7 @@ function huawei(){
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
             for (let i = 1; i < huawei.length; i++) {
-                stampa+=`<div class="card">
-                            <h3>${huawei[i][0]}</h3>
-                            <p><b>Memoria</b>:${huawei[i][1]}</p>
-                            <p><b>S.O.</b>:${huawei[i][2]}</p>
-                            <img id="img" src="${huawei[i][3]}" alt="iPhone"> 
-                            <a target="_blank" class="button" onclick="acquista('${huawei[i][0]}','${huawei[i][1]}','${huawei[i][2]}')" > &#x1f6d2; </a>
-                            </div> `;
+                stampa+=scrivi(huawei[i][0],huawei[i][1],huawei[i][2],huawei[i][3]);
             }
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
