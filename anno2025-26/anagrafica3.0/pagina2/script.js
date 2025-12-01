@@ -256,11 +256,17 @@ function scaricaPDF(event) {
     let yPos = 800;
     let textCommands = "BT\n/F1 12 Tf\n";
     
-    righe.forEach(riga => {
+    righe.forEach((riga, index) => {
         // Escape delle parentesi nel testo
         const testoEscaped = riga.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
-        textCommands += `50 ${yPos} Td\n(${testoEscaped}) Tj\n`;
-        yPos -= 15; // Spaziatura tra righe
+        
+        if (index === 0) {
+            // Prima riga - posizionamento assoluto
+            textCommands += `50 ${yPos} Td\n(${testoEscaped}) Tj\n`;
+        } else {
+            // Righe successive - spostamento relativo verso il basso
+            textCommands += `0 -15 Td\n(${testoEscaped}) Tj\n`;
+        }
     });
     
     textCommands += "ET";
