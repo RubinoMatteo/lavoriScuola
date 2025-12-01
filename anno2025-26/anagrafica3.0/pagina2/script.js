@@ -252,91 +252,93 @@ function scaricaPDF(event) {
 
     const colonne = Object.keys(dati[0]);
 
-    // Contenuto testuale
-    let contenuto = "Carrello acquisti\n\n";
-    contenuto += colonne.join(" | ") + "\n";
+    // Costruzione del contenuto testuale per il PDF
+    let righe = [];
+    righe.push("CARRELLO ACQUISTI");
+    righe.push("");
+    righe.push(colonne.join(" | "));
+    righe.push("-".repeat(50));
 
     dati.forEach(obj => {
         const valori = colonne.map(col => String(obj[col]));
-        contenuto += valori.join(" | ") + "\n";
+        righe.push(valori.join(" | "));
     });
 
-    //
-    // CREAZIONE PDF CON OFFSET CORRETTI
-    //
+    // Creazione del contenuto stream con posizionamento corretto
+    let yPos = 800;
+    let textCommands = "BT\n/F1 12 Tf\n";
+    
+    righe.forEach(riga => {
+        // Escape delle parentesi nel testo
+        const testoEscaped = riga.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        textCommands += `50 ${yPos} Td\n(${testoEscaped}) Tj\n`;
+        yPos -= 15; // Spaziatura tra righe
+    });
+    
+    textCommands += "ET";
 
+    // Array per memorizzare gli oggetti
     const objects = [];
+    const offsets = [0]; // Offset 0 è sempre all'inizio
 
-    // Oggetto 1 – Catalog
-    objects.push(`1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
-endobj
-`);
-
-    // Oggetto 2 – Pages
-    objects.push(`2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
-endobj
-`);
-
-    // Oggetto 3 – Page
-    objects.push(`3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R >>
-endobj
-`);
-
-    // Oggetto 4 – Contenuto pagina
-    const textStream = `BT
-/F1 12 Tf
-50 800 Td
-${contenuto.replace(/\n/g, " T*\n")}
-ET`;
-
-    objects.push(`4 0 obj
-<< /Length ${textStream.length} >>
-stream
-${textStream}
-endstream
-endobj
-`);
-
-    //
-    // Costruzione PDF con offset calcolati
-    //
-    let pdf = "%PDF-1.4\n";
-    const offsets = [0];
-
-    for (let obj of objects) {
-        offsets.push(pdf.length);
-        pdf += obj;
+    // Funzione helper per aggiungere un oggetto
+    function addObject(content) {
+        objects.push(content);
     }
 
+    // Oggetto 1 – Catalog
+    addObject("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+
+    // Oggetto 2 – Pages
+    addObject("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+
+    // Oggetto 3 – Page (con riferimento al font)
+    addObject("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n");
+
+    // Oggetto 4 – Stream del contenuto
+    addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
+
+    // Oggetto 5 – Font
+    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n");
+
+    // Costruzione del PDF finale
+    let pdf = "%PDF-1.4\n";
+
+    // Aggiunta degli oggetti e calcolo degli offset
+    for (let i = 0; i < objects.length; i++) {
+        offsets.push(pdf.length);
+        pdf += objects[i];
+    }
+
+    // Posizione della tabella xref
     const xrefPos = pdf.length;
 
+    // Tabella xref
     pdf += "xref\n";
     pdf += `0 ${objects.length + 1}\n`;
     pdf += "0000000000 65535 f \n";
 
-    for (let i = 1; i < offsets.length; i++) {
+    for (let i = 1; i <= objects.length; i++) {
         pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
     }
 
-    pdf += `trailer
-<< /Size ${objects.length + 1} /Root 1 0 R >>
-startxref
-${xrefPos}
-%%EOF`;
+    // Trailer
+    pdf += "trailer\n";
+    pdf += `<< /Size ${objects.length + 1} /Root 1 0 R >>\n`;
+    pdf += "startxref\n";
+    pdf += `${xrefPos}\n`;
+    pdf += "%%EOF";
 
-    //
-    // Download via Blob
-    //
+    // Download del file
     const blob = new Blob([pdf], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
     a.download = "carrello_acquisti.pdf";
+    document.body.appendChild(a);
     a.click();
+    a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
