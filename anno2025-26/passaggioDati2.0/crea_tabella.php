@@ -222,18 +222,18 @@
                                 <th>CAP</th>
                               </tr>";
                         
-                        foreach ($data as $record) {
-                            echo "<tr>";
-                            echo "<td>" . htmlspecialchars($record['nome'] ?? '-') . "</td>";
-                            echo "<td>" . htmlspecialchars($record['cognome'] ?? '-') . "</td>";
-                            echo "<td>" . htmlspecialchars($record['dataNascita'] ?? '-') . "</td>";
-                            echo "<td>" . htmlspecialchars($record['luogoNascita'] ?? '-') . "</td>";
-                            echo "<td>" . htmlspecialchars($record['indirizzo'] ?? '-') . "</td>";
-                            echo "<td>" . htmlspecialchars($record['citta'] ?? '-') . "</td>";
-                            echo "<td>" . htmlspecialchars($record['cap'] ?? '-') . "</td>";
-                            echo "</tr>";
-                        }
                         
+                        for ($i = 0; $i < count($data); $i++) {
+                          echo "<tr>";
+                            echo "<td>".$data[$i]['nome']."</td>"
+                            . "<td>".$data[$i]['cognome']."</td>"
+                            . "<td>".$data[$i]['dataNascita']."</td>"
+                            . "<td>".$data[$i]['luogoNascita']."</td>"
+                            . "<td>".$data[$i]['indirizzo']."</td>"
+                            . "<td>".$data[$i]['citta']."</td>"
+                            . "<td>".$data[$i]['cap']."</td>";
+                          echo "</tr>";
+                        }
                         echo "</table>";
                     } else {
                         echo "<div class='no-data'>Nessun dato disponibile</div>";
