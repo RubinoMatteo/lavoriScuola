@@ -195,8 +195,6 @@ fclose($file_w);
         
         <div class="button-container">
             <a href="index.html" class="btn btn-primary"> Inserisci Altri Dati</a>
-        </div>
-        <div class="button-container">
             <a href="crea_tabella.php" class="btn btn-primary"> visualizza tabella</a>
         </div>
     </div>
