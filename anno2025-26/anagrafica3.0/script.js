@@ -46,7 +46,7 @@ function vediCarrello(){
             output.appendChild(ul);
         });
     } else {
-        output.innerHTML = `<p style="color: #999;">Nessun dato ricevuto</p>`;
+        output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
     }
     carrello.appendChild(output);
 }
