@@ -225,13 +225,13 @@
                         
                         for ($i = 0; $i < count($data); $i++) {
                           echo "<tr>";
-                            echo "<td>".$data[$i]['nome']."</td>"
-                            . "<td>".$data[$i]['cognome']."</td>"
-                            . "<td>".$data[$i]['dataNascita']."</td>"
-                            . "<td>".$data[$i]['luogoNascita']."</td>"
-                            . "<td>".$data[$i]['indirizzo']."</td>"
-                            . "<td>".$data[$i]['citta']."</td>"
-                            . "<td>".$data[$i]['cap']."</td>";
+                            echo "<td>".$data["persona"][$i]['nome']."</td>"
+                            . "<td>".$data["persona"][$i]['cognome']."</td>"
+                            . "<td>".$data["persona"][$i]['dataNascita']."</td>"
+                            . "<td>".$data["persona"][$i]['luogoNascita']."</td>"
+                            . "<td>".$data["persona"][$i]['indirizzo']."</td>"
+                            . "<td>".$data["persona"][$i]['citta']."</td>"
+                            . "<td>".$data["persona"][$i]['cap']."</td>";
                           echo "</tr>";
                         }
                         echo "</table>";
@@ -248,4 +248,5 @@
         </div>
     </div>
 </body>
+
 </html>
