@@ -1,0 +1,76 @@
+body {
+    max-width: 50rem;
+    margin: 2rem auto;
+    padding: 0;
+    font-family: 'Inter';
+    background: linear-gradient(135deg, #0A2010, #256D5A, #9EDFC7);
+    color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+#img{
+    width: 200px;
+    height: 200px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+
+.card1 {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+    width: 14rem;
+}
+
+.card h3, .card p, .card a {
+    margin: 0;
+}
+
+.button {
+    width: fit-content;
+    padding: 0.5rem;
+    border: 2px solid black;
+    color: black;
+    text-decoration: none;
+    align-self: center;
+    border-radius: 1.5rem;
+}
+.button:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+@media screen and (max-width: 825px) {
+    body {
+        margin: 2rem 1.5rem;
+    }
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
