@@ -1,6 +1,7 @@
-const subMenus =
-    document.querySelectorAll(".sub-menu"),
-    btns = document.querySelectorAll("button");
+const subMenus = document.querySelectorAll(".sub-menu"),
+    btns = document.querySelectorAll("button"),
+    sidebar = document.querySelector(".sidebar"),
+    headerImg = document.querySelector(".sidebar header img");
 
 const reset = () => {
     btns.forEach(btn => btn.classList.remove("active"));
@@ -10,10 +11,8 @@ const reset = () => {
 const openSubmenu = element => {
     reset();
     element.classList.add("active");
-
     const sibling = element.nextElementSibling;
     const ul = sibling.querySelector("ul");
-
     if (sibling.clientHeight == 0) {
         sibling.style.height = `${ul.clientHeight}px`;
     } else {
@@ -26,3 +25,12 @@ const gotoPage = element => {
     reset();
     element.classList.add("active");
 };
+
+// Toggle sidebar quando clicchi sull'immagine
+headerImg.addEventListener("click", () => {
+    sidebar.classList.toggle("collapsed");
+    // Chiudi tutti i submenu quando collassi la sidebar
+    if (sidebar.classList.contains("collapsed")) {
+        reset();
+    }
+});

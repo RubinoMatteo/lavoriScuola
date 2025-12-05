@@ -117,3 +117,33 @@ sub-menu button {
     max-width: 20px;
     min-width: 20px;
 }
+
+/* Aggiungi questa regola alla fine del tuo CSS */
+.sidebar.collapsed {
+    width: 88px;
+}
+
+.sidebar.collapsed button p,
+.sidebar.collapsed .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sidebar.collapsed button i:nth-child(3) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar button p {
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sidebar header img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sidebar header img:hover {
+    transform: scale(1.05);
+}
