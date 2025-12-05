@@ -121,6 +121,7 @@ sub-menu button {
 /* Aggiungi questa regola alla fine del tuo CSS */
 .sidebar.collapsed {
     width: 88px;
+    height: 88px;
 }
 
 .sidebar.collapsed button p,
