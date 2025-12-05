@@ -31,7 +31,7 @@ function vediCarrello(){
             output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
             return;
         }
-        dataArray.forEach((item, index) => {
+        dataArray.slice(1).forEach((item, index) => {
             let ul = document.createElement("ul");
             if (index === 0) {
                 ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Intestazione</h4>`;
