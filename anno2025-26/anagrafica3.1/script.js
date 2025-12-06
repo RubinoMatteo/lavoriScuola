@@ -354,11 +354,14 @@ function contaElementi(){
         let dati= data.slice(1);
         for(let i=0; i<dati.length; i++){
             for(let j=0; j<dati.length; j++){
-              if (dati[i].name == dati[j].name)
+              if (dati[i].name == dati[j].name){
                 conta++;
+                dati.splice(j, 1);
+              }
             }
               let obj ={name:dati[i].name, memory:dati[i].memory, OS:dati[i].OS, quantità:conta };
               scontrino.push(obj);
+              dati.splice(i, 1);
               conta = 0;
         }
         console.log(scontrino);
