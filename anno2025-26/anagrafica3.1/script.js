@@ -319,7 +319,7 @@ function scaricaPDF(event) {
 function contaElementi(){
     let scontrino=[];
     let conta=0;
-    let data= json.parse(sessionStorage.getItem("1"));
+    let data= JSON.parse(sessionStorage.getItem("1"));
     if(data.length>1){
         let dati= data.slice(1);
         for(let i=0; i<dati.length; i++){
@@ -334,7 +334,7 @@ function contaElementi(){
         console.log(scontrino);
         return scontrino;
     }else{
-        alert(il carrello é vuoto);
+        alert("il carrello é vuoto");
         return;
     }
 }
