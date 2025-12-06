@@ -40,7 +40,13 @@ const openSubmenu = element => {
 // Toggle sidebar quando clicchi sull'immagine
 headerImg.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
-    vediCarrello();
+    // Mostra/nascondi carrello in base allo stato della sidebar
+    if (!sidebar.classList.contains("collapsed")) {
+        vediCarrello();
+    } else {
+        // Svuota il carrello quando la sidebar si chiude
+        document.getElementById("carrello").innerHTML = "";
+    }
     // Chiudi tutti i submenu quando collassi la sidebar
     if (sidebar.classList.contains("collapsed")) {
         reset();
@@ -48,6 +54,7 @@ headerImg.addEventListener("click", () => {
 });
 function vediCarrello(){
     let carrello = document.getElementById("carrello");
+    carrello.innerHTML=" "
     const output = document.createElement("div");
     output.className="card";
     const rawData = sessionStorage.getItem("1");
@@ -81,6 +88,13 @@ function vediCarrello(){
         output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
     }
     carrello.appendChild(output);
+    carrello.innerHTML=`<div class="card1">
+                    <a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
+                    <a class="button" onclick="scaricacsv(event)" href="" id="linkScaricacsv">&#x1f6d2; download csv &#10515;</a>
+                    <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
+                    <a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
+                    <!--<a class="button" href="#" download="carrello_acquisti.json" id="linkScaricaJson">&#x1f6d2; download &#10515;</a>-->
+                </div>`
 
 }
 
