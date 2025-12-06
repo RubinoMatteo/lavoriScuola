@@ -368,7 +368,7 @@ function contaElementi(){
             for(let j=0; j<scontrino.length; j++){
               if (scontrino[i].name == scontrino[j].name){
                 cont++;
-                if(cont >0)
+                if(cont >1)
                     index.push(j);
               }
             }
@@ -376,6 +376,8 @@ function contaElementi(){
         }
         for(let i=0; i<index.length; i++){
             scontrino.splice(index[i], 1);
+            for(let j=index.length-i; j>0; j++)
+                index[j]=index[j]-1;
         }
         console.log(scontrino);
         return scontrino;
