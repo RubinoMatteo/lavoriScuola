@@ -99,7 +99,7 @@ function scrivi(nome,memory,os,image){
                             <p><b>Memoria</b>:${memory}</p>
                             <p><b>S.O.</b>:${os}</p>
                             <img id="img" src="${image}" alt="samsung"> 
-                            <a target="_blank" class="button" onclick="acquista('${nome}','${memory}','${os}')" > &#128722; </a>
+                            <a target="_blank" class="button" onclick="acquista('${nome}','${memory}','${os}')" style="cursor: pointer;" > &#128722; </a>
                         </div>`;
 }
 function samsung(){
