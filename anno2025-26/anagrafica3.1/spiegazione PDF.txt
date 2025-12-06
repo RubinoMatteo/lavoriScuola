@@ -1,0 +1,131 @@
+📘 COME FUNZIONA LA FUNZIONE CHE CREA IL PDF — SPIEGAZIONE SEMPLICE (PER 17/18ENNI)
+
+Questa funzione, riga dopo riga, costruisce un file PDF a mano, cioè senza usare librerie come jsPDF.
+È interessante perché ti fa vedere come un PDF è fatto davvero “dentro”.
+
+Per capirla bene, dividiamo il funzionamento in 8 parti.
+
+🔵 1 — Raccolta dei dati del carrello
+
+All’inizio la funzione prende i dati degli articoli dal carrello.
+Quando li ha, li mette tutti in un array chiamato dati.
+
+Se i dati sono un singolo oggetto, lo trasforma in un array con un solo elemento, così il resto del codice può lavorare sempre nello stesso modo.
+
+🔵 2 — Preparazione delle righe da scrivere nel PDF
+
+La funzione costruisce un elenco di stringhe (righe) che rappresentano il testo da mettere nel PDF:
+
+Titolo “CARRELLO ACQUISTI”
+
+Nomi delle colonne
+
+Una riga di separazione
+
+Una riga per ogni oggetto nel carrello
+
+In pratica sta preparando il contenuto del PDF come se fosse una tabella di testo.
+
+🔵 3 — Creazione del contenuto testuale in formato PDF
+
+Un PDF non usa testo normale, ma comandi speciali.
+Per cominciare a scrivere testo, si usa BT (Begin Text).
+Per scegliere il font: /F1 12 Tf.
+
+Poi il codice prende ogni riga e crea dei comandi tipo:
+
+Td → sposta il cursore nella pagina
+
+Tj → scrive il testo
+
+Viene gestito anche l’“a capo”: ogni nuova riga viene spostata 15 punti sotto la precedente.
+
+È la parte che effettivamente genera il contenuto della pagina.
+
+🔵 4 — Creazione dei singoli oggetti PDF
+
+Un PDF è composto da tanti “oggetti numerati”.
+Qui vengono creati:
+
+il Catalogo (oggetto principale del PDF)
+
+l’elenco delle pagine
+
+la singola pagina
+
+il contenuto testuale (lo stream con i comandi)
+
+il font da usare
+
+Ogni oggetto ha un formato come:
+
+3 0 obj
+<< ... contenuto ... >>
+endobj
+
+
+Questi oggetti vengono messi in un array.
+
+🔵 5 — Assemblaggio degli oggetti e calcolo degli offset
+
+Quando inizia a costruire il PDF finale, la funzione aggiunge gli oggetti uno dopo l’altro dentro una variabile pdf.
+
+Ogni volta che aggiunge un oggetto registra l’offset, cioè la posizione in byte dove l’oggetto parte.
+
+Esempio:
+se l’oggetto 3 inizia al byte 240, allora il suo offset è 240.
+
+Questa informazione serve dopo, perché un PDF reader deve sapere esattamente dove andare a cercare ogni oggetto senza scorrere tutto il file.
+
+🔵 6 — Costruzione della tabella XREF
+
+La tabella XREF è l’indice del PDF.
+Dice al lettore:
+
+“L’oggetto 1 si trova qui, l’oggetto 2 qui, l’oggetto 3 qui…”
+
+Per ogni oggetto si scrive una riga con:
+
+l’offset (10 cifre)
+
+il numero di generazione (quasi sempre 00000)
+
+n = oggetto in uso
+
+Il primo oggetto (0) è sempre finto e contiene:
+
+0000000000 65535 f
+
+
+Se manca la tabella XREF, il PDF non può essere aperto.
+
+🔵 7 — Creazione del Trailer
+
+Il trailer è la parte finale che “chiude” il PDF.
+Dice al lettore:
+
+quanti oggetti ci sono (/Size)
+
+qual è l’oggetto principale /Root (di solito 1 0 R)
+
+dove si trova la tabella XREF (startxref)
+
+che il file è finito (%%EOF)
+
+È come la conclusione del documento, dove sono scritte le informazioni chiave per permettere ai programmi di leggere tutto correttamente.
+
+🔵 8 — Download del PDF
+
+Alla fine viene creato:
+
+un Blob (un oggetto che rappresenta il PDF)
+
+un URL temporaneo
+
+un finto click su un link per scaricare il PDF
+
+Poi l’URL viene cancellato dalla memoria.
+
+Questo fa sì che il PDF venga scaricato automaticamente dal browser con il nome:
+
+carrello_acquisti.pdf
