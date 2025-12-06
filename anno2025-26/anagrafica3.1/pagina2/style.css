@@ -31,6 +31,10 @@ body {
     color: black;
 }
 
+.card h3, .card p, .card a {
+    margin: 0;
+}
+
 .card1 {
     display: flex;
     gap: 1.5rem;
@@ -42,7 +46,7 @@ body {
     width: 14rem;
 }
 
-.card h3, .card p, .card a {
+.card1 h3, .card1 p, .card1 a {
     margin: 0;
 }
 
@@ -59,6 +63,19 @@ body {
     background: rgba(0, 0, 0, 0.5);
 }
 
+ul{
+    list-style : none;
+    padding : 0;
+    margin : 15px 0;
+    border : 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding : 10px;
+}
+
+li{
+    padding : 6px 0;
+    border-bottom : 1px solid #e2e8f0;
+}
 
 @media screen and (max-width: 825px) {
     body {
