@@ -348,7 +348,9 @@ function scaricaPDF(event) {
 
 function contaElementi(){
     let scontrino=[];
-    let conta=0;
+    let index=[];
+    let cont=0;
+    let conta=-1;
     let data= JSON.parse(sessionStorage.getItem("1"));
     if(data.length>1){
         let dati= data.slice(1);
@@ -356,13 +358,24 @@ function contaElementi(){
             for(let j=0; j<dati.length; j++){
               if (dati[i].name == dati[j].name){
                 conta++;
-                dati.splice(j, 1);
               }
             }
               let obj ={name:dati[i].name, memory:dati[i].memory, OS:dati[i].OS, quantità:conta };
               scontrino.push(obj);
-              dati.splice(i, 1);
               conta = 0;
+        }
+        for(let i=0; i<scontrino.length; i++){
+            for(let j=0; j<scontrino.length; j++){
+              if (scontrino[i].name == scontrino[j].name){
+                cont++;
+                if(cont >0)
+                    index.push(j);
+              }
+            }
+            cont =0;
+        }
+        for(let i=0; i<index.length; i++){
+            scontrino.splice(index[i], 1);
         }
         console.log(scontrino);
         return scontrino;
