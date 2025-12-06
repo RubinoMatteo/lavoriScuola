@@ -87,10 +87,10 @@ function vediCarrello() {
     }
     carrello.appendChild(output);
     carrello.innerHTML+=`<br><div class="card">
-                    <a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
+                    <!--<a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
                     <a class="button" onclick="scaricacsv(event)" href="" id="linkScaricacsv">&#x1f6d2; download csv &#10515;</a>
                     <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
-                    <a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
+                    --><a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
                     <!--<a class="button" href="#" download="carrello_acquisti.json" id="linkScaricaJson">&#x1f6d2; download &#10515;</a>-->
                 </div>`;
 }
@@ -99,7 +99,7 @@ function vediCarrello() {
     download dello scontrino in diverse estensioni
 ------------------------------------------------------*/
 
-function scarica(event){
+/*function scarica(event){
     event.preventDefault();
     const stringaJson = sessionStorage.getItem("1"); 
     if (!stringaJson) {
@@ -194,7 +194,7 @@ function scaricaxml(event) {
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
+}*/
 function scaricaPDF(event) {
     event.preventDefault();
 
@@ -313,4 +313,27 @@ function scaricaPDF(event) {
     a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function contaElementi(){
+    let scontrino=[];
+    let conta=0;
+    let data= json.parse(sessionStorage.getItem("1"));
+    if(data.length>1){
+        let dati= data.slice(1);
+        for(let i=0; i<dati.length; i++){
+            for(let j=0; j<dati.length; j++){
+              if (dati[i].name == dati[j].name)
+                conta++;
+            }
+              let obj ={name:dati[i].name, memory:dati[i].memory, OS:dati[i].OS, quantità:conta };
+              scontrino.push(obj);
+              conta = 0;
+        }
+        console.log(scontrino);
+        return scontrino;
+    }else{
+        alert(il carrello é vuoto);
+        return;
+    }
 }
