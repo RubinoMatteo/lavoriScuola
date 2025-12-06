@@ -43,15 +43,21 @@ const openSubmenu = element => {
 // Toggle sidebar quando clicchi sull'immagine
 headerImg.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
-    vediCarrello();
+    // Mostra/nascondi carrello in base allo stato della sidebar
+    if (!sidebar.classList.contains("collapsed")) {
+        vediCarrello();
+    } else {
+        // Svuota il carrello quando la sidebar si chiude
+        document.getElementById("carrello").innerHTML = "";
+    }
     // Chiudi tutti i submenu quando collassi la sidebar
     if (sidebar.classList.contains("collapsed")) {
         reset();
     }
 });
 function vediCarrello() {
-    if (count == 0) {
         let carrello = document.getElementById("carrello");
+        carrello.innerHTML = "";
         const output = document.createElement("div");
         output.className = "card";
         const rawData = sessionStorage.getItem("1");
@@ -85,7 +91,5 @@ function vediCarrello() {
             output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
         }
         carrello.appendChild(output);
-        count++;
-    } else { return; }
 
 }
