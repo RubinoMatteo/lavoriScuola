@@ -54,7 +54,8 @@ headerImg.addEventListener("click", () => {
         reset();
     }
 });
-function vediCarrello() {
+
+/*function vediCarrello() {
     let carrello = document.getElementById("carrello");
     carrello.innerHTML = "";
     const output = document.createElement("div");
@@ -73,6 +74,38 @@ function vediCarrello() {
             return;
         }
         dataArray.slice(1).forEach((item, index) => {
+            let ul = document.createElement("ul");
+            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
+            Object.entries(item).forEach(([key, value]) => {
+                let li = document.createElement("li");
+                li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
+                ul.appendChild(li);
+            });
+            output.appendChild(ul);
+        });
+    } else {
+        output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
+    }
+    carrello.appendChild(output);
+    carrello.innerHTML+=`<br><div class="card">
+                    <!--<a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
+                    <a class="button" onclick="scaricacsv(event)" href="" id="linkScaricacsv">&#x1f6d2; download csv &#10515;</a>
+                    <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
+                    --><a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
+                    <!--<a class="button" href="#" download="carrello_acquisti.json" id="linkScaricaJson">&#x1f6d2; download &#10515;</a>-->
+                </div>`;
+}*/
+function vediCarrello() {
+    let carrello = document.getElementById("carrello");
+    carrello.innerHTML = "";
+    const output = document.createElement("div");
+    output.className = "card";
+    let dataArray = contaElementi();
+        if (!Array.isArray(dataArray)) {
+            output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
+            return;
+        }
+        dataArray.forEach((item, index) => {
             let ul = document.createElement("ul");
             ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
             Object.entries(item).forEach(([key, value]) => {
