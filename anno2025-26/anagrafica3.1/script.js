@@ -1,5 +1,4 @@
 let array = [];
-let count = 0;
 sessionStorage.getItem(1) !== null ? array = JSON.parse(sessionStorage.getItem(1)) : array[0] = { name: "nome", memory: "memoria", OS: "Sistema Operativo" };
 sessionStorage.setItem(1, JSON.stringify(array, null, 2));
 function samsung() {
@@ -56,36 +55,35 @@ headerImg.addEventListener("click", () => {
     }
 });
 function vediCarrello() {
-        let carrello = document.getElementById("carrello");
-        carrello.innerHTML = "";
-        const output = document.createElement("div");
-        output.className = "card";
-        const rawData = sessionStorage.getItem("1");
-        if (rawData) {
-            let dataArray;
-            try {
-                dataArray = JSON.parse(rawData);
-            } catch (e) {
-                output.innerHTML = "<p style='color: red;'>Errore nel leggere il JSON</p>";
-                throw e;
-            }
-            if (!Array.isArray(dataArray)) {
-                output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
-                return;
-            }
-            dataArray.slice(1).forEach((item, index) => {
-                let ul = document.createElement("ul");
-                ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
-                Object.entries(item).forEach(([key, value]) => {
-                    let li = document.createElement("li");
-                    li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
-                    ul.appendChild(li);
-                });
-                output.appendChild(ul);
-            });
-        } else {
-            output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
+    let carrello = document.getElementById("carrello");
+    carrello.innerHTML = "";
+    const output = document.createElement("div");
+    output.className = "card";
+    const rawData = sessionStorage.getItem("1");
+    if (rawData) {
+        let dataArray;
+        try {
+            dataArray = JSON.parse(rawData);
+        } catch (e) {
+            output.innerHTML = "<p style='color: red;'>Errore nel leggere il JSON</p>";
+            throw e;
         }
-        carrello.appendChild(output);
-
+        if (!Array.isArray(dataArray)) {
+            output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
+            return;
+        }
+        dataArray.slice(1).forEach((item, index) => {
+            let ul = document.createElement("ul");
+            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
+            Object.entries(item).forEach(([key, value]) => {
+                let li = document.createElement("li");
+                li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
+                ul.appendChild(li);
+            });
+            output.appendChild(ul);
+        });
+    } else {
+        output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
+    }
+    carrello.appendChild(output);
 }

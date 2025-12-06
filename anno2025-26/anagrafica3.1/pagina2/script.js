@@ -58,7 +58,7 @@ function vediCarrello(){
     const output = document.createElement("div");
     output.className="card";
     const rawData = sessionStorage.getItem("1");
-        if (rawData) {
+    if (rawData) {
         let dataArray;
         try {
             dataArray = JSON.parse(rawData); 
@@ -90,8 +90,7 @@ function vediCarrello(){
                     <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
                     <a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
                     <!--<a class="button" href="#" download="carrello_acquisti.json" id="linkScaricaJson">&#x1f6d2; download &#10515;</a>-->
-                </div>`
-
+                </div>`;
 }
 
 function scrivi(nome,memory,os,image){
