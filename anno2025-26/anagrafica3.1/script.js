@@ -58,7 +58,6 @@ function vediCarrello() {
     let carrello = document.getElementById("carrello");
     carrello.innerHTML = "";
     const output = document.createElement("div");
-    output.style.overflow="auto";
     output.className = "card";
     const rawData = sessionStorage.getItem("1");
     if (rawData) {
