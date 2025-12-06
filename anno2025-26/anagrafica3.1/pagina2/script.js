@@ -72,11 +72,7 @@ function vediCarrello(){
         }
         dataArray.slice(1).forEach((item, index) => {
             let ul = document.createElement("ul");
-            if (index === 0) {
-                ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Intestazione</h4>`;
-            } else {
-                ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
-            }
+            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
             Object.entries(item).forEach(([key, value]) => {
                 let li = document.createElement("li");
                 li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
