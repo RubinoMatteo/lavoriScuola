@@ -115,9 +115,6 @@ function vediCarrello() {
             });
             output.appendChild(ul);
         });
-    } else {
-        output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
-    }
     carrello.appendChild(output);
     carrello.innerHTML+=`<br><div class="card">
                     <!--<a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
