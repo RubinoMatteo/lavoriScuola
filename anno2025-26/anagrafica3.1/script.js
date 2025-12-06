@@ -198,15 +198,16 @@ function scaricaxml(event) {
 function scaricaPDF(event) {
     event.preventDefault();
 
-    const stringaJson = sessionStorage.getItem("1");
+    /*const stringaJson = sessionStorage.getItem("1");
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
-    }
+    }*/
 
     let dati;
     try {
-        dati = JSON.parse(stringaJson);
+        //dati = JSON.parse(stringaJson);
+        dati= contaElementi();
     } catch (e) {
         alert("Errore: dati non validi!");
         return;
