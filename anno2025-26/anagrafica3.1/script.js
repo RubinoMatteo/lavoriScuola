@@ -376,8 +376,9 @@ function contaElementi(){//controllare se da ancora errore
         }
         for(let i=0; i<index.length; i++){
             scontrino.splice(index[i], 1);
-            for(let j=index.length-i; j>0; j++)
-                index[j]=index[j]-1;
+            for(let j=index.length-i-1; j>0; j--)
+                if(index[i]>index[j])
+                    index[j]-=1;
         }
         console.log(scontrino);
         return scontrino;
