@@ -256,15 +256,15 @@ function scaricaPDF(event) {
     //righe.push(colonne.join(" | "));
     righe.push("-".repeat(50));
 
-    dati.forEach(obj => {
+    dati.forEach(obj => {//da sistemare meglio per migliorare la leggibilità nel pdf 
         //const valori = colonne.map(col => String(obj[col]));
         //righe.push(valori.join(""));
         let output = "";
+        righe.push(`name : ${obj.name}`);
         righe.push(`memory : ${obj.memory}`);
         righe.push( `OS : ${obj.OS}`);
         righe.push(`quantità : ${obj.quantità}`);
-        righe.push(`name : ${obj.name}`);
-        righe.push("-".repeat(50));
+        righe.push("_".repeat(50));
     });
 
     // Creazione del contenuto stream con posizionamento corretto
