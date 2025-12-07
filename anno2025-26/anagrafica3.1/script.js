@@ -101,22 +101,22 @@ function vediCarrello() {
     const output = document.createElement("div");
     output.className = "card";
     let dataArray = contaElementi();
-        if (!Array.isArray(dataArray)) {
-            output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
-            return;
-        }
-        dataArray.forEach((item, index) => {
-            let ul = document.createElement("ul");
-            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
-            Object.entries(item).forEach(([key, value]) => {
-                let li = document.createElement("li");
-                li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
-                ul.appendChild(li);
-            });
-            output.appendChild(ul);
+    if (!Array.isArray(dataArray)) {
+        output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
+        return;
+    }
+    dataArray.forEach((item, index) => {
+        let ul = document.createElement("ul");
+        ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
+        Object.entries(item).forEach(([key, value]) => {
+            let li = document.createElement("li");
+            li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
+            ul.appendChild(li);
         });
+        output.appendChild(ul);
+    });
     carrello.appendChild(output);
-    carrello.innerHTML+=`<br><div class="card">
+    carrello.innerHTML += `<br><div class="card">
                     <!--<a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
                     <a class="button" onclick="scaricacsv(event)" href="" id="linkScaricacsv">&#x1f6d2; download csv &#10515;</a>
                     <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
@@ -237,7 +237,7 @@ function scaricaPDF(event) {
     let dati;
     try {
         //dati = JSON.parse(stringaJson);
-        dati= contaElementi();
+        dati = contaElementi();
     } catch (e) {
         alert("Errore: dati non validi!");
         return;
@@ -264,11 +264,11 @@ function scaricaPDF(event) {
     // Creazione del contenuto stream con posizionamento corretto
     let yPos = 800;
     let textCommands = "BT\n/F1 12 Tf\n";
-    
+
     righe.forEach((riga, index) => {
         // Escape delle parentesi nel testo
         const testoEscaped = riga.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
-        
+
         if (index === 0) {
             // Prima riga - posizionamento assoluto
             textCommands += `50 ${yPos} Td\n(${testoEscaped}) Tj\n`;
@@ -277,7 +277,7 @@ function scaricaPDF(event) {
             textCommands += `0 -15 Td\n(${testoEscaped}) Tj\n`;
         }
     });
-    
+
     textCommands += "ET";
 
     // Array per memorizzare gli oggetti
@@ -346,43 +346,35 @@ function scaricaPDF(event) {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-function contaElementi(){//controllare se da ancora errore 
-    let scontrino=[];
-    let index=[];
-    let cont=0;
-    let conta=-1;
-    let data= JSON.parse(sessionStorage.getItem("1"));
-    if(data.length>1){
-        let dati= data.slice(1);
-        for(let i=0; i<dati.length; i++){
-            for(let j=0; j<dati.length; j++){
-              if (dati[i].name == dati[j].name){
-                conta++;
-              }
+function contaElementi() {//controllare se da ancora errore 
+    let scontrino = [];
+    let index = [];
+    let conta = 0;
+    let data = JSON.parse(sessionStorage.getItem("1"));
+    if (data.length > 1) {
+        let dati = data.slice(1);
+        for (let i = 0; i < dati.length; i++) {
+            for (let j = 0; j < dati.length; j++) {
+                if (dati[i].name == dati[j].name) {
+                    conta++;
+                    if (conta > 1)
+                        index.push(j);
+                }
             }
-              let obj ={name:dati[i].name, memory:dati[i].memory, OS:dati[i].OS, quantità:conta };
-              scontrino.push(obj);
-              conta = 0;
-        }
-        for(let i=0; i<scontrino.length; i++){
-            for(let j=0; j<scontrino.length; j++){
-              if (scontrino[i].name == scontrino[j].name){
-                cont++;
-                if(cont >1)
-                    index.push(j);
-              }
+            let controllo = false ;
+            if(conta>1)
+                for (let j = 0; j < scontrino.length; j++) 
+                    if (dati[i].name == scontrino[j].name) 
+                        controllo=true;
+            if(!controllo){
+            let obj = { name: dati[i].name, memory: dati[i].memory, OS: dati[i].OS, quantità: conta };
+            scontrino.push(obj);
             }
-            cont =0;
-        }
-        for(let i=0; i<index.length; i++){
-            scontrino.splice(index[i], 1);
-            for(let j=index.length-i-1; j>0; j--)
-                if(index[i]>index[j])
-                    index[j]-=1;
+            conta = 0;
         }
         console.log(scontrino);
         return scontrino;
-    }else{
+    } else {
         alert("il carrello é vuoto");
         return;
     }
