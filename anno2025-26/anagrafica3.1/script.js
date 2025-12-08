@@ -764,22 +764,20 @@ async function scaricaPDF(event) {
         totale += prezzo * quantita;
     });
 
-    // Costruzione del contenuto del PDF
-    const hasLogo = logoBase64 !== "";
+    const hasLogo = logoData !== null;
     let yPos = hasLogo ? 720 : 800;
     let textCommands = "";
 
-    // LOGO - Se caricato con successo
+    // LOGO
     if (hasLogo) {
         textCommands += "q\n";
-        textCommands += "60 0 0 60 267 770 cm\n"; // Logo 60x60, centrato
+        textCommands += "60 0 0 60 267 770 cm\n";
         textCommands += "/Im1 Do\n";
         textCommands += "Q\n";
     }
 
     textCommands += "BT\n/F1 10 Tf\n";
 
-    // Helper per aggiungere testo
     function addText(text, xOffset = 0) {
         const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
         textCommands += `${xOffset} -15 Td\n(${testoEscaped}) Tj\n`;
@@ -787,7 +785,6 @@ async function scaricaPDF(event) {
 
     // INTESTAZIONE
     textCommands += `200 ${yPos} Td\n`;
-    
     textCommands += `/F1 14 Tf\n`;
     addText("*** TECHSTORE ***", 0);
     
@@ -860,7 +857,6 @@ async function scaricaPDF(event) {
     addObject("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
     addObject("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
 
-    // Risorse della pagina
     let pageResources = "<< /Font << /F1 5 0 R >>";
     if (hasLogo) {
         pageResources += " /XObject << /Im1 6 0 R >>";
@@ -871,10 +867,9 @@ async function scaricaPDF(event) {
     addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
     addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
 
-    // Aggiungi l'immagine solo se è stata caricata
     if (hasLogo) {
-        const imageStream = atob(logoBase64);
-        addObject(`6 0 obj\n<< /Type /XObject /Subtype /Image /Width 100 /Height 100 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imageStream.length} >>\nstream\n${imageStream}\nendstream\nendobj\n`);
+        const imageStream = atob(logoData);  // <-- QUESTA ERA LA RIGA CON L'ERRORE
+        addObject(`6 0 obj\n<< /Type /XObject /Subtype /Image /Width ${logoWidth} /Height ${logoHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imageStream.length} >>\nstream\n${imageStream}\nendstream\nendobj\n`);
     }
 
     let pdf = "%PDF-1.4\n";
