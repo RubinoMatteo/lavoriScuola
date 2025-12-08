@@ -519,7 +519,7 @@ function scaricaxml(event) {
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }*/
-function scaricaPDF(event) {// il caricamento dell pdf dice dati insufficenti per l'immagine
+/*function scaricaPDF(event) {// il caricamento dell pdf dice dati insufficenti per l'immagine
     event.preventDefault();
 
     let dati;
@@ -666,6 +666,202 @@ function scaricaPDF(event) {// il caricamento dell pdf dice dati insufficenti pe
     addObject(`6 0 obj\n<< /Type /XObject /Subtype /Image /Width 279 /Height 279 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /FlateDecode /Length ${imageStream.length} >>\nstream\n${imageStream}\nendstream\nendobj\n`);
 
     // Costruzione PDF finale
+    let pdf = "%PDF-1.4\n";
+
+    for (let i = 0; i < objects.length; i++) {
+        offsets.push(pdf.length);
+        pdf += objects[i];
+    }
+
+    const xrefPos = pdf.length;
+
+    pdf += "xref\n";
+    pdf += `0 ${objects.length + 1}\n`;
+    pdf += "0000000000 65535 f \n";
+
+    for (let i = 1; i <= objects.length; i++) {
+        pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
+    }
+
+    pdf += "trailer\n";
+    pdf += `<< /Size ${objects.length + 1} /Root 1 0 R >>\n`;
+    pdf += "startxref\n";
+    pdf += `${xrefPos}\n`;
+    pdf += "%%EOF";
+
+    // Download
+    const blob = new Blob([pdf], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "scontrino_" + Date.now() + ".pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}*/
+async function scaricaPDF(event) {
+    event.preventDefault();
+
+    let dati;
+    try {
+        dati = contaElementi();
+    } catch (e) {
+        alert("Errore: dati non validi!");
+        return;
+    }
+
+    if (!Array.isArray(dati)) {
+        dati = [dati];
+    }
+
+    // Carica il logo dall'URL
+    let logoBase64 = "";
+    try {
+        const response = await fetch("https://rubinomatteo.github.io/lavoriScuola/immagini/rubi.jpeg");
+        const blob = await response.blob();
+        logoBase64 = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result.split(',')[1]);
+            reader.readAsDataURL(blob);
+        });
+    } catch (error) {
+        console.error("Errore caricamento logo:", error);
+        alert("Impossibile caricare il logo. Lo scontrino sarà generato senza logo.");
+    }
+
+    // Informazioni dell'emittente
+    const emittente = {
+        nome: "TechStore S.r.l.",
+        indirizzo: "Via Roma, 123",
+        citta: "Milano, 20100",
+        piva: "P.IVA: 12345678901",
+        telefono: "Tel: +39 02 1234567"
+    };
+
+    // Calcolo totale
+    let totale = 0;
+    dati.forEach(obj => {
+        const prezzo = obj.prezzo || 999.99;
+        const quantita = obj.quantità || 1;
+        totale += prezzo * quantita;
+    });
+
+    // Costruzione del contenuto del PDF
+    const hasLogo = logoBase64 !== "";
+    let yPos = hasLogo ? 720 : 800;
+    let textCommands = "";
+
+    // LOGO - Se caricato con successo
+    if (hasLogo) {
+        textCommands += "q\n";
+        textCommands += "60 0 0 60 267 770 cm\n"; // Logo 60x60, centrato
+        textCommands += "/Im1 Do\n";
+        textCommands += "Q\n";
+    }
+
+    textCommands += "BT\n/F1 10 Tf\n";
+
+    // Helper per aggiungere testo
+    function addText(text, xOffset = 0) {
+        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        textCommands += `${xOffset} -15 Td\n(${testoEscaped}) Tj\n`;
+    }
+
+    // INTESTAZIONE
+    textCommands += `200 ${yPos} Td\n`;
+    
+    textCommands += `/F1 14 Tf\n`;
+    addText("*** TECHSTORE ***", 0);
+    
+    textCommands += `/F1 9 Tf\n`;
+    addText(emittente.nome, 0);
+    addText(emittente.indirizzo, 0);
+    addText(emittente.citta, 0);
+    addText(emittente.piva, 0);
+    addText(emittente.telefono, 0);
+    
+    addText("", 0);
+    addText("================================", 0);
+    
+    // Data e ora
+    const now = new Date();
+    const dataOra = `Data: ${now.toLocaleDateString('it-IT')} ${now.toLocaleTimeString('it-IT')}`;
+    addText(dataOra, 0);
+    addText("================================", 0);
+    addText("", 0);
+
+    // PRODOTTI
+    addText("DESCRIZIONE", 0);
+    addText("", 0);
+
+    dati.forEach(obj => {
+        const nome = obj.name || "Prodotto";
+        const quantita = obj.quantità || 1;
+        const prezzo = obj.prezzo || 999.99;
+        const totaleRiga = (prezzo * quantita).toFixed(2);
+        
+        addText(`${quantita} x ${nome}`, 0);
+        
+        if (obj.memory) {
+            addText(`  Memory: ${obj.memory}`, 0);
+        }
+        if (obj.OS) {
+            addText(`  OS: ${obj.OS}`, 0);
+        }
+        
+        const prezzoStr = `EUR ${totaleRiga}`;
+        const spaces = " ".repeat(Math.max(0, 35 - prezzoStr.length));
+        addText(`${spaces}${prezzoStr}`, 0);
+        addText("", 0);
+    });
+
+    // TOTALE
+    addText("================================", 0);
+    const totaleStr = `EUR ${totale.toFixed(2)}`;
+    const spacesTotale = " ".repeat(Math.max(0, 25 - totaleStr.length));
+    textCommands += `/F1 12 Tf\n`;
+    addText(`TOTALE:${spacesTotale}${totaleStr}`, 0);
+    textCommands += `/F1 9 Tf\n`;
+    addText("================================", 0);
+    
+    addText("", 0);
+    addText("Grazie per il suo acquisto!", 0);
+    addText("", 0);
+    addText("IVA inclusa 22%", 0);
+
+    textCommands += "ET";
+
+    // Costruzione del PDF
+    const objects = [];
+    const offsets = [0];
+
+    function addObject(content) {
+        objects.push(content);
+    }
+
+    addObject("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+    addObject("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+
+    // Risorse della pagina
+    let pageResources = "<< /Font << /F1 5 0 R >>";
+    if (hasLogo) {
+        pageResources += " /XObject << /Im1 6 0 R >>";
+    }
+    pageResources += " >>";
+
+    addObject(`3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources ${pageResources} >>\nendobj\n`);
+    addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
+    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
+
+    // Aggiungi l'immagine solo se è stata caricata
+    if (hasLogo) {
+        const imageStream = atob(logoBase64);
+        addObject(`6 0 obj\n<< /Type /XObject /Subtype /Image /Width 100 /Height 100 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imageStream.length} >>\nstream\n${imageStream}\nendstream\nendobj\n`);
+    }
+
     let pdf = "%PDF-1.4\n";
 
     for (let i = 0; i < objects.length; i++) {
