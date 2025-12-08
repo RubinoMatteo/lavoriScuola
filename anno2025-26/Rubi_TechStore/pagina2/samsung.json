@@ -5,70 +5,70 @@
       "memory": "12 GB RAM",
       "os": "Android 15",
       "image": "https://placehold.co/200x200?text=Galaxy+S25",
-      "prezzo": "899 €"
+      "prezzo": 899
     },
     {
       "name": "Samsung Galaxy S25+",
       "memory": "12 GB RAM",
       "os": "Android 15",
       "image": "https://placehold.co/200x200?text=Galaxy+S25+",
-      "prezzo": "999 €"
+      "prezzo": 999
     },
     {
       "name": "Samsung Galaxy S25 Ultra",
       "memory": "12 GB RAM",
       "os": "Android 15",
       "image": "https://placehold.co/200x200?text=S25+Ultra",
-      "prezzo": "1299 €"
+      "prezzo": 1299
     },
     {
       "name": "Samsung Galaxy Z Fold 7",
       "memory": "12–16 GB RAM",
       "os": "Android 16 (One UI 8)",
       "image": "https://placehold.co/200x200?text=Z+Fold+7",
-      "prezzo": "1899 €"
+      "prezzo": 1899
     },
     {
       "name": "Samsung Galaxy Z Flip 7",
       "memory": "12 GB RAM",
       "os": "Android 16 (One UI 8)",
       "image": "https://placehold.co/200x200?text=Z+Flip+7",
-      "prezzo": "1199 €"
+      "prezzo": 1199
     },
     {
       "name": "Samsung Galaxy A56 5G",
       "memory": "8 GB RAM",
       "os": "Android 15 (One UI 7)",
       "image": "https://placehold.co/200x200?text=A56+5G",
-      "prezzo": "399 €"
+      "prezzo": 399
     },
     {
       "name": "Samsung Galaxy A36 5G",
       "memory": "6–8 GB RAM",
       "os": "Android 16 (One UI 8)",
       "image": "https://placehold.co/200x200?text=A36+5G",
-      "prezzo": "299 €"
+      "prezzo": 299
     },
     {
       "name": "Samsung Galaxy A26 5G",
       "memory": "4–8 GB RAM",
       "os": "Android 16 (One UI 8)",
       "image": "https://placehold.co/200x200?text=A26+5G",
-      "prezzo": "229 €"
+      "prezzo": 229
     },
     {
       "name": "Samsung Galaxy M36 5G",
       "memory": "6–8 GB RAM",
       "os": "Android 15 (One UI 7)",
       "image": "https://placehold.co/200x200?text=M36+5G",
-      "prezzo": "279 €"
+      "prezzo": 279
     },
     {
       "name": "Samsung Galaxy A16 5G",
       "memory": "Dati memoria non ufficiali",
       "os": "Dati OS non ufficiali",
       "image": "https://placehold.co/200x200?text=A16+5G",
-      "prezzo": "199 €"
+      "prezzo": 199
     }
   ]
 }

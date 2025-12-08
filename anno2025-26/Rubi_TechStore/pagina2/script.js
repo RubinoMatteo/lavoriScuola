@@ -95,7 +95,7 @@ function scrivi(nome,memory,os,image,prezzo){
                             <p><b>Memoria</b>:${memory}</p>
                             <p><b>S.O.</b>:${os}</p>
                             <img id="img" src="${image}" alt="samsung"> 
-                            <p><b>Prezzo</b>: EUR${prezzo}</p>
+                            <p><b>Prezzo</b>: EUR ${prezzo}</p>
                             <a target="_blank" class="button" onclick="acquista('${nome}','${memory}','${os}','${prezzo}')" style="cursor: pointer;" > &#128722; </a>
                         </div>`;
 }
@@ -230,7 +230,7 @@ function scaricaPDF(event) {
     
     // Logo (testo nome negozio) - in un PDF reale potresti inserire un'immagine
     textCommands += `/F1 14 Tf\n`;
-    addText("** RUBI TECHSTORE **", 0);
+    addText("*** RUBI TECHSTORE ***", 0);
 
     //informazionni emittente 
     textCommands += `/F1 9 Tf\n`;
