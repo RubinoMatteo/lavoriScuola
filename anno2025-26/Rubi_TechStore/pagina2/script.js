@@ -89,7 +89,7 @@ function vediCarrello(){
                             </div>`;
 }
 
-function scrivi(nome,memory,os,image){
+function scrivi(nome,memory,os,image,prezzo){
     return`<div class="card">
                             <h3>${nome}</h3>
                             <p><b>Memoria</b>:${memory}</p>
@@ -108,7 +108,7 @@ xmlhttp.open("GET", "samsung.json", true);
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
             for (x in myObj.samsung) 
-                stampa += scrivi(myObj.samsung[x].name,myObj.samsung[x].memory,myObj.samsung[x].os,myObj.samsung[x].image);
+                stampa += scrivi(myObj.samsung[x].name,myObj.samsung[x].memory,myObj.samsung[x].os,myObj.samsung[x].image,myObj.samsung[x].prezzo);
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa="";
         }
@@ -128,7 +128,8 @@ function apple(){
                 var memory = iPhone[x].getElementsByTagName("memory")[0].childNodes[0].nodeValue;
                 var os = iPhone[x].getElementsByTagName("os")[0].childNodes[0].nodeValue;
                 var image = iPhone[x].getElementsByTagName("image")[0].childNodes[0].nodeValue;
-                stampa+=scrivi(name,memory,os,image);
+                var prezzo = iPhone[x].getElementsByTagName("prezzo")[0].childNodes[0].nodeValue;
+                stampa+=scrivi(name,memory,os,image,prezzo);
             }            
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
@@ -153,7 +154,7 @@ function huawei(){
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
             for (let i = 1; i < huawei.length; i++) {
-                stampa+=scrivi(huawei[i][0],huawei[i][1],huawei[i][2],huawei[i][3]);
+                stampa+=scrivi(huawei[i][0],huawei[i][1],huawei[i][2],huawei[i][3],huawei[i][4]);
             }
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
@@ -165,10 +166,10 @@ function errore(){
 };
 var carrello=[];
 let quantità=0;
-function acquista(n,m,S){
+function acquista(n,m,S,p){
     carrello=JSON.parse(sessionStorage.getItem(1));
     quantità=JSON.parse(sessionStorage.getItem(1)).length;
-    carrello[quantità]= {name:n,memory:m,OS:S};
+    carrello[quantità]= {name:n,memory:m,OS:S,prezzo:p};
     quantità++;
     sessionStorage.setItem(1, JSON.stringify(carrello, null, 2));
     console.log(carrello);
@@ -372,7 +373,7 @@ function contaElementi() {
                     if (dati[i].name == scontrino[j].name) 
                         controllo=true;
             if(!controllo){
-            let obj = { name: dati[i].name, memory: dati[i].memory, OS: dati[i].OS, quantità: conta };
+            let obj = { name: dati[i].name, memory: dati[i].memory, OS: dati[i].OS, prezzo: dati[i].prezzo, quantità: conta };
             scontrino.push(obj);
             }
             conta = 0;
