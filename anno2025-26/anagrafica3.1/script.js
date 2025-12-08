@@ -717,7 +717,7 @@ function scaricaPDF(event) {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-function contaElementi() {//controllare se da ancora errore 
+function contaElementi() {
     let scontrino = [];
     let index = [];
     let conta = 0;

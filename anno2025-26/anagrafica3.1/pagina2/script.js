@@ -205,7 +205,7 @@ function scarica(event){
 }*/
 function scarica(event){
     event.preventDefault();
-    const stringaJson = sessionStorage.getItem("1"); 
+    const stringaJson = JSON.stringify(contaElementi(), null, 2); 
     if (!stringaJson) {
         alert("Il carrello è vuoto!");
         return;
@@ -224,14 +224,9 @@ function scarica(event){
 }
 function scaricacsv(event) {
     event.preventDefault();
-    const stringaJson = sessionStorage.getItem("1");
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }
     let dati;
     try {
-        dati = JSON.parse(stringaJson);
+        dati = contaElementi();
     } catch (e) {
         alert("Errore: dati non validi!");
         return;
@@ -264,14 +259,9 @@ function scaricacsv(event) {
 }
 function scaricaxml(event) {
     event.preventDefault();
-    const stringaJson = sessionStorage.getItem("1");
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }
     let dati;
     try {
-        dati = JSON.parse(stringaJson);
+        dati = contaElementi();
     } catch (e) {
         alert("Errore: dati non validi!");
         return;
@@ -302,15 +292,9 @@ function scaricaxml(event) {
 function scaricaPDF(event) {
     event.preventDefault();
 
-    const stringaJson = sessionStorage.getItem("1");
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }
-
     let dati;
     try {
-        dati = JSON.parse(stringaJson);
+        dati = contaElementi();
     } catch (e) {
         alert("Errore: dati non validi!");
         return;
@@ -417,4 +401,49 @@ function scaricaPDF(event) {
     a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function contaElementi() {
+    let scontrino = [];
+    let index = [];
+    let conta = 0;
+    const stringaJson = sessionStorage.getItem("1");
+    if (!stringaJson) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
+    let data;
+    try {
+        data = JSON.parse(stringaJson);
+    } catch (e) {
+        alert("Errore: dati non validi!");
+        return;
+    }
+    if (data.length > 1) {
+        let dati = data.slice(1);
+        for (let i = 0; i < dati.length; i++) {
+            for (let j = 0; j < dati.length; j++) {
+                if (dati[i].name == dati[j].name) {
+                    conta++;
+                    if (conta > 1)
+                        index.push(j);
+                }
+            }
+            let controllo = false ;
+            if(conta>1)
+                for (let j = 0; j < scontrino.length; j++) 
+                    if (dati[i].name == scontrino[j].name) 
+                        controllo=true;
+            if(!controllo){
+            let obj = { name: dati[i].name, memory: dati[i].memory, OS: dati[i].OS, quantità: conta };
+            scontrino.push(obj);
+            }
+            conta = 0;
+        }
+        console.log(scontrino);
+        return scontrino;
+    } else {
+        alert("il carrello é vuoto");
+        return;
+    }
 }
