@@ -717,19 +717,34 @@ async function scaricaPDF(event) {
         dati = [dati];
     }
 
-    // Carica il logo dall'URL
-    let logoBase64 = "";
+    // Carica l'immagine correttamente
+    let logoData = null;
+    let logoWidth = 0;
+    let logoHeight = 0;
+    
     try {
-        const response = await fetch("https://rubinomatteo.github.io/lavoriScuola/immagini/rubi.jpeg");
-        const blob = await response.blob();
-        logoBase64 = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result.split(',')[1]);
-            reader.readAsDataURL(blob);
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        
+        await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = "https://rubinomatteo.github.io/lavoriScuola/immagini/rubi.jpeg";
         });
+        
+        // Converti l'immagine in base64 JPEG
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        logoWidth = img.width;
+        logoHeight = img.height;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        
+        logoData = canvas.toDataURL('image/jpeg', 0.95).split(',')[1];
     } catch (error) {
         console.error("Errore caricamento logo:", error);
-        alert("Impossibile caricare il logo. Lo scontrino sarà generato senza logo.");
     }
 
     // Informazioni dell'emittente
