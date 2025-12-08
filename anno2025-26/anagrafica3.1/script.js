@@ -225,7 +225,7 @@ function scaricaxml(event) {
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }*/
-function scaricaPDF(event) {
+/*function scaricaPDF(event) {
     event.preventDefault();
 
     let dati;
@@ -284,11 +284,11 @@ function scaricaPDF(event) {
 
     //informazionni emittente 
     textCommands += `/F1 9 Tf\n`;
-    addCenteredText(emittente.nome, 0);
-    addCenteredText(emittente.indirizzo, 0);
-    addCenteredText(emittente.citta, 0);
-    addCenteredText(emittente.piva, 0);
-    addCenteredText(emittente.telefono, 0);
+    addText(emittente.nome, 0);
+    addText(emittente.indirizzo, 0);
+    addText(emittente.citta, 0);
+    addText(emittente.piva, 0);
+    addText(emittente.telefono, 0);
 
     addText("", 0); // Riga vuota
     addText(divisore, 0);
@@ -312,14 +312,6 @@ function scaricaPDF(event) {
         
         // Riga prodotto: quantità x nome
         addText(`${quantita} x ${nome}`, 0);
-        
-        /* Dettagli aggiuntivi (memory, OS) se presenti
-        if (obj.memory) {
-            addText(`  Memory: ${obj.memory}`, 0);
-        }
-        if (obj.OS) {
-            addText(`  OS: ${obj.OS}`, 0);
-        }*/
         
         // Prezzo allineato a destra (simulato con spazi)
         const prezzoStr = `EUR ${totaleRiga}`;
@@ -403,6 +395,174 @@ function scaricaPDF(event) {
     const a = document.createElement("a");
     a.href = url;
     a.download = "carrello_acquisti.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}*/
+function scaricaPDF(event) {
+    event.preventDefault();
+
+    let dati;
+    try {
+        dati = contaElementi();
+    } catch (e) {
+        alert("Errore: dati non validi!");
+        return;
+    }
+
+    if (!Array.isArray(dati)) {
+        dati = [dati];
+    }
+
+    // Informazioni dell'emittente
+    const emittente = {
+        nome: "TechStore S.r.l.",
+        indirizzo: "Via Roma, 123",
+        citta: "Milano, 20100",
+        piva: "P.IVA: 12345678901",
+        telefono: "Tel: +39 02 1234567"
+    };
+
+    // Calcolo totale (assumendo che ogni prodotto abbia un prezzo)
+    // Se non hai il prezzo, dovrai aggiungerlo ai dati
+    let totale = 0;
+    dati.forEach(obj => {
+        const prezzo = obj.prezzo || 999.99; // Prezzo di default se non specificato
+        const quantita = obj.quantità || 1;
+        totale += prezzo * quantita;
+    });
+
+    // Costruzione del contenuto del PDF
+    let yPos = 800;
+    let textCommands = "BT\n/F1 10 Tf\n";
+
+    // Helper per aggiungere testo centrato
+    function addCenteredText(text, y) {
+        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        textCommands += `0 ${y - yPos} Td\n(${testoEscaped}) Tj\n`;
+        yPos = y;
+    }
+
+    // Helper per aggiungere testo normale
+    function addText(text, xOffset = 0) {
+        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        textCommands += `${xOffset} -15 Td\n(${testoEscaped}) Tj\n`;
+    }
+
+    // INTESTAZIONE
+    textCommands += `200 ${yPos} Td\n`; // Posizionamento iniziale centrato
+    
+    // Logo (testo) - in un PDF reale potresti inserire un'immagine
+    textCommands += `/F1 14 Tf\n`;
+    addText("*** TECHSTORE ***", 0);
+    
+    textCommands += `/F1 9 Tf\n`;
+    addText(emittente.nome, 0);
+    addText(emittente.indirizzo, 0);
+    addText(emittente.citta, 0);
+    addText(emittente.piva, 0);
+    addText(emittente.telefono, 0);
+    
+    addText("", 0); // Riga vuota
+    addText("================================", 0);
+    
+    // Data e ora
+    const now = new Date();
+    const dataOra = `Data: ${now.toLocaleDateString('it-IT')} ${now.toLocaleTimeString('it-IT')}`;
+    addText(dataOra, 0);
+    addText("================================", 0);
+    addText("", 0);
+
+    // PRODOTTI
+    addText("DESCRIZIONE", 0);
+    addText("", 0);
+
+    dati.forEach(obj => {
+        const nome = obj.name || "Prodotto";
+        const quantita = obj.quantità || 1;
+        const prezzo = obj.prezzo || 999.99;
+        const totaleRiga = (prezzo * quantita).toFixed(2);
+        
+        // Riga prodotto: quantità x nome
+        addText(`${quantita} x ${nome}`, 0);
+        
+        // Dettagli aggiuntivi (memory, OS) se presenti
+        if (obj.memory) {
+            addText(`  Memory: ${obj.memory}`, 0);
+        }
+        if (obj.OS) {
+            addText(`  OS: ${obj.OS}`, 0);
+        }
+        
+        // Prezzo allineato a destra (simulato con spazi)
+        const prezzoStr = `EUR ${totaleRiga}`;
+        const spaces = " ".repeat(Math.max(0, 35 - prezzoStr.length));
+        addText(`${spaces}${prezzoStr}`, 0);
+        addText("", 0);
+    });
+
+    // TOTALE
+    addText("================================", 0);
+    const totaleStr = `EUR ${totale.toFixed(2)}`;
+    const spacesTotale = " ".repeat(Math.max(0, 25 - totaleStr.length));
+    textCommands += `/F1 12 Tf\n`;
+    addText(`TOTALE:${spacesTotale}${totaleStr}`, 0);
+    textCommands += `/F1 9 Tf\n`;
+    addText("================================", 0);
+    
+    addText("", 0);
+    addText("Grazie per il suo acquisto!", 0);
+    addText("", 0);
+    addText("IVA inclusa 22%", 0);
+
+    textCommands += "ET";
+
+    // Costruzione del PDF
+    const objects = [];
+    const offsets = [0];
+
+    function addObject(content) {
+        objects.push(content);
+    }
+
+    addObject("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+    addObject("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+    addObject("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n");
+    addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
+    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
+
+    let pdf = "%PDF-1.4\n";
+
+    for (let i = 0; i < objects.length; i++) {
+        offsets.push(pdf.length);
+        pdf += objects[i];
+    }
+
+    const xrefPos = pdf.length;
+
+    pdf += "xref\n";
+    pdf += `0 ${objects.length + 1}\n`;
+    pdf += "0000000000 65535 f \n";
+
+    for (let i = 1; i <= objects.length; i++) {
+        pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
+    }
+
+    pdf += "trailer\n";
+    pdf += `<< /Size ${objects.length + 1} /Root 1 0 R >>\n`;
+    pdf += "startxref\n";
+    pdf += `${xrefPos}\n`;
+    pdf += "%%EOF";
+
+    // Download
+    const blob = new Blob([pdf], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "scontrino_" + Date.now() + ".pdf";
     document.body.appendChild(a);
     a.click();
     a.remove();
