@@ -519,7 +519,7 @@ function scaricaxml(event) {
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }*/
-function scaricaPDF(event) {
+function scaricaPDF(event) {// il caricamento dell pdf dice dati insufficenti per l'immagine
     event.preventDefault();
 
     let dati;
