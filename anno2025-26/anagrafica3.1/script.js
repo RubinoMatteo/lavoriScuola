@@ -249,6 +249,7 @@ function scaricaPDF(event) {
         telefono: "Tel: +39 02 1234567"
     };
 
+    let divisore = "=".repeat(35);
     // Calcolo totale
     let totale = 0;
     dati.forEach(obj => {
@@ -290,13 +291,13 @@ function scaricaPDF(event) {
     addCenteredText(emittente.telefono, 0);
 
     addText("", 0); // Riga vuota
-    addText("=".repeat(35), 0);
+    addText(divisore, 0);
     
     // Data e ora
     const now = new Date();
     const dataOra = `Data: ${now.toLocaleDateString('it-IT')} ${now.toLocaleTimeString('it-IT')}`;
     addText(dataOra, 0);
-    addText("=".repeat(35), 0);
+    addText(divisore, 0);
     addText("", 0);
 
     // PRODOTTI
@@ -309,10 +310,10 @@ function scaricaPDF(event) {
         const prezzo = obj.prezzo || 999.99;
         const totaleRiga = (prezzo * quantita).toFixed(2);
         
-        /* Riga prodotto: quantità x nome
+        // Riga prodotto: quantità x nome
         addText(`${quantita} x ${nome}`, 0);
         
-        // Dettagli aggiuntivi (memory, OS) se presenti
+        /* Dettagli aggiuntivi (memory, OS) se presenti
         if (obj.memory) {
             addText(`  Memory: ${obj.memory}`, 0);
         }
@@ -328,13 +329,13 @@ function scaricaPDF(event) {
     });
 
     // TOTALE
-    addText("=".repeat(35), 0);
+    addText(divisore, 0);
     const totaleStr = `EUR ${totale.toFixed(2)}`;
     const spacesTotale = " ".repeat(Math.max(0, 25 - totaleStr.length));
     textCommands += `/F1 12 Tf\n`;
     addText(`TOTALE:${spacesTotale}${totaleStr}`, 0);
     textCommands += `/F1 9 Tf\n`;
-    addText("=".repeat(35), 0);
+    addText(divisore, 0);
     
     addText("", 0);
     addText("Grazie per il suo acquisto!", 0);
@@ -365,7 +366,7 @@ function scaricaPDF(event) {
     addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
 
     // Oggetto 5 – Font
-    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n");
+    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
 
     // Costruzione del PDF finale
     let pdf = "%PDF-1.4\n";
