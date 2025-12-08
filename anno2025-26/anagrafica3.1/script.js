@@ -351,110 +351,147 @@ function scaricaxml(event) {
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }*/
+
 function scaricaPDF(event) {
     event.preventDefault();
 
-    const dati = contaElementi(); // Deve restituire un array di oggetti
-    if (!dati || dati.length === 0) {
-        alert("Carrello vuoto!");
+    let dati;
+    try {
+        dati = contaElementi();
+    } catch (e) {
+        alert("Errore: dati non validi!");
         return;
     }
 
-    // LOGO in base64 (JPEG)
-    const logoBase64 ="/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABKAEoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaioqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9HooooAKKKKACiiigAooooAKKKKACiiigAooooAKkk/Zp8N6eL4s8G+G2sFlbSLHKWQ2VZyQc5BBGepH8q5Z+zT8Q/2dfh74f0eTwtrWaN9m3Rz95t42kVwOxC/wCAevSp/wCQt/wU58P+xZ/wAEjfgO28P3drqWlxaWt5t9nsYI4bJ4iHkfjXaf8AiQ3/AATj/8AsWf8BIn/BPTw/3NraMltbaH2ezgWMeJ4h8h+lYH/AIkl/wAEyP8A+wz/APhBv/kf/wD/2Q==";
+    if (!Array.isArray(dati)) {
+        dati = [dati];
+    }
 
-    // Conversione base64 → binary
-    const logoBinary = atob(logoBase64);
-    const logoBytes = Uint8Array.from(logoBinary, c => c.charCodeAt(0));
+    // Informazioni dell'emittente
+    const emittente = {
+        nome: "TechStore S.r.l.",
+        indirizzo: "Via Roma, 123",
+        citta: "Milano, 20100",
+        piva: "P.IVA: 12345678901",
+        telefono: "Tel: +39 02 1234567"
+    };
 
-    // Contenuto testo
-    let lines = [];
-
-    lines.push("NEGOZIO SUPER TECH");
-    lines.push("Via Roma 123, Milano (MI)");
-    lines.push("P.IVA 12345678901");
-    lines.push("--------------------------------------");
-
+    // Calcolo totale (assumendo che ogni prodotto abbia un prezzo)
+    // Se non hai il prezzo, dovrai aggiungerlo ai dati
     let totale = 0;
-
-    dati.forEach(el => {
-        const q = el.quantità || 1;
-        const prezzo = el.prezzo || 0;
-        const subtot = q * prezzo;
-        totale += subtot;
-
-        lines.push(`${q} × ${el.name}`);
-        lines.push(`   ${subtot.toFixed(2)} €`);
-        lines.push("--------------------------------------");
+    dati.forEach(obj => {
+        const prezzo = obj.prezzo || 999.99; // Prezzo di default se non specificato
+        const quantita = obj.quantità || 1;
+        totale += prezzo * quantita;
     });
 
-    lines.push(`TOTALE: ${totale.toFixed(2)} €`);
-    lines.push("*Grazie per l'acquisto!*");
+    // Costruzione del contenuto del PDF
+    let yPos = 800;
+    let textCommands = "BT\n/F1 10 Tf\n";
 
-    // Generazione comandi PDF
-    let y = 760;
-    let text = "BT\n/F1 12 Tf\n";
+    // Helper per aggiungere testo centrato
+    function addCenteredText(text, y) {
+        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        textCommands += `0 ${y - yPos} Td\n(${testoEscaped}) Tj\n`;
+        yPos = y;
+    }
 
-    lines.forEach((t, i) => {
-        t = t.replace(/\\/g,"\\\\").replace(/\(/g,"\\(").replace(/\)/g,"\\)");
+    // Helper per aggiungere testo normale
+    function addText(text, xOffset = 0) {
+        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        textCommands += `${xOffset} -15 Td\n(${testoEscaped}) Tj\n`;
+    }
 
-        if (i === 0) {
-            text += `50 ${y} Td\n(${t}) Tj\n`;
-        } else {
-            text += `0 -15 Td\n(${t}) Tj\n`;
+    // INTESTAZIONE
+    textCommands += `200 ${yPos} Td\n`; // Posizionamento iniziale centrato
+    
+    // Logo (testo) - in un PDF reale potresti inserire un'immagine
+    textCommands += `/F1 14 Tf\n`;
+    addText("*** TECHSTORE ***", 0);
+    
+    textCommands += `/F1 9 Tf\n`;
+    addText(emittente.nome, 0);
+    addText(emittente.indirizzo, 0);
+    addText(emittente.citta, 0);
+    addText(emittente.piva, 0);
+    addText(emittente.telefono, 0);
+    
+    addText("", 0); // Riga vuota
+    addText("================================", 0);
+    
+    // Data e ora
+    const now = new Date();
+    const dataOra = `Data: ${now.toLocaleDateString('it-IT')} ${now.toLocaleTimeString('it-IT')}`;
+    addText(dataOra, 0);
+    addText("================================", 0);
+    addText("", 0);
+
+    // PRODOTTI
+    addText("DESCRIZIONE", 0);
+    addText("", 0);
+
+    dati.forEach(obj => {
+        const nome = obj.name || "Prodotto";
+        const quantita = obj.quantità || 1;
+        const prezzo = obj.prezzo || 999.99;
+        const totaleRiga = (prezzo * quantita).toFixed(2);
+        
+        // Riga prodotto: quantità x nome
+        addText(`${quantita} x ${nome}`, 0);
+        
+        // Dettagli aggiuntivi (memory, OS) se presenti
+        if (obj.memory) {
+            addText(`  Memory: ${obj.memory}`, 0);
         }
+        if (obj.OS) {
+            addText(`  OS: ${obj.OS}`, 0);
+        }
+        
+        // Prezzo allineato a destra (simulato con spazi)
+        const prezzoStr = `EUR ${totaleRiga}`;
+        const spaces = " ".repeat(Math.max(0, 35 - prezzoStr.length));
+        addText(`${spaces}${prezzoStr}`, 0);
+        addText("", 0);
     });
 
-    text += "ET";
+    // TOTALE
+    addText("================================", 0);
+    const totaleStr = `EUR ${totale.toFixed(2)}`;
+    const spacesTotale = " ".repeat(Math.max(0, 25 - totaleStr.length));
+    textCommands += `/F1 12 Tf\n`;
+    addText(`TOTALE:${spacesTotale}${totaleStr}`, 0);
+    textCommands += `/F1 9 Tf\n`;
+    addText("================================", 0);
+    
+    addText("", 0);
+    addText("Grazie per il suo acquisto!", 0);
+    addText("", 0);
+    addText("IVA inclusa 22%", 0);
 
-    // Oggetti PDF
+    textCommands += "ET";
+
+    // Costruzione del PDF
     const objects = [];
+    const offsets = [0];
 
-    const add = c => objects.push(c);
+    function addObject(content) {
+        objects.push(content);
+    }
 
-    // Catalog
-    add("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+    addObject("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+    addObject("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+    addObject("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n");
+    addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
+    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
 
-    // Pages
-    add("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
-
-    // Page con font e immagine
-    add(
-        "3 0 obj\n" +
-        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]\n" +
-        "/Resources << /Font << /F1 5 0 R >> /XObject << /Im1 6 0 R >> >>\n" +
-        "/Contents 4 0 R >>\nendobj\n"
-    );
-
-    // Contenuto pagina (testo + immagine)
-    const imageDrawCmd =
-        "q\n100 0 0 60 50 780 cm\n/Im1 Do\nQ\n";
-
-    const fullStream = imageDrawCmd + text;
-
-    add(
-        `4 0 obj\n<< /Length ${fullStream.length} >>\nstream\n${fullStream}\nendstream\nendobj\n`
-    );
-
-    // Font
-    add("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n");
-
-    // Immagine JPEG incorporata
-    add(
-        `6 0 obj\n<< /Type /XObject /Subtype /Image /Width 50 /Height 30 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${logoBytes.length} >>\nstream\n${String.fromCharCode(...logoBytes)}\nendstream\nendobj\n`
-    );
-
-    // Costruzione PDF
     let pdf = "%PDF-1.4\n";
-    let offsets = [0];
 
-    objects.forEach(obj => {
+    for (let i = 0; i < objects.length; i++) {
         offsets.push(pdf.length);
-        pdf += obj;
-    });
+        pdf += objects[i];
+    }
 
-    // xref table
-    let xrefPos = pdf.length;
+    const xrefPos = pdf.length;
 
     pdf += "xref\n";
     pdf += `0 ${objects.length + 1}\n`;
@@ -476,12 +513,13 @@ function scaricaPDF(event) {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "scontrino.pdf";
+    a.download = "scontrino_" + Date.now() + ".pdf";
+    document.body.appendChild(a);
     a.click();
+    a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-
 
 function contaElementi() {//controllare se da ancora errore 
     let scontrino = [];
