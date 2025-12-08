@@ -55,46 +55,6 @@ headerImg.addEventListener("click", () => {
     }
 });
 
-/*function vediCarrello() {
-    let carrello = document.getElementById("carrello");
-    carrello.innerHTML = "";
-    const output = document.createElement("div");
-    output.className = "card";
-    const rawData = sessionStorage.getItem("1");
-    if (rawData) {
-        let dataArray;
-        try {
-            dataArray = JSON.parse(rawData);
-        } catch (e) {
-            output.innerHTML = "<p style='color: red;'>Errore nel leggere il JSON</p>";
-            throw e;
-        }
-        if (!Array.isArray(dataArray)) {
-            output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
-            return;
-        }
-        dataArray.slice(1).forEach((item, index) => {
-            let ul = document.createElement("ul");
-            ul.innerHTML += `<h4 style="margin:0 0 10px; color:#555;">Elemento ${index}</h4>`;
-            Object.entries(item).forEach(([key, value]) => {
-                let li = document.createElement("li");
-                li.innerHTML = `<strong style="color:#667eea;">${key}:</strong> ${value}`;
-                ul.appendChild(li);
-            });
-            output.appendChild(ul);
-        });
-    } else {
-        output.innerHTML = `<p style="color: red;">Nessun dato ricevuto</p>`;
-    }
-    carrello.appendChild(output);
-    carrello.innerHTML+=`<br><div class="card">
-                    <!--<a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
-                    <a class="button" onclick="scaricacsv(event)" href="" id="linkScaricacsv">&#x1f6d2; download csv &#10515;</a>
-                    <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
-                    --><a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
-                    <!--<a class="button" href="#" download="carrello_acquisti.json" id="linkScaricaJson">&#x1f6d2; download &#10515;</a>-->
-                </div>`;
-}*/
 function vediCarrello() {
     let carrello = document.getElementById("carrello");
     carrello.innerHTML = "";
@@ -117,115 +77,15 @@ function vediCarrello() {
     });
     carrello.appendChild(output);
     carrello.innerHTML += `<br><div class="card">
-                    <!--<a class="button" onclick="scarica(event)" href="" id="linkScaricaJson">&#x1f6d2; download json &#10515;</a>
-                    <a class="button" onclick="scaricacsv(event)" href="" id="linkScaricacsv">&#x1f6d2; download csv &#10515;</a>
-                    <a class="button" onclick="scaricaxml(event)" href="" id="linkScaricaxml">&#x1f6d2; download xml &#10515;</a>
-                    --><a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
-                    <!--<a class="button" href="#" download="carrello_acquisti.json" id="linkScaricaJson">&#x1f6d2; download &#10515;</a>-->
-                </div>`;
+                                <a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
+                                </div>`;
 }
 
 /*----------------------------------------------------
     download dello scontrino in diverse estensioni
 ------------------------------------------------------*/
 
-/*function scarica(event){
-    event.preventDefault();
-    const stringaJson = sessionStorage.getItem("1"); 
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }
-    const blob = new Blob([stringaJson], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "carrello_acquisti.json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => {
-        URL.revokeObjectURL(url);
-    }, 1000);
-}
-function scaricacsv(event) {
-    event.preventDefault();
-    const stringaJson = sessionStorage.getItem("1");
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }
-    let dati;
-    try {
-        dati = JSON.parse(stringaJson);
-    } catch (e) {
-        alert("Errore: dati non validi!");
-        return;
-    }
-    if (!Array.isArray(dati)) {
-        dati = [dati];
-    }
-    const colonne = Object.keys(dati[0]);
-    const righe = [];
-    righe.push(colonne.join(";"));
-
-    dati.forEach(obj => {
-        const valori = colonne.map(col => String(obj[col]).replace(/;/g, ",")); // evita rottura colonne
-        righe.push(valori.join(";"));
-    });
-
-    const csvContent = righe.join("\n");
-
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "carrello_acquisti.csv";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-function scaricaxml(event) {
-    event.preventDefault();
-    const stringaJson = sessionStorage.getItem("1");
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }
-    let dati;
-    try {
-        dati = JSON.parse(stringaJson);
-    } catch (e) {
-        alert("Errore: dati non validi!");
-        return;
-    }
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<carrello>\n`;
-    dati.forEach(item => {
-        xml += "  <item>\n";
-        for (const chiave in item) {
-            const valore = String(item[chiave])
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;");
-            xml += `    <${chiave}>${valore}</${chiave}>\n`;
-        }
-        xml += "  </item>\n";
-    });
-    xml += "</carrello>";
-    const blob = new Blob([xml], { type: "application/xml" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "carrello_acquisti.xml";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-}*/
-/*function scaricaPDF(event) {
+function scaricaPDF(event) {
     event.preventDefault();
 
     let dati;
@@ -242,13 +102,13 @@ function scaricaxml(event) {
 
     // Informazioni dell'emittente
     const emittente = {
-        nome: "TechStore S.r.l.",
-        indirizzo: "Via Roma, 123",
-        citta: "Milano, 20100",
+        nome: "Rubi TechStore S.r.l.",
+        indirizzo: "Via Raffaello Sanzio, 2",
+        citta: "Rho, 20017",
         piva: "P.IVA: 12345678901",
         telefono: "Tel: +39 02 1234567"
     };
-
+    
     let divisore = "=".repeat(35);
     // Calcolo totale
     let totale = 0;
@@ -280,7 +140,7 @@ function scaricaxml(event) {
     
     // Logo (testo nome negozio) - in un PDF reale potresti inserire un'immagine
     textCommands += `/F1 14 Tf\n`;
-    addText("*** TECHSTORE ***", 0);
+    addText("** RUBI TECHSTORE **", 0);
 
     //informazionni emittente 
     textCommands += `/F1 9 Tf\n`;
@@ -388,175 +248,7 @@ function scaricaxml(event) {
     pdf += `${xrefPos}\n`;
     pdf += "%%EOF";
 
-    // Download del file
-    const blob = new Blob([pdf], { type: "application/pdf" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "carrello_acquisti.pdf";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-}*/
-function scaricaPDF(event) {
-    event.preventDefault();
-
-    let dati;
-    try {
-        dati = contaElementi();
-    } catch (e) {
-        alert("Errore: dati non validi!");
-        return;
-    }
-
-    if (!Array.isArray(dati)) {
-        dati = [dati];
-    }
-
-    // Informazioni dell'emittente
-    const emittente = {
-        nome: "TechStore S.r.l.",
-        indirizzo: "Via Roma, 123",
-        citta: "Milano, 20100",
-        piva: "P.IVA: 12345678901",
-        telefono: "Tel: +39 02 1234567"
-    };
-
-    // Calcolo totale (assumendo che ogni prodotto abbia un prezzo)
-    // Se non hai il prezzo, dovrai aggiungerlo ai dati
-    let totale = 0;
-    dati.forEach(obj => {
-        const prezzo = obj.prezzo || 999.99; // Prezzo di default se non specificato
-        const quantita = obj.quantità || 1;
-        totale += prezzo * quantita;
-    });
-
-    // Costruzione del contenuto del PDF
-    let yPos = 800;
-    let textCommands = "BT\n/F1 10 Tf\n";
-
-    // Helper per aggiungere testo centrato
-    function addCenteredText(text, y) {
-        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
-        textCommands += `0 ${y - yPos} Td\n(${testoEscaped}) Tj\n`;
-        yPos = y;
-    }
-
-    // Helper per aggiungere testo normale
-    function addText(text, xOffset = 0) {
-        const testoEscaped = text.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
-        textCommands += `${xOffset} -15 Td\n(${testoEscaped}) Tj\n`;
-    }
-
-    // INTESTAZIONE
-    textCommands += `200 ${yPos} Td\n`; // Posizionamento iniziale centrato
-    
-    // Logo (testo) - in un PDF reale potresti inserire un'immagine
-    textCommands += `/F1 14 Tf\n`;
-    addText("*** TECHSTORE ***", 0);
-    
-    textCommands += `/F1 9 Tf\n`;
-    addText(emittente.nome, 0);
-    addText(emittente.indirizzo, 0);
-    addText(emittente.citta, 0);
-    addText(emittente.piva, 0);
-    addText(emittente.telefono, 0);
-    
-    addText("", 0); // Riga vuota
-    addText("================================", 0);
-    
-    // Data e ora
-    const now = new Date();
-    const dataOra = `Data: ${now.toLocaleDateString('it-IT')} ${now.toLocaleTimeString('it-IT')}`;
-    addText(dataOra, 0);
-    addText("================================", 0);
-    addText("", 0);
-
-    // PRODOTTI
-    addText("DESCRIZIONE", 0);
-    addText("", 0);
-
-    dati.forEach(obj => {
-        const nome = obj.name || "Prodotto";
-        const quantita = obj.quantità || 1;
-        const prezzo = obj.prezzo || 999.99;
-        const totaleRiga = (prezzo * quantita).toFixed(2);
-        
-        // Riga prodotto: quantità x nome
-        addText(`${quantita} x ${nome}`, 0);
-        
-        // Dettagli aggiuntivi (memory, OS) se presenti
-        if (obj.memory) {
-            addText(`  Memory: ${obj.memory}`, 0);
-        }
-        if (obj.OS) {
-            addText(`  OS: ${obj.OS}`, 0);
-        }
-        
-        // Prezzo allineato a destra (simulato con spazi)
-        const prezzoStr = `EUR ${totaleRiga}`;
-        const spaces = " ".repeat(Math.max(0, 35 - prezzoStr.length));
-        addText(`${spaces}${prezzoStr}`, 0);
-        addText("", 0);
-    });
-
-    // TOTALE
-    addText("================================", 0);
-    const totaleStr = `EUR ${totale.toFixed(2)}`;
-    const spacesTotale = " ".repeat(Math.max(0, 25 - totaleStr.length));
-    textCommands += `/F1 12 Tf\n`;
-    addText(`TOTALE:${spacesTotale}${totaleStr}`, 0);
-    textCommands += `/F1 9 Tf\n`;
-    addText("================================", 0);
-    
-    addText("", 0);
-    addText("Grazie per il suo acquisto!", 0);
-    addText("", 0);
-    addText("IVA inclusa 22%", 0);
-
-    textCommands += "ET";
-
-    // Costruzione del PDF
-    const objects = [];
-    const offsets = [0];
-
-    function addObject(content) {
-        objects.push(content);
-    }
-
-    addObject("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
-    addObject("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
-    addObject("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n");
-    addObject(`4 0 obj\n<< /Length ${textCommands.length} >>\nstream\n${textCommands}\nendstream\nendobj\n`);
-    addObject("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
-
-    let pdf = "%PDF-1.4\n";
-
-    for (let i = 0; i < objects.length; i++) {
-        offsets.push(pdf.length);
-        pdf += objects[i];
-    }
-
-    const xrefPos = pdf.length;
-
-    pdf += "xref\n";
-    pdf += `0 ${objects.length + 1}\n`;
-    pdf += "0000000000 65535 f \n";
-
-    for (let i = 1; i <= objects.length; i++) {
-        pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
-    }
-
-    pdf += "trailer\n";
-    pdf += `<< /Size ${objects.length + 1} /Root 1 0 R >>\n`;
-    pdf += "startxref\n";
-    pdf += `${xrefPos}\n`;
-    pdf += "%%EOF";
-
-    // Download
+        // Download del file
     const blob = new Blob([pdf], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
 

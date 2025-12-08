@@ -1,11 +1,11 @@
-name,memory,os,image
-Huawei Mate 70,12 GB RAM,HarmonyOS / HarmonyOS Next,https://placehold.co/200x200?text=Mate+70
-Huawei Mate 70 Pro,12 GB RAM,HarmonyOS,https://placehold.co/200x200?text=Mate+70+Pro
-Huawei Mate 70 Pro+,16 GB RAM,HarmonyOS Next,https://placehold.co/200x200?text=Mate+70+Pro+
-Huawei Mate 70 RS Ultimate,16 GB RAM,HarmonyOS Next,https://placehold.co/200x200?text=Mate+70+RS
-Huawei Pura 80 Ultra,16 GB RAM,EMUI 15.0,https://placehold.co/200x200?text=Pura+80+Ultra
-Huawei Pura 80 Pro Plus,16 GB RAM,HarmonyOS 5.1,https://placehold.co/200x200?text=Pura+80+Pro+Plus
-Huawei Pura 80 Pro,12 GB RAM,EMUI 15.0,https://placehold.co/200x200?text=Pura+80+Pro
-Huawei Mate 60 Pro,12 GB RAM,HarmonyOS 4,https://placehold.co/200x200?text=Mate+60+Pro
-Huawei Mate 60 Pro+,16 GB RAM,HarmonyOS 4,https://placehold.co/200x200?text=Mate+60+Pro+
-Huawei Mate 60 RS,16 GB RAM,HarmonyOS 4,https://placehold.co/200x200?text=Mate+60+RS
+name,memory,os,image,prezzo
+Huawei Mate 70,12 GB RAM,HarmonyOS / HarmonyOS Next,https://placehold.co/200x200?text=Mate+70,899 €
+Huawei Mate 70 Pro,12 GB RAM,HarmonyOS,https://placehold.co/200x200?text=Mate+70+Pro,1099 €
+Huawei Mate 70 Pro+,16 GB RAM,HarmonyOS Next,https://placehold.co/200x200?text=Mate+70+Pro+,1299 €
+Huawei Mate 70 RS Ultimate,16 GB RAM,HarmonyOS Next,https://placehold.co/200x200?text=Mate+70+RS,1699 €
+Huawei Pura 80 Ultra,16 GB RAM,EMUI 15.0,https://placehold.co/200x200?text=Pura+80+Ultra,1499 €
+Huawei Pura 80 Pro Plus,16 GB RAM,HarmonyOS 5.1,https://placehold.co/200x200?text=Pura+80+Pro+Plus,1199 €
+Huawei Pura 80 Pro,12 GB RAM,EMUI 15.0,https://placehold.co/200x200?text=Pura+80+Pro,999 €
+Huawei Mate 60 Pro,12 GB RAM,HarmonyOS 4,https://placehold.co/200x200?text=Mate+60+Pro,799 €
+Huawei Mate 60 Pro+,16 GB RAM,HarmonyOS 4,https://placehold.co/200x200?text=Mate+60+Pro+,999 €
+Huawei Mate 60 RS,16 GB RAM,HarmonyOS 4,https://placehold.co/200x200?text=Mate+60+RS,1499 €
