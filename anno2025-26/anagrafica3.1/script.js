@@ -225,14 +225,14 @@ function scaricaxml(event) {
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }*/
-function scaricaPDF(event) {
+/*function scaricaPDF(event) {
     event.preventDefault();
 
-    /*const stringaJson = sessionStorage.getItem("1");
-    if (!stringaJson) {
-        alert("Il carrello è vuoto!");
-        return;
-    }*/
+    //const stringaJson = sessionStorage.getItem("1");
+    //if (!stringaJson) {
+    //    alert("Il carrello è vuoto!");
+    //    return;
+    //}
 
     let dati;
     try {
@@ -350,7 +350,139 @@ function scaricaPDF(event) {
     a.remove();
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+}*/
+function scaricaPDF(event) {
+    event.preventDefault();
+
+    const dati = contaElementi(); // Deve restituire un array di oggetti
+    if (!dati || dati.length === 0) {
+        alert("Carrello vuoto!");
+        return;
+    }
+
+    // LOGO in base64 (JPEG)
+    const logoBase64 =
+        "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUEBAUEBAgFBQgHBwgICQoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCv/2wCEAQgHBwgICQoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCv/wAARCAAKAAoDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8Az4A//9k=";
+
+    // Conversione base64 → binary
+    const logoBinary = atob(logoBase64);
+    const logoBytes = Uint8Array.from(logoBinary, c => c.charCodeAt(0));
+
+    // Contenuto testo
+    let lines = [];
+
+    lines.push("NEGOZIO SUPER TECH");
+    lines.push("Via Roma 123, Milano (MI)");
+    lines.push("P.IVA 12345678901");
+    lines.push("--------------------------------------");
+
+    let totale = 0;
+
+    dati.forEach(el => {
+        const q = el.quantità || 1;
+        const prezzo = el.prezzo || 0;
+        const subtot = q * prezzo;
+        totale += subtot;
+
+        lines.push(`${q} × ${el.name}`);
+        lines.push(`   ${subtot.toFixed(2)} €`);
+        lines.push("--------------------------------------");
+    });
+
+    lines.push(`TOTALE: ${totale.toFixed(2)} €`);
+    lines.push("*Grazie per l'acquisto!*");
+
+    // Generazione comandi PDF
+    let y = 760;
+    let text = "BT\n/F1 12 Tf\n";
+
+    lines.forEach((t, i) => {
+        t = t.replace(/\\/g,"\\\\").replace(/\(/g,"\\(").replace(/\)/g,"\\)");
+
+        if (i === 0) {
+            text += `50 ${y} Td\n(${t}) Tj\n`;
+        } else {
+            text += `0 -15 Td\n(${t}) Tj\n`;
+        }
+    });
+
+    text += "ET";
+
+    // Oggetti PDF
+    const objects = [];
+
+    const add = c => objects.push(c);
+
+    // Catalog
+    add("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+
+    // Pages
+    add("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+
+    // Page con font e immagine
+    add(
+        "3 0 obj\n" +
+        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842]\n" +
+        "/Resources << /Font << /F1 5 0 R >> /XObject << /Im1 6 0 R >> >>\n" +
+        "/Contents 4 0 R >>\nendobj\n"
+    );
+
+    // Contenuto pagina (testo + immagine)
+    const imageDrawCmd =
+        "q\n100 0 0 60 50 780 cm\n/Im1 Do\nQ\n";
+
+    const fullStream = imageDrawCmd + text;
+
+    add(
+        `4 0 obj\n<< /Length ${fullStream.length} >>\nstream\n${fullStream}\nendstream\nendobj\n`
+    );
+
+    // Font
+    add("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n");
+
+    // Immagine JPEG incorporata
+    add(
+        `6 0 obj\n<< /Type /XObject /Subtype /Image /Width 50 /Height 30 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${logoBytes.length} >>\nstream\n${String.fromCharCode(...logoBytes)}\nendstream\nendobj\n`
+    );
+
+    // Costruzione PDF
+    let pdf = "%PDF-1.4\n";
+    let offsets = [0];
+
+    objects.forEach(obj => {
+        offsets.push(pdf.length);
+        pdf += obj;
+    });
+
+    // xref table
+    let xrefPos = pdf.length;
+
+    pdf += "xref\n";
+    pdf += `0 ${objects.length + 1}\n`;
+    pdf += "0000000000 65535 f \n";
+
+    for (let i = 1; i <= objects.length; i++) {
+        pdf += `${String(offsets[i]).padStart(10, "0")} 00000 n \n`;
+    }
+
+    pdf += "trailer\n";
+    pdf += `<< /Size ${objects.length + 1} /Root 1 0 R >>\n`;
+    pdf += "startxref\n";
+    pdf += `${xrefPos}\n`;
+    pdf += "%%EOF";
+
+    // Download
+    const blob = new Blob([pdf], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "scontrino.pdf";
+    a.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+
 
 function contaElementi() {//controllare se da ancora errore 
     let scontrino = [];
