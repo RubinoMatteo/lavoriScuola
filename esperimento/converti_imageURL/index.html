@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL to Base64 Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #667eea;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    #url {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    #url:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    #convertBtn {
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    #convertBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    #convertBtn:active {
+      transform: translateY(0);
+    }
+
+    .result-section {
+      margin-bottom: 25px;
+    }
+
+    .result-label {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+      font-size: 14px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .preview-section {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #preview {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    #preview.visible {
+      display: block;
+    }
+
+    .empty-state {
+      color: #999;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      .input-group {
+        flex-direction: column;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔄 Converti immagine da URL a Base64</h2>
+    
+    <div class="input-group">
+      <input type="text" id="url" placeholder="Inserisci l'URL dell'immagine...">
+      <button id="convertBtn">Converti</button>
+    </div>
+
+    <div class="result-section">
+      <label class="result-label">Data URL completo:</label>
+      <textarea id="output" rows="6" placeholder="Il risultato apparirà qui..."></textarea>
+    </div>
+
+    <div class="result-section">
+      <label class="result-label">Solo Base64:</label>
+      <textarea id="output1" rows="6" placeholder="Solo la stringa Base64..."></textarea>
+    </div>
+
+    <div class="result-section">
+      <label class="result-label">Anteprima immagine:</label>
+      <div class="preview-section">
+        <img id="preview" />
+        <span class="empty-state" id="emptyState">L'anteprima apparirà qui dopo la conversione</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function urlToBase64(url) {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      return await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);  
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    document.getElementById("convertBtn").addEventListener("click", async () => {
+      const imageUrl = document.getElementById("url").value.trim();
+      
+      if (!imageUrl) {
+        alert("Inserisci un URL valido");
+        return;
+      }
+
+      try {
+        const dataUrl = await urlToBase64(imageUrl);
+        const base64only = dataUrl.split(',')[1];
+        
+        document.getElementById("output").value = dataUrl;
+        document.getElementById("output1").value = base64only;
+        
+        const preview = document.getElementById("preview");
+        const emptyState = document.getElementById("emptyState");
+        
+        preview.src = dataUrl;
+        preview.classList.add("visible");
+        emptyState.style.display = "none";
+      } catch (err) {
+        console.error(err);
+        alert("Errore nella conversione. Verifica che l'URL sia corretto e accessibile.");
+      }
+    });
+
+    document.getElementById("url").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        document.getElementById("convertBtn").click();
+      }
+    });
+  </script>
+</body>
+</html>
