@@ -50,6 +50,7 @@ body {
     text-decoration: none;
     align-self: center;
     border-radius: 1.5rem;
+    cursor: pointer; 
 }
 .button:hover {
     background: rgba(0, 0, 0, 0.5);
@@ -64,6 +65,7 @@ body {
     flex-direction: column;
     display: flex;
     border-radius: 1.5rem;
+    cursor: pointer; 
 }
 .button1:hover {
     background: rgba(0, 0, 0, 0.5);
