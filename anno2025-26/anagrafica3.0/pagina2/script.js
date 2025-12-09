@@ -143,7 +143,7 @@ function huawei(){
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
             for (let i = 1; i < huawei.length; i++) {
-                stampa+=scrivi(huawei[i][0],huawei[i][1],huawei[i][2],huawei[i][3],huawei[i][4]);
+                stampa+=scrivi(huawei[i][0],huawei[i][1],huawei[i][2],huawei[i][4],huawei[i][3]);
             }
             document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";
