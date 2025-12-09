@@ -31,6 +31,10 @@ body {
     color: black;
 }
 
+.card h3, .card p, .card a {
+    margin: 0;
+}
+
 .card1 {
     display: flex;
     gap: 1.5rem;
@@ -42,7 +46,7 @@ body {
     width: 14rem;
 }
 
-.card h3, .card p, .card a {
+.card1 h3, .card1 p, .card1 a {
     margin: 0;
 }
 
@@ -59,6 +63,19 @@ body {
     background: rgba(0, 0, 0, 0.5);
 }
 
+ul{
+    list-style : none;
+    padding : 0;
+    margin : 15px 0;
+    border : 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding : 10px;
+}
+
+li{
+    padding : 6px 0;
+    border-bottom : 1px solid #e2e8f0;
+}
 
 @media screen and (max-width: 825px) {
     body {
@@ -73,4 +90,195 @@ body {
     .grid {
         grid-template-columns: 1fr;
     }
+}
+
+/*-----------------------------------
+    sidebar con carrello acquisti
+-------------------------------------*/
+*{
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: fixed;
+    top: 24px;
+    right: 24px;  /* Cambiato da left a right */
+    bottom: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 88px;  /* Inizia chiusa */
+    border-radius: 16px;
+    padding: 0 16px;
+    background: rgb(000/19%);
+    backdrop-filter: blur(30px);
+    transition: width 0.4s;
+}
+
+.sidebar header {
+    display: flex;
+    align-items: center;
+    height: 72px;
+    padding-top: 10px;
+    border-bottom:
+        1px solid 
+        rgb(255 255 255 / 8%);
+}
+
+.sidebar header img {
+    height: 44px;
+}
+
+.sidebar button {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 16px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: rgb(255 255 255/95%);
+}
+
+.sidebar button p:nth-child(2) {
+        flex: 11 auto;
+}
+
+.sidebar button.active {
+    background:rgb(000/15%);
+}
+
+sidebar button i {
+    transition: 0.3s;
+}
+.sidebar button.active i:nth-child(3) {
+    rotate: -180deg;
+}
+
+.sidebar button:not(.active):hover {
+    background: rgb(000/5%);
+}
+
+.sidebar ul {
+    display: grid;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sub-menu {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    transition: 0.5s;
+
+}
+
+.sub-menu ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+}
+
+sub-menu button {
+    padding-left: 48px;
+}
+
+.sub-menu button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 22.5px;
+    translate: 0 -50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background:
+        rgb(255 255 255 / 35%);
+}
+
+.sidebar i {
+    font-size: 20px;
+    width: 20px;
+    max-width: 20px;
+    min-width: 20px;
+}
+
+/* Aggiungi questa regola alla fine del tuo CSS */
+.sidebar.collapsed {
+    width: 88px;
+    height: 88px;
+}
+
+.sidebar.collapsed button p,
+.sidebar.collapsed .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sidebar.collapsed button i:nth-child(3) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar button p {
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sidebar header img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sidebar header img:hover {
+    transform: scale(1.05);
+}
+
+/* Sidebar aperta */
+.sidebar:not(.collapsed) {
+    width: 260px;
+}
+
+/* Sidebar chiusa - nascondi testi e submenu */
+.sidebar.collapsed button p,
+.sidebar.collapsed .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sidebar.collapsed button i:nth-child(3) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Transizioni per i testi */
+.sidebar button p {
+    transition: opacity 0.3s, visibility 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Immagine cliccabile */
+.sidebar header img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sidebar header img:hover {
+    transform: scale(1.05);
+}
+
+/* Centra l'immagine quando la sidebar è chiusa */
+.sidebar.collapsed header {
+    justify-content: center;
 }

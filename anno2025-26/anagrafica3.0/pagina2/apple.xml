@@ -5,6 +5,7 @@
         <memory>8 GB RAM</memory>
         <os>iOS 26</os>
         <image>https://placehold.co/200x200?text=iPhone+17</image>
+        <prezzo>999</prezzo>
     </iPhone>
 
     <iPhone>
@@ -12,6 +13,7 @@
         <memory>~12 GB RAM</memory>
         <os>iOS 26</os>
         <image>https://placehold.co/200x200?text=iPhone+17+Pro+Max</image>
+        <prezzo>1499</prezzo>
     </iPhone>
 
     <iPhone>
@@ -19,6 +21,7 @@
         <memory>~12 GB RAM</memory>
         <os>iOS 26</os>
         <image>https://placehold.co/200x200?text=iPhone+17+Pro</image>
+        <prezzo>1299</prezzo>
     </iPhone>
 
     <iPhone>
@@ -26,6 +29,7 @@
         <memory>~12 GB RAM</memory>
         <os>iOS 26</os>
         <image>https://placehold.co/200x200?text=iPhone+Air</image>
+        <prezzo>899</prezzo>
     </iPhone>
 
     <iPhone>
@@ -33,6 +37,7 @@
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
         <image>https://placehold.co/200x200?text=iPhone+16+Plus</image>
+        <prezzo>799</prezzo>
     </iPhone>
 
     <iPhone>
@@ -40,6 +45,7 @@
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
         <image>https://placehold.co/200x200?text=iPhone+16+Pro</image>
+        <prezzo>1099</prezzo>
     </iPhone>
 
     <iPhone>
@@ -47,6 +53,7 @@
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
         <image>https://placehold.co/200x200?text=iPhone+16+Pro+Max</image>
+        <prezzo>1199</prezzo>
     </iPhone>
 
     <iPhone>
@@ -54,6 +61,7 @@
         <memory>8 GB RAM</memory>
         <os>iOS 18</os>
         <image>https://placehold.co/200x200?text=iPhone+16e</image>
+        <prezzo>599</prezzo>
     </iPhone>
 
     <iPhone>
@@ -61,6 +69,7 @@
         <memory>6 GB RAM</memory>
         <os>iOS 17</os>
         <image>https://placehold.co/200x200?text=iPhone+15</image>
+        <prezzo>699</prezzo>
     </iPhone>
 
     <iPhone>
@@ -68,5 +77,6 @@
         <memory>6 GB RAM</memory>
         <os>iOS 17</os>
         <image>https://placehold.co/200x200?text=iPhone+15+Plus</image>
+        <prezzo>799</prezzo>
     </iPhone>
 </iPhones>

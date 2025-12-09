@@ -5,34 +5,31 @@
         <link rel="icon" href="/lavoriScuola/immagini/rubi.jpg" type="image/jpg" />
         <link rel="stylesheet" href="style.css">
 
-        <title>ecommerce</title>
+        <title>Rubi TechStore</title>
     </head>
     <body>
-            <h1>ecommerce</h1>
-            <h2>Rubino Matteo</h2>
-
-            <section class="grid">
-                <div class="card">
-                    <h3>samsung</h3>
-                    <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
-                </div>
-                <div class="card">
-                    <h3>apple</h3>
-                    <a target="_blank" class="button" onclick="apple()" >Visualizza &rarr;</a>
-                </div>
-                <div class="card">
-                    <h3>huawei</h3>
-                    <a target="_blank" class="button" onclick="huawei()" >Visualizza &rarr;</a>
-                </div>
-            </section>
-            <br>
-            <div id="carrello" class="card">
-                <h3>visualizza carrello</h3>
-                <p>clicca sul pulsante per visualizzare tutti i prodotti presenti nel tuo carrello</p>
-                <a target="_blank" class="button" onclick="vediCarrello()">Visualizza &#x1f6d2;</a>
-                </div>
+        <aside class="sidebar collapsed">
+            <header>
+                <img src="/lavoriScuola/immagini/carrelloN.jpg" style="cursor: pointer;" />
+            </header>
+            <div id="carrello" style="overflow: auto;"></div>
+        </aside>
+        <h1>Rubi TechStore</h1>
+        <h2>Rubino Matteo</h2>
+        <section class="grid">
+            <div class="card">
+                <h3>samsung</h3>
+                <a target="_blank" class="button" onclick="samsung()" >Visualizza &rarr;</a>
             </div>
+            <div class="card">
+                <h3>apple</h3>
+                <a target="_blank" class="button" onclick="apple()" >Visualizza &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>huawei</h3>
+                <a target="_blank" class="button" onclick="huawei()" >Visualizza &rarr;</a>
+            </div>
+        </section>  
     </body>
     <script type="text/javascript" src="script.js"></script>
-
 </html>
