@@ -162,6 +162,7 @@ function samsung(callback) {
                 arr.push(obj);});
                 /*document.getElementById("demo").innerHTML = `${stampa}`;
                 stampa = "";*/
+                console.log(arr);
                 callback(arr);
         }
     };
@@ -183,6 +184,7 @@ function apple(callback) {
                 let obj={name:name, memory:memory, os:os, image:image, prezzo:prezzo};
                 arr.push(obj);
             }
+            console.log(arr);
             callback(arr); 
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
@@ -209,6 +211,7 @@ function huawei(callback) {
                 let obj={name:huawei[i][0], memory:huawei[i][1], os:huawei[i][2], image:huawei[i][4], prezzo:huawei[i][3]};
                 arr.push(obj);
             }
+            console.log(arr);
             callback(arr);
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
