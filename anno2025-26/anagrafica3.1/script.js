@@ -51,8 +51,13 @@ riempi(prodotti);
 
 function riempi(dati){
     var stampa ="";
-    for(let i=0; i<dati.length;i++)
+    for(let i=0; i<dati.length;i++){
+          // ✅ Debug: stampa i prodotti con immagini mancanti
+        if (!dati[i].immagine || dati[i].immagine === 'undefined') {
+            console.warn('Prodotto senza immagine:', dati[i]);
+        }
         stampa+=scrivi(dati[i].nome,dati[i].categoria,dati[i].immagine,dati[i].prezzo);
+    }
     section.innerHTML=`${stampa}`;
 }
 
@@ -137,6 +142,7 @@ function vediCarrello() {
 ------------------------------------------*/
 
 function scrivi(nome, categoria, immagine, prezzo) {
+    const imgSrc = immagine || 'placeholder.jpg';
     return `<div class="card">
                             <h3>${nome}</h3>
                             <p><b>categoria</b>:${categoria}</p>

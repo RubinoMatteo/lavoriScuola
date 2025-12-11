@@ -30,4 +30,65 @@
         <immagine>https://placehold.co/200x200?text=Tappeto+Moderno</immagine>
         <categoria>Arredamento</categoria>
     </prodotto>
+    <prodotto>
+        <nome>Pallone da Calcio Professionale</nome>
+        <prezzo>34.90</prezzo>
+        <immagine>https://placehold.co/200x200?text=Pallone+Calcio</immagine>
+        <categoria>Sport</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Mouse Wireless Ergonomico</nome>
+        <prezzo>24.99</prezzo>
+        <immagine>https://placehold.co/200x200?text=Mouse+Wireless</immagine>
+        <categoria>Elettronica</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Zaino in Pelle Premium</nome>
+        <prezzo>119.00</prezzo>
+        <immagine>https://placehold.co/200x200?text=Zaino+Pelle</immagine>
+        <categoria>Accessori</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Kit Modellismo Navale</nome>
+        <prezzo>89.99</prezzo>
+        <immagine>https://placehold.co/200x200?text=Modellismo+Navale</immagine>
+        <categoria>Hobby</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Lampada da Tavolo Minimal</nome>
+        <prezzo>49.90</prezzo>
+        <immagine>https://placehold.co/200x200?text=Lampada+Minimal</immagine>
+        <categoria>Arredamento</categoria>
+    </prodotto>
+
+    <prodotto>
+        <nome>Tenda da Campeggio 4 Posti</nome>
+        <prezzo>129.99</prezzo>
+        <immagine>https://placehold.co/200x200?text=Tenda+Campeggio</immagine>
+        <categoria>Sport</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Speaker Bluetooth Portatile</nome>
+        <prezzo>54.90</prezzo>
+        <immagine>https://placehold.co/200x200?text=Speaker+Bluetooth</immagine>
+        <categoria>Elettronica</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Portafogli Slim in Vera Pelle</nome>
+        <prezzo>39.00</prezzo>
+        <immagine>https://placehold.co/200x200?text=Portafogli+Pelle</immagine>
+        <categoria>Accessori</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Set di Pennelli Professionali</nome>
+        <prezzo>29.90</prezzo>
+        <immagine>https://placehold.co/200x200?text=Pennelli+Professionali</immagine>
+        <categoria>Hobby</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Sedia da Ufficio Ergonomica</nome>
+        <prezzo>159.99</prezzo>
+        <immagine>https://placehold.co/200x200?text=Sedia+Ergonomica</immagine>
+        <categoria>Arredamento</categoria>
+    </prodotto>
 </prodotti>
