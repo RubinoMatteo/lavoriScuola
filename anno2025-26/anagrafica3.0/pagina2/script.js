@@ -1,34 +1,55 @@
-var xmlhttp = new XMLHttpRequest();
 const section=document.getElementById("demo");
 var prodotti=[];
 switch (sessionStorage.getItem(0)) {
     case "samsung":
-        samsung();
-        console.log(prodotti);
-        riempi();
+        samsung(function(risultato){
+            prodotti = risultato;
+            riempi();  // ← Dentro la callback!
+        });
         break;
+        
     case "apple":
-        apple();
-        console.log(prodotti);
-        riempi();
+        apple(function(risultato){
+            prodotti = risultato;
+            riempi();
+        });
         break;
+        
     case "huawei":
-        huawei();
-        console.log(prodotti);
-        riempi();
+        huawei(function(risultato){
+            prodotti = risultato;
+            riempi();
+        });
         break;
+        
     case "mediaworld":
-        samsung();
-        apple();
-        console.log(prodotti);
-        riempi();
+        var completate = 0;
+        samsung(function(risultato){
+            prodotti = risultato;
+            completate++;
+            if(completate === 2) riempi();  // Aspetta entrambe
+        });
+        apple(function(risultato){
+            prodotti = prodotti.concat(risultato);  // Concatena, non push!
+            completate++;
+            if(completate === 2) riempi();
+        });
         break;
+        
     case "unieuro":
-        huawei();
-        samsung();
-        console.log(prodotti);
-        riempi();
+        var completate = 0;
+        huawei(function(risultato){
+            prodotti = risultato;
+            completate++;
+            if(completate === 2) riempi();
+        });
+        samsung(function(risultato){
+            prodotti = prodotti.concat(risultato);
+            completate++;
+            if(completate === 2) riempi();
+        });
         break;
+        
     default:
         errore();
 }
@@ -36,7 +57,6 @@ switch (sessionStorage.getItem(0)) {
 /*-------------------------
     riempimento pagiina            
 ---------------------------*/
-
 function riempi(){
     var stampa ="";
     console.log(prodotti);
@@ -141,7 +161,8 @@ function scrivi(nome, memory, os, image, prezzo) {
 /*------------------------------------------------
     funzioni prelievo dati dai file di memoria      
 --------------------------------------------------*/
-function samsung() {
+function samsung(callback) {
+    var xmlhttp = new XMLHttpRequest();
     var arr = [];
     xmlhttp.open("GET", "samsung.json", true);
     xmlhttp.send();
@@ -154,11 +175,12 @@ function samsung() {
                 /*document.getElementById("demo").innerHTML = `${stampa}`;
                 stampa = "";*/
                 console.log(arr);
-                prodotti.push(arr);
+                callback(arr);
         }
     };
 };
-function apple() {
+function apple(callback) {
+    var xmlhttp = new XMLHttpRequest();
     var arr = [];
     xmlhttp.open("GET", "apple.xml", true);
     xmlhttp.send();
@@ -176,7 +198,7 @@ function apple() {
                 arr.push(obj);
             }
             console.log(arr);
-            prodotti.push(arr); 
+            callback(arr); 
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
         }
@@ -191,6 +213,7 @@ function dividi(cnt) {
     return colonne;
 }
 function huawei(callback) {
+    var xmlhttp = new XMLHttpRequest();
     var arr = [];
     xmlhttp.open("GET", "huawei.csv", true);
     xmlhttp.send();
@@ -203,7 +226,7 @@ function huawei(callback) {
                 arr.push(obj);
             }
             console.log(arr);
-            prodotti.push(arr);
+            callback(arr);
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
         }
