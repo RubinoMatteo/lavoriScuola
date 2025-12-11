@@ -4,7 +4,7 @@ switch (sessionStorage.getItem(0)) {
     case "samsung":
         samsung(function(risultato){
             prodotti = risultato;
-            riempi();  // ← Dentro la callback!
+            riempi();
         });
         break;
         
@@ -23,16 +23,13 @@ switch (sessionStorage.getItem(0)) {
         break;
         
     case "mediaworld":
-        var completate = 0;
         samsung(function(risultato){
             prodotti = risultato;
-            completate++;
-            if(completate === 2) riempi();  // Aspetta entrambe
-        });
-        apple(function(risultato){
-            prodotti = prodotti.concat(risultato);  // Concatena, non push!
-            completate++;
-            if(completate === 2) riempi();
+            apple(function(risultato){
+                prodotti = prodotti.concat(risultato);
+                completate++;
+                riempi();
+            });
         });
         break;
         
@@ -40,13 +37,10 @@ switch (sessionStorage.getItem(0)) {
         var completate = 0;
         huawei(function(risultato){
             prodotti = risultato;
-            completate++;
-            if(completate === 2) riempi();
-        });
-        samsung(function(risultato){
-            prodotti = prodotti.concat(risultato);
-            completate++;
-            if(completate === 2) riempi();
+            samsung(function(risultato){
+                prodotti = prodotti.concat(risultato);
+                riempi();
+            });
         });
         break;
         

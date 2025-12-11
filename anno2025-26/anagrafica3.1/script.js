@@ -3,15 +3,19 @@ const section=document.getElementById("demo");
 var prodotti=[];
 prodottiJSON(function(risultato){
     prodotti.push(risultato);
+    selector();
 });
 prodottiXML(function(risultato){
     prodotti.push(risultato);
+    selector();
 });
 prodottiCSV(function(risultato){
     prodotti.push(risultato);
+    selector();
 });
 
 const select = document.getElementById("selettoreCategorie");
+function selector(){
         // 1️⃣ Trovo tutte le categorie uniche
 const categorie = [...new Set(prodotti.map(item => item.categoria))];
 
@@ -39,6 +43,7 @@ select.addEventListener("change", function () {
 
 // Mostra tutti gli elementi all’inizio
 riempi(prodotti);
+}
 
 /*-------------------------
     riempimento pagiina            
