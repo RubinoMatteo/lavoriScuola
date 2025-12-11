@@ -9,7 +9,7 @@ prodottiJSON(function(risultato){
         prodotti.push(...ris);
         prodottiCSV(function(risul){
             prodotti.push(...risul);
-            prodotti.slice(1)
+            //prodotti.slice(1)
             selector();
         });
     });
@@ -55,10 +55,11 @@ function riempi(dati){
     for(let i=0; i<dati.length;i++){
           // ✅ Debug: stampa i prodotti con immagini mancanti
         if (!dati[i].immagine || dati[i].immagine === 'undefined') {
-            console.warn('Prodotto senza immagine:', dati[i]);
+            console.warn('Prodotto senza immagine:', dati[i],i);
         }
         stampa+=scrivi(dati[i].nome,dati[i].categoria,dati[i].immagine,dati[i].prezzo);
     }
+    console.log(dati);
     section.innerHTML=`${stampa}`;
 }
 
