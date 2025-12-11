@@ -10,6 +10,23 @@ body {
     background-size: 100% 100%;
 }
 
+select {
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 250px;
+}
+
+#listaElementi li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#img{
+    width: 200px;
+    height: 200px;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -86,6 +103,7 @@ li{
         grid-template-columns: 1fr;
     }
 }
+
 /*-----------------------------------
     sidebar con carrello acquisti
 -------------------------------------*/
