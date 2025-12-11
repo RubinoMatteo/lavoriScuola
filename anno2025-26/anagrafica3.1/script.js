@@ -1,6 +1,7 @@
 let array = [];
 sessionStorage.getItem(1) !== null ? array = JSON.parse(sessionStorage.getItem(1)) : array[0] = { name: "nome", memory: "memoria", OS: "Sistema Operativo", prezzo: "prezzo" };
-sessionStorage.setItem(1, JSON.stringify(array, null, 2));var xmlhttp = new XMLHttpRequest();
+sessionStorage.setItem(1, JSON.stringify(array, null, 2))
+;var xmlhttp = new XMLHttpRequest();
 const section=document.getElementById("demo");
 var prodotti=[];
 prodottiJSON(function(risultato){
