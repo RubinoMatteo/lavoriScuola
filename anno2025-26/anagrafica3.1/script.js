@@ -1,7 +1,6 @@
 let array = [];
 sessionStorage.getItem(1) !== null ? array = JSON.parse(sessionStorage.getItem(1)) : array[0] = { name: "nome", memory: "memoria", OS: "Sistema Operativo", prezzo: "prezzo" };
-sessionStorage.setItem(1, JSON.stringify(array, null, 2))
-;var xmlhttp = new XMLHttpRequest();
+sessionStorage.setItem(1, JSON.stringify(array, null, 2));
 const section=document.getElementById("demo");
 var prodotti=[];
 prodottiJSON(function(risultato){
@@ -152,6 +151,7 @@ function scrivi(nome, categoria, immagine, prezzo) {
     funzioni prelievo dati dai file di memoria      
 --------------------------------------------------*/
 function prodottiJSON(callback) {
+    var xmlhttp = new XMLHttpRequest();
     var arr = [];
     xmlhttp.open("GET", "prodotti.json", true);
     xmlhttp.send();
@@ -166,6 +166,7 @@ function prodottiJSON(callback) {
     };
 };
 function prodottiXML(callback) {
+    var xmlhttp = new XMLHttpRequest();
     var arr = [];
     xmlhttp.open("GET", "prodotti.xml", true);
     xmlhttp.send();
@@ -194,6 +195,7 @@ function dividi(cnt) {
     return colonne;
 }
 function prodottiCSV(callback) {
+    var xmlhttp = new XMLHttpRequest();
     var arr = [];
     xmlhttp.open("GET", "prodotti.csv", true);
     xmlhttp.send();
