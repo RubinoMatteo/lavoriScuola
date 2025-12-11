@@ -1,0 +1,62 @@
+[
+    {
+        "nome": "T-shirt Sportiva",
+        "prezzo": 19.99,
+        "immagine": "https://placehold.co/200x200?text=T-shirt+Sportiva",
+        "categoria": "Abbigliamento"
+    },
+    {
+        "nome": "Auricolari Wireless",
+        "prezzo": 49.99,
+        "immagine": "https://placehold.co/200x200?text=Auricolari+Wireless",
+        "categoria": "Elettronica"
+    },
+    {
+        "nome": "Zaino da Viaggio",
+        "prezzo": 79.50,
+        "immagine": "https://placehold.co/200x200?text=Zaino+da+Viaggio",
+        "categoria": "Accessori"
+    },
+    {
+        "nome": "Caffettiera Italiana",
+        "prezzo": 34.90,
+        "immagine": "https://placehold.co/200x200?text=Caffettiera+Italiana",
+        "categoria": "Cucina"
+    },
+    {
+        "nome": "Lampada da Scrivania",
+        "prezzo": 22.00,
+        "immagine": "https://placehold.co/200x200?text=Lampada+da+Scrivania",
+        "categoria": "Arredamento"
+    },
+    {
+        "nome": "Libro di Fantasia",
+        "prezzo": 14.95,
+        "immagine": "https://placehold.co/200x200?text=Libro+di+Fantasia",
+        "categoria": "Libri"
+    },
+    {
+        "nome": "Scarpe da Corsa",
+        "prezzo": 59.99,
+        "immagine": "https://placehold.co/200x200?text=Scarpe+da+Corsa",
+        "categoria": "Abbigliamento"
+    },
+    {
+        "nome": "Smartwatch",
+        "prezzo": 129.90,
+        "immagine": "https://placehold.co/200x200?text=Smartwatch",
+        "categoria": "Elettronica"
+    },
+    {
+        "nome": "Set di Pentole",
+        "prezzo": 89.00,
+        "immagine": "https://placehold.co/200x200?text=Set+di+Pentole",
+        "categoria": "Cucina"
+    },
+    {
+        "nome": "Cuscino Ergonomico",
+        "prezzo": 29.50,
+        "immagine": "https://placehold.co/200x200?text=Cuscino+Ergonomico",
+        "categoria": "Arredamento"
+    }
+]

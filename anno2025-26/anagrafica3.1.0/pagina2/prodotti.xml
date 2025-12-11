@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prodotti>
+    <prodotto>
+        <nome>Bicicletta Mountain Bike</nome>
+        <prezzo>299.99</prezzo>
+        <immagine>https://placehold.co/200x200?text=Bicicletta+Mountain+Bike</immagine>
+        <categoria>Sport</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Cuffia Gaming</nome>
+        <prezzo>69.90</prezzo>
+        <immagine>https://placehold.co/200x200?text=Cuffia+Gaming</immagine>
+        <categoria>Elettronica</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Orologio da Polso Elegante</nome>
+        <prezzo>149.50</prezzo>
+        <immagine>https://placehold.co/200x200?text=Orologio+Elegante</immagine>
+        <categoria>Accessori</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Set da Pittura</nome>
+        <prezzo>39.99</prezzo>
+        <immagine>https://placehold.co/200x200?text=Set+da+Pittura</immagine>
+        <categoria>Hobby</categoria>
+    </prodotto>
+    <prodotto>
+        <nome>Tappeto Moderno</nome>
+        <prezzo>79.00</prezzo>
+        <immagine>https://placehold.co/200x200?text=Tappeto+Moderno</immagine>
+        <categoria>Arredamento</categoria>
+    </prodotto>
+</prodotti>
