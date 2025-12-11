@@ -48,8 +48,10 @@ switch (sessionStorage.getItem(0)) {
 
 function riempi(){
     var stampa ="";
+    console.log(prodotti);
     for(let i=0; i<prodotti.length;i++)
         stampa+=scrivi(prodotti[i].name,prodotti[i].memory,prodotti[i].os,prodotti[i].image,prodotti[i].prezzo);
+    console.log(stampa);
     section.innerHTML=`${stampa}`;
 }
 
