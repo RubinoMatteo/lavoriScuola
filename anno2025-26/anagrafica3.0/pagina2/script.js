@@ -3,25 +3,39 @@ const section=document.getElementById("demo");
 var prodotti=[];
 switch (sessionStorage.getItem(0)) {
     case "samsung":
-        prodotti=samsung();
+        samsung(function(risultato){
+            prodotti=risultato;
+        });
         riempi();
         break;
     case "apple":
-        prodotti=apple();
+        apple(function(risultato){
+            prodotti=risultato;
+        });
         riempi();
         break;
     case "huawei":
-        prodotti=huawei();
+        huawei(function(risultato){
+            prodotti=risultato;
+        });
         riempi();
         break;
     case "mediaworld":
-        prodotti=samsung();
-        prodotti.push(apple());
+        samsung(function(risultato){
+            prodotti=risultato;
+        });
+        apple(function(risultato){
+            prodotti.push(risultato);
+        });
         riempi();
         break;
     case "unieuro":
-        prodotti=huawei();
-        prodotti.push(samsung());
+        huawei(function(risultato){
+            prodotti=risultato;
+        });
+        samsung(function(risultato){
+            prodotti.push(risultato);
+        });
         riempi();
         break;
     default:
@@ -134,7 +148,7 @@ function scrivi(nome, memory, os, image, prezzo) {
 /*------------------------------------------------
     funzioni prelievo dati dai file di memoria      
 --------------------------------------------------*/
-function samsung() {
+function samsung(callback) {
     var arr = [];
     xmlhttp.open("GET", "samsung.json", true);
     xmlhttp.send();
@@ -146,11 +160,11 @@ function samsung() {
                 arr.push(obj);});
                 /*document.getElementById("demo").innerHTML = `${stampa}`;
                 stampa = "";*/
-                return arr;
+                callback(arr);
         }
     };
 };
-function apple() {
+function apple(callback) {
     var arr = [];
     xmlhttp.open("GET", "apple.xml", true);
     xmlhttp.send();
@@ -167,7 +181,7 @@ function apple() {
                 let obj={name:name, memory:memory, os:os, image:image, prezzo:prezzo};
                 arr.push(obj);
             }
-            return arr; 
+            callback(arr); 
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
         }
@@ -181,7 +195,7 @@ function dividi(cnt) {
     }
     return colonne;
 }
-function huawei() {
+function huawei(callback) {
     var arr = [];
     xmlhttp.open("GET", "huawei.csv", true);
     xmlhttp.send();
@@ -193,7 +207,7 @@ function huawei() {
                 let obj={name:huawei[i][0], memory:huawei[i][1], os:huawei[i][2], image:huawei[i][4], prezzo:huawei[i][3]};
                 arr.push(obj);
             }
-            return arr;
+            callback(arr);
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
         }
