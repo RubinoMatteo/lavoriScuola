@@ -52,8 +52,7 @@ headerImg.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
     // Mostra/nascondi carrello in base allo stato della sidebar
     if (!sidebar.classList.contains("collapsed")) {
-        if(!vediCarrello())
-            reset();
+        vediCarrello()
     } else {
         // Svuota il carrello quando la sidebar si chiude
         document.getElementById("carrello").innerHTML = "";
@@ -72,7 +71,7 @@ function vediCarrello() {
     let dataArray = contaElementi();
     if (!Array.isArray(dataArray)) {
         output.innerHTML = "<p style='color: red;'>Il dato non è un array</p>";
-        return false ;
+        return;
     }
     dataArray.forEach((item, index) => {
         let ul = document.createElement("ul");
@@ -88,7 +87,7 @@ function vediCarrello() {
     carrello.innerHTML += `<br><div class="card">
                                 <a class="button" onclick="scaricaPDF(event)" href="" id="linkScaricaxml">&#x1f6d2; download PDF &#10515;</a>
                                 </div>`;
-    return true;
+    return;
 }
 
 /*----------------------------------------------------
@@ -302,6 +301,6 @@ function contaElementi() {
         return scontrino;
     } else {
         alert("il carrello é vuoto");
-        return false;
+        return ;
     }
 }

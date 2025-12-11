@@ -3,44 +3,30 @@ const section=document.getElementById("demo");
 var prodotti=[];
 switch (sessionStorage.getItem(0)) {
     case "samsung":
-        samsung(function(risultato){
-            console.log(risultato);
-            prodotti=risultato;
-        });
+        samsung();
+        console.log(prodotti);
         riempi();
         break;
     case "apple":
-        apple(function(risultato){
-            console.log(risultato);
-            prodotti=risultato;
-        });
+        apple();
+        console.log(prodotti);
         riempi();
         break;
     case "huawei":
-        huawei(function(risultato){
-            console.log(risultato);
-            prodotti=risultato;
-        });
+        huawei();
+        console.log(prodotti);
         riempi();
         break;
     case "mediaworld":
-        samsung(function(risultato){
-            console.log(risultato);
-            prodotti=risultato;
-        });
-        apple(function(risultato){
-            console.log(risultato);
-            prodotti.push(risultato);
-        });
+        samsung();
+        apple();
+        console.log(prodotti);
         riempi();
         break;
     case "unieuro":
-        huawei(function(risultato){
-            prodotti=risultato;
-        });
-        samsung(function(risultato){
-            prodotti.push(risultato);
-        });
+        huawei();
+        samsung();
+        console.log(prodotti);
         riempi();
         break;
     default:
@@ -155,7 +141,7 @@ function scrivi(nome, memory, os, image, prezzo) {
 /*------------------------------------------------
     funzioni prelievo dati dai file di memoria      
 --------------------------------------------------*/
-function samsung(callback) {
+function samsung() {
     var arr = [];
     xmlhttp.open("GET", "samsung.json", true);
     xmlhttp.send();
@@ -168,11 +154,11 @@ function samsung(callback) {
                 /*document.getElementById("demo").innerHTML = `${stampa}`;
                 stampa = "";*/
                 console.log(arr);
-                callback(arr);
+                prodotti.push(arr);
         }
     };
 };
-function apple(callback) {
+function apple() {
     var arr = [];
     xmlhttp.open("GET", "apple.xml", true);
     xmlhttp.send();
@@ -190,7 +176,7 @@ function apple(callback) {
                 arr.push(obj);
             }
             console.log(arr);
-            callback(arr); 
+            prodotti.push(arr); 
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
         }
@@ -217,7 +203,7 @@ function huawei(callback) {
                 arr.push(obj);
             }
             console.log(arr);
-            callback(arr);
+            prodotti.push(arr);
             /*document.getElementById("demo").innerHTML = `${stampa}`;
             stampa = "";*/
         }
