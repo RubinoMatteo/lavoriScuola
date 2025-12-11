@@ -4,11 +4,11 @@ sessionStorage.setItem(1, JSON.stringify(array, null, 2));
 const section=document.getElementById("demo");
 var prodotti=[];
 prodottiJSON(function(risultato){
-    prodotti.push(risultato);
-    prodottiXML(function(risultato){
-        prodotti.push(risultato);
-        prodottiCSV(function(risultato){
-            prodotti.push(risultato);
+    prodotti.push(...risultato);
+    prodottiXML(function(ris){
+        prodotti.push(...ris);
+        prodottiCSV(function(risul){
+            prodotti.push(...risul);
             selector();
         });
     });
