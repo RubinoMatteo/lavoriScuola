@@ -10,7 +10,6 @@ prodottiJSON(function(risultato){
         products.push(...ris);
         prodottiCSV(function(risul){
             products.push(...risul);
-            prodotti=products.slice(0,-1)
             selector();
         });
     });
