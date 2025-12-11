@@ -13,7 +13,7 @@ prodottiCSV(function(risultato){
 
 const select = document.getElementById("selettoreCategorie");
         // 1️⃣ Trovo tutte le categorie uniche
-const categorie = [...new Set(dati.map(item => item.categoria))];
+const categorie = [...new Set(prodotti.map(item => item.categoria))];
 
         // 2️⃣ Riempio la select con le categorie
 categorie.forEach(cat => {
