@@ -1,48 +1,16 @@
-var xmlhttp = new XMLHttpRequest();
-const section=document.getElementById("demo");
-var prodotti=[];
-switch (sessionStorage.getItem(0)) {
-    case "samsung":
-        prodotti=samsung();
-        riempi();
-        break;
-    case "apple":
-        prodotti=apple();
-        riempi();
-        break;
+switch(sessionStorage.getItem(0)) {
+  case "samsung":
+    samsung();
+    break;
+  case "apple":
+    apple();
+    break;
     case "huawei":
-        prodotti=huawei();
-        riempi();
-        break;
-    case "mediaworld":
-        prodotti=samsung();
-        prodotti.push(apple());
-        riempi();
-        break;
-    case "unieuro":
-        prodotti=huawei();
-        prodotti.push(samsung());
-        riempi();
-        break;
-    default:
-        errore();
+    huawei();
+    break;
+  default:
+    errore();
 }
-
-/*-------------------------
-    riempimento pagiina            
----------------------------*/
-
-function riempi(){
-    var stampa ="";
-    for(let i=0; i<prodotti.length;i++)
-        stampa+=scrivi(prodotti[i].name,prodotti[i].memory,prodotti[i].os,prodotti[i].image,prodotti[i].prezzo);
-    section.innerHTML=`${stampa}`;
-}
-
-
-/*---------------
-    sidebar           
------------------*/
 
 const subMenus = document.querySelectorAll(".sub-menu"),
     btns = document.querySelectorAll("button"),
@@ -57,7 +25,7 @@ const reset = () => {
 const openSubmenu = element => {
     // Non permettere di aprire submenu se la sidebar è chiusa
     if (sidebar.classList.contains("collapsed")) return;
-
+    
     reset();
     element.classList.add("active");
     const sibling = element.nextElementSibling;
@@ -84,11 +52,6 @@ headerImg.addEventListener("click", () => {
         reset();
     }
 });
-
-/*----------------------------------
-    visualizzazione del carrello    
-------------------------------------*/
-
 function vediCarrello() {
     let carrello = document.getElementById("carrello");
     carrello.innerHTML = "";
@@ -115,12 +78,8 @@ function vediCarrello() {
                                 </div>`;
 }
 
-/*----------------------------------------
-      metodo per riempire la pagiana          
-------------------------------------------*/
-
-function scrivi(nome, memory, os, image, prezzo) {
-    return `<div class="card">
+function scrivi(nome,memory,os,image,prezzo){
+    return`<div class="card">
                             <h3>${nome}</h3>
                             <p><b>Memoria</b>:${memory}</p>
                             <p><b>S.O.</b>:${os}</p>
@@ -129,29 +88,24 @@ function scrivi(nome, memory, os, image, prezzo) {
                             <a target="_blank" class="button" onclick="acquista('${nome}','${memory}','${os}','${prezzo}')" style="cursor: pointer;" > &#128722; </a>
                         </div>`;
 }
-
-
-/*------------------------------------------------
-    funzioni prelievo dati dai file di memoria      
---------------------------------------------------*/
-function samsung() {
-    var arr = [];
-    xmlhttp.open("GET", "samsung.json", true);
+function samsung(){
+    var xmlhttp = new XMLHttpRequest();
+    var stampa = "";
+xmlhttp.open("GET", "samsung.json", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
-            myObj.samsung.forEach(item => {
-                const obj = {name:item.name , memory:item.memory , os:item.os , image:item.image , prezzo:item.prezzo};
-                arr.push(obj);});
-                /*document.getElementById("demo").innerHTML = `${stampa}`;
-                stampa = "";*/
-                return arr;
+            for (x in myObj.samsung) 
+                stampa += scrivi(myObj.samsung[x].name,myObj.samsung[x].memory,myObj.samsung[x].os,myObj.samsung[x].image,myObj.samsung[x].prezzo);
+            document.getElementById("demo").innerHTML = `${stampa}`;
+            stampa="";
         }
     };
 };
-function apple() {
-    var arr = [];
+function apple(){
+    var xmlhttp = new XMLHttpRequest();
+    var stampa = "";
     xmlhttp.open("GET", "apple.xml", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
@@ -164,25 +118,24 @@ function apple() {
                 var os = iPhone[x].getElementsByTagName("os")[0].childNodes[0].nodeValue;
                 var image = iPhone[x].getElementsByTagName("image")[0].childNodes[0].nodeValue;
                 var prezzo = iPhone[x].getElementsByTagName("prezzo")[0].childNodes[0].nodeValue;
-                let obj={name:name, memory:memory, os:os, image:image, prezzo:prezzo};
-                arr.push(obj);
-            }
-            return arr; 
-            /*document.getElementById("demo").innerHTML = `${stampa}`;
-            stampa = "";*/
+                stampa+=scrivi(name,memory,os,image,prezzo);
+            }            
+            document.getElementById("demo").innerHTML = `${stampa}`;
+            stampa = "";
         }
     };
 };
-function dividi(cnt) {
-    let righe = cnt.split("\n")
-    let colonne = []
+function dividi(cnt){
+    let righe= cnt.split("\n")
+    let colonne=[]
     for (let i = 0; i < righe.length; i++) {
         colonne[i] = righe[i].split(',')
     }
     return colonne;
 }
-function huawei() {
-    var arr = [];
+function huawei(){
+    var xmlhttp = new XMLHttpRequest();
+    var stampa = "";
     xmlhttp.open("GET", "huawei.csv", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
@@ -190,37 +143,26 @@ function huawei() {
             var xmlDoc = this.responseText;
             var huawei = dividi(xmlDoc);
             for (let i = 1; i < huawei.length; i++) {
-                let obj={name:huawei[i][0], memory:huawei[i][1], os:huawei[i][2], image:huawei[i][4], prezzo:huawei[i][3]};
-                arr.push(obj);
+                stampa+=scrivi(huawei[i][0],huawei[i][1],huawei[i][2],huawei[i][4],huawei[i][3]);
             }
-            return arr;
-            /*document.getElementById("demo").innerHTML = `${stampa}`;
-            stampa = "";*/
+            document.getElementById("demo").innerHTML = `${stampa}`;
+            stampa = "";
         }
     };
 };
-function errore() {
+function errore(){
     document.getElementById("demo").innerHTML = `<h1>error 404</h1><br><p>pagina non trovata</p>`;
 };
-
-
-/*------------------------------
-    riempimento del carrello    
---------------------------------*/
-var carrello = [];
-let quantità = 0;
-function acquista(n, m, S, p) {
-    carrello = JSON.parse(sessionStorage.getItem(1));
-    quantità = JSON.parse(sessionStorage.getItem(1)).length;
-    carrello[quantità] = { name: n, memory: m, OS: S, prezzo: p };
+var carrello=[];
+let quantità=0;
+function acquista(n,m,S,p){
+    carrello=JSON.parse(sessionStorage.getItem(1));
+    quantità=JSON.parse(sessionStorage.getItem(1)).length;
+    carrello[quantità]= {name:n,memory:m,OS:S,prezzo:p};
     quantità++;
     sessionStorage.setItem(1, JSON.stringify(carrello, null, 2));
     console.log(carrello);
 };
-
-/*-------------------------------
-    scaricamento del carrello    
----------------------------------*/
 
 function scaricaPDF(event) {
     event.preventDefault();
@@ -245,7 +187,7 @@ function scaricaPDF(event) {
         piva: "P.IVA: 12345678901",
         telefono: "Tel: +39 02 1234567"
     };
-
+    
     let divisore = "=".repeat(35);
     // Calcolo totale
     let totale = 0;
@@ -274,7 +216,7 @@ function scaricaPDF(event) {
 
     // INTESTAZIONE
     textCommands += `200 ${yPos} Td\n`; // Posizionamento iniziale centrato
-
+    
     // Logo (testo nome negozio) - in un PDF reale potresti inserire un'immagine
     textCommands += `/F1 14 Tf\n`;
     addText("*** RUBI TECHSTORE ***", 0);
@@ -289,7 +231,7 @@ function scaricaPDF(event) {
 
     addText("", 0); // Riga vuota
     addText(divisore, 0);
-
+    
     // Data e ora
     const now = new Date();
     const dataOra = `Data: ${now.toLocaleDateString('it-IT')} ${now.toLocaleTimeString('it-IT')}`;
@@ -306,10 +248,10 @@ function scaricaPDF(event) {
         const quantita = obj.quantità || 1;
         const prezzo = obj.prezzo || 999.99;
         const totaleRiga = (prezzo * quantita).toFixed(2);
-
+        
         // Riga prodotto: quantità x nome
         addText(`${quantita} x ${nome}`, 0);
-
+        
         // Prezzo allineato a destra (simulato con spazi)
         const prezzoStr = `EUR ${totaleRiga}`;
         const spaces = " ".repeat(Math.max(0, 35 - prezzoStr.length));
@@ -325,7 +267,7 @@ function scaricaPDF(event) {
     addText(`TOTALE:${spacesTotale}${totaleStr}`, 0);
     textCommands += `/F1 9 Tf\n`;
     addText(divisore, 0);
-
+    
     addText("", 0);
     addText("Grazie per il suo acquisto!", 0);
     addText("", 0);
@@ -385,7 +327,7 @@ function scaricaPDF(event) {
     pdf += `${xrefPos}\n`;
     pdf += "%%EOF";
 
-    // Download del file
+        // Download del file
     const blob = new Blob([pdf], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
 
@@ -398,11 +340,6 @@ function scaricaPDF(event) {
 
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-
-
-/*----------------------------------
-    conta elementi nel carrello    
-------------------------------------*/
 
 function contaElementi() {
     let scontrino = [];
@@ -419,14 +356,14 @@ function contaElementi() {
                         index.push(j);
                 }
             }
-            let controllo = false;
-            if (conta > 1)
-                for (let j = 0; j < scontrino.length; j++)
-                    if (dati[i].name == scontrino[j].name)
-                        controllo = true;
-            if (!controllo) {
-                let obj = { name: dati[i].name, memory: dati[i].memory, OS: dati[i].OS, prezzo: dati[i].prezzo, quantità: conta };
-                scontrino.push(obj);
+            let controllo = false ;
+            if(conta>1)
+                for (let j = 0; j < scontrino.length; j++) 
+                    if (dati[i].name == scontrino[j].name) 
+                        controllo=true;
+            if(!controllo){
+            let obj = { name: dati[i].name, memory: dati[i].memory, OS: dati[i].OS, prezzo: dati[i].prezzo, quantità: conta };
+            scontrino.push(obj);
             }
             conta = 0;
         }
