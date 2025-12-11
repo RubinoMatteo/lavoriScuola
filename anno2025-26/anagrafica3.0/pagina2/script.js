@@ -4,27 +4,32 @@ var prodotti=[];
 switch (sessionStorage.getItem(0)) {
     case "samsung":
         samsung(function(risultato){
+            console.log(risultato);
             prodotti=risultato;
         });
         riempi();
         break;
     case "apple":
         apple(function(risultato){
+            console.log(risultato);
             prodotti=risultato;
         });
         riempi();
         break;
     case "huawei":
         huawei(function(risultato){
+            console.log(risultato);
             prodotti=risultato;
         });
         riempi();
         break;
     case "mediaworld":
         samsung(function(risultato){
+            console.log(risultato);
             prodotti=risultato;
         });
         apple(function(risultato){
+            console.log(risultato);
             prodotti.push(risultato);
         });
         riempi();
