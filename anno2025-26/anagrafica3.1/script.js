@@ -173,11 +173,11 @@ function prodottiXML(callback) {
         if (this.readyState == 4 && this.status == 200) {
             var xmlDoc = this.responseXML;
             var prodotti = xmlDoc.getElementsByTagName("prodotti");
-            for (x = 0; x < iPhone.length; x++) {
-                var nome = iPhone[x].getElementsByTagName("nome")[0].childNodes[0].nodeValue;
-                var categoria = iPhone[x].getElementsByTagName("categoria")[0].childNodes[0].nodeValue;
-                var immagine = iPhone[x].getElementsByTagName("immagine")[0].childNodes[0].nodeValue;
-                var prezzo = iPhone[x].getElementsByTagName("prezzo")[0].childNodes[0].nodeValue;
+            for (x = 0; x < prodotti.length; x++) {
+                var nome = prodotti[x].getElementsByTagName("nome")[0].childNodes[0].nodeValue;
+                var categoria = prodotti[x].getElementsByTagName("categoria")[0].childNodes[0].nodeValue;
+                var immagine = prodotti[x].getElementsByTagName("immagine")[0].childNodes[0].nodeValue;
+                var prezzo = prodotti[x].getElementsByTagName("prezzo")[0].childNodes[0].nodeValue;
                 let obj={nome:nome, categoria:categoria, immagine:immagine, prezzo:prezzo};
                 arr.push(obj);
             }
