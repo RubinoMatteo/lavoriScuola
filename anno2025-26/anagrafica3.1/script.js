@@ -28,17 +28,17 @@ select.addEventListener("change", function () {
 
     // Se seleziono "Tutti gli elementi"
     if (categoriaScelta === "__tutti__") {
-        riempi(dati);
+        riempi(prodotti);
         return;
     }
 
     // Altrimenti filtro per categoria
-    const filtrati = dati.filter(item => item.categoria === categoriaScelta);
+    const filtrati = prodotti.filter(item => item.categoria === categoriaScelta);
     riempi(filtrati);
 });
 
 // Mostra tutti gli elementi all’inizio
-riempi(dati);
+riempi(prodotti);
 
 /*-------------------------
     riempimento pagiina            
