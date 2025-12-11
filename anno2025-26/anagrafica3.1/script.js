@@ -4,15 +4,13 @@ const section=document.getElementById("demo");
 var prodotti=[];
 prodottiJSON(function(risultato){
     prodotti.push(risultato);
-    selector();
-});
-prodottiXML(function(risultato){
-    prodotti.push(risultato);
-    selector();
-});
-prodottiCSV(function(risultato){
-    prodotti.push(risultato);
-    selector();
+    prodottiXML(function(risultato){
+        prodotti.push(risultato);
+        prodottiCSV(function(risultato){
+            prodotti.push(risultato);
+            selector();
+        });
+    });
 });
 
 const select = document.getElementById("selettoreCategorie");
