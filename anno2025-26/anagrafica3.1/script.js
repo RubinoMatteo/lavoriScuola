@@ -1,13 +1,13 @@
 var xmlhttp = new XMLHttpRequest();
 const section=document.getElementById("demo");
 var prodotti=[];
-samsung(function(risultato){
+prodottiJSON(function(risultato){
     prodotti.push(risultato);
 });
-apple(function(risultato){
+prodottiXML(function(risultato){
     prodotti.push(risultato);
 });
-huawei(function(risultato){
+prodottiCSV(function(risultato){
     prodotti.push(risultato);
 });
 
