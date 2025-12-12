@@ -260,7 +260,7 @@ function scaricaPDF(event) {
 
     // Informazioni dell'emittente
     const emittente = {
-        nome: "Rubi TechStore S.r.l.",
+        nome: "Rubi Store S.r.l.",
         indirizzo: "Via Raffaello Sanzio, 2",
         citta: "Rho, 20017",
         piva: "P.IVA: 12345678901",
@@ -298,7 +298,7 @@ function scaricaPDF(event) {
 
     // Logo (testo nome negozio) - in un PDF reale potresti inserire un'immagine
     textCommands += `/F1 14 Tf\n`;
-    addText("*** RUBI TECHSTORE ***", 0);
+    addText("*** RUBI STORE ***", 0);
 
     //informazionni emittente 
     textCommands += `/F1 9 Tf\n`;
