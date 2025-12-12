@@ -2,15 +2,15 @@ let array = [];
 sessionStorage.getItem(1) !== null ? array = JSON.parse(sessionStorage.getItem(1)) : array[0] = { name: "nome", memory: "memoria", OS: "Sistema Operativo", prezzo: "prezzo" };
 sessionStorage.setItem(1, JSON.stringify(array, null, 2));
 const section=document.getElementById("demo");
-var products=[];
+//var products=[];
 var prodotti=[];
 prodottiJSON(function(risultato){
-    products.push(...risultato);
+    prodotti.push(...risultato);
     prodottiXML(function(ris){
-        products.push(...ris);
+        prodotti.push(...ris);
         prodottiCSV(function(risul){
-            products.push(...risul);
-            prodotti=products.slice(0,-1);
+            prodotti.push(...risul);
+            //prodotti=products.slice(0,-1);
             selector();
         });
     });
