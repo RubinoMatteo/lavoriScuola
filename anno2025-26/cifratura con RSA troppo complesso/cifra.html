@@ -23,10 +23,9 @@ dato 2: <input type="text" name="dato2"><br>
             bin+=charInBinario(dato[i]);
         }
         kpub(function(key){
-             for(let i =0; i<dato.length; i++){
-            cifrato.push(Math.pow(dato[i].charCodeAt(0), key.e)%key.n);
+            cifrato = Math.pow(parseInt(bin, 2), key.e)%key.n;
             document.getElementById("Cifrato").value += cifrato ;
-        }});
+        });
 
     }
     function kpub(callback) {
@@ -40,6 +39,12 @@ dato 2: <input type="text" name="dato2"><br>
         }
     };
 };
+    function charInBinario(carattere) {
+    const codiceNumerico = carattere.charCodeAt(0);
+    let binario = codiceNumerico.toString(2);
+    binario = binario.padStart(8, '0');
+    return binario;
+}
 </script>
 </body>
 </html> 

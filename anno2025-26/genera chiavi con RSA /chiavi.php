@@ -31,6 +31,7 @@ fclose($file_kpub);
 
 
 echo "chiavi generata correttamente"
+//echo "<a href="cifra.html" >utilizza</a>"
 
 
 function euclideEsteso($a, $b) {
