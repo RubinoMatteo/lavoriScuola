@@ -1,0 +1,45 @@
+<html>
+<body>
+<h1> inserisci il dato da cifrare </h1>
+
+<!--<form action="http://127.0.0.1/5di/operazioniPOST.php" method="post">
+dato 1: <input type="text" name="dato1"><br>
+dato 2: <input type="text" name="dato2"><br>
+<input type="submit" value="invia i dati al server ">
+</form>-->
+<form action="decifra.php" method="post">
+    dato : <input type="text" id="datoDaCifrare" name="daCifrare"><br>
+    CIFRATO : <input readonly type="text" id="Cifrato" name="cifrato"><br>
+    <input type="button" onclick="cifra()" value="cifra">
+    <input type="submit" value="invia i dati al server ">
+</form>
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    function cifra() {
+        let dato= document.getElementById("datoDaCifrare").value;
+        let bin="";
+        let cifrato; 
+        for(let i =0; i<dato.length; i++){
+            bin+=charInBinario(dato[i]);
+        }
+        kpub(function(key){
+             for(let i =0; i<dato.length; i++){
+            cifrato.push(Math.pow(dato[i].charCodeAt(0), key.e)%key.n);
+            document.getElementById("Cifrato").value += cifrato ;
+        }});
+
+    }
+    function kpub(callback) {
+    xmlhttp.open("GET", "kpub.json", true);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            const obj = {e:myObj.e , n:myObj.n};
+            callback(obj);
+        }
+    };
+};
+</script>
+</body>
+</html> 

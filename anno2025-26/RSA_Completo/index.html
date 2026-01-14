@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/lavoriScuola/immagini/rubi.jpg" type="image/jpg" />
+        <!--<link rel="stylesheet" href="/lavoriScuola/style.css">-->
+
+        <title>chiavi per RSA</title>
+    </head>
+    <body>
+        <form action="chiavi.php" method="post">
+            inserisci un numero primo: <input type="text" name="p"><br>
+            inserisci un numero primo: <input type="text" name="q"><br>
+            <input type="submit" onclic="controllo()" value="genera le chiavi">
+        </form>
+        <script>
+            function controllo(){
+                if(!isPrime(document.getElementsByName("p").value)) 
+                    alert ("almeno uno dei numeri inseriti non é primo");
+                else
+                    if(!isPrime(document.getElementsByName("q").value))
+                        alert ("almeno uno dei numeri inseriti non é primo");
+            }
+            function isPrime(n) {
+              if (n <= 1) return false;
+              for (let i = 2; i < n; i++) {
+                if (n % i === 0) return false;
+              }
+              return true;
+            }
+            /*
+            function isPrime(n) {
+              if (n <= 1) return false;
+              if (n <= 3) return true;
+              if (n % 2 === 0 || n % 3 === 0) return false;
+
+              for (let i = 5; i * i <= n; i += 6) {
+                if (n % i === 0 || n % (i + 2) === 0) {
+                  return false;
+                }
+              }
+              return true;
+            }
+            */
+        </script>
+    </body>
+</html>
