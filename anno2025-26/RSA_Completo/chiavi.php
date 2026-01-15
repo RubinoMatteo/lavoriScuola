@@ -1,14 +1,16 @@
 <?php
 $p=$_POST['p'];
 $q=$_POST['q'];
-if(!isPrime(document.getElementsByName("p").value)){
-    echo "almeno uno dei numeri inseriti non é primo";
+if(!isPrime($p)){
+    echo "almeno uno dei numeri inseriti non é primo";  exit();
 }else{
-    if(!isPrime(document.getElementsByName("q").value)){
-        echo "almeno uno dei numeri inseriti non é primo";}}
+    if(!isPrime($q)){
+        echo "almeno uno dei numeri inseriti non é primo"; exit();}}
 
-$n=$p*$q;
-$m=($p-1)*($q-1);
+/*$n=$p*$q;
+$m=($p-1)*($q-1);*/
+$n = bcmul($p, $q);
+$m = bcmul(bcsub($p, 1), bcsub($q, 1));
 $e=random_int(2, $m-1);
 while (!sonoPrimiFraLoro($m, $e)) {
     $e=random_int(2, $m-1);
@@ -30,8 +32,8 @@ fwrite($file_kpub, $json_kpub);
 fclose($file_kpub);
 
 
-echo "chiavi generata correttamente"
-echo "<a href="cifra.html" >utilizza</a>"
+echo "chiavi generata correttamente";
+echo ' <a href="cifra.html" >utilizza</a>';
 
 
 function euclideEsteso($a, $b) {
@@ -51,7 +53,7 @@ function inversoModulare($e, $phi) {
 function isPrime(int $n) {
     if ($n <= 1) return false;
     for ($i = 2; $i < $n; $i++) {
-        if ($n % i === 0) return false;
+        if ($n % $i === 0) return false;
     }
     return true;
 }

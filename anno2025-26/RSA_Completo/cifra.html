@@ -18,15 +18,12 @@ dato 2: <input type="text" name="dato2"><br>
     function cifra() {
         let dato= document.getElementById("datoDaCifrare").value;
         let bin="";
-        let cifrato; 
-        for(let i =0; i<dato.length; i++){
-            bin+=charInBinario(dato[i]);
-        }
+        let cifrato=[]; 
         kpub(function(key){
              for(let i =0; i<dato.length; i++){
-            cifrato.push(Math.pow(dato[i].charCodeAt(0), key.e)%key.n);
-            document.getElementById("Cifrato").value += cifrato ;
-        }});
+            cifrato.push(modPow(BigInt(dato[i].charCodeAt(0)), BigInt(key.e), BigInt(key.n)));
+            }document.getElementById("Cifrato").value += cifrato.join(',') ;
+        });
 
     }
     function kpub(callback) {
@@ -40,6 +37,20 @@ dato 2: <input type="text" name="dato2"><br>
         }
     };
 };
+function modPow(base, exp, mod) {
+    let result = 1n;
+    base = base % mod;
+
+    while (exp > 0n) {
+        if (exp % 2n === 1n) {
+            result = (result * base) % mod;
+        }
+        exp = exp / 2n;
+        base = (base * base) % mod;
+    }
+    return result;
+}
+
 </script>
 </body>
 </html> 
