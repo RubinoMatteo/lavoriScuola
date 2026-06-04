@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geolocalizzazione</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1e2530;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --accent: #2f81f7;
+    --accent2: #388bfd;
+    --accent-glow: rgba(47,129,247,0.25);
+    --green: #3fb950;
+    --green-bg: rgba(63,185,80,0.12);
+    --amber: #d29922;
+    --amber-bg: rgba(210,153,34,0.12);
+    --red: #f85149;
+    --red-bg: rgba(248,81,73,0.12);
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(47,129,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-icon {
+    width: 40px; height: 40px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(47,129,247,0.3);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .header-text h1 {
+    font-size: 16px; font-weight: 500; color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .header-text p {
+    font-size: 12px; color: var(--muted); margin-top: 1px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; padding: 11px 16px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 400;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid var(--border2);
+    background: var(--surface2);
+    color: var(--text);
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn:last-child { margin-bottom: 0; }
+
+  .btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.1s;
+  }
+
+  .btn:hover { border-color: var(--border2); background: #242b36; }
+  .btn:hover::after { background: rgba(255,255,255,0.03); }
+  .btn:active { transform: scale(0.985); }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent2);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover { background: var(--accent2); }
+
+  .btn-icon {
+    width: 18px; height: 18px;
+    flex-shrink: 0;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1.25rem 0;
+  }
+
+  /* Result panel */
+  .result-panel {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    animation: slideIn 0.25s ease;
+  }
+
+  .result-panel.visible { display: block; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-row {
+    display: flex; align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 10px;
+  }
+
+  .result-row:last-child { border-bottom: none; }
+
+  .result-label {
+    font-size: 12px; color: var(--muted);
+    width: 90px; flex-shrink: 0;
+  }
+
+  .result-value {
+    font-family: var(--mono);
+    font-size: 13px; color: var(--text);
+    font-weight: 500;
+  }
+
+  .result-icon {
+    width: 14px; height: 14px; color: var(--accent);
+    flex-shrink: 0;
+  }
+
+
+  /* Status bar */
+  .status-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border2);
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+
+  .status-dot.idle { background: var(--border2); }
+  .status-dot.loading { background: var(--amber); animation: blink 0.8s ease-in-out infinite; }
+  .status-dot.success { background: var(--green); }
+  .status-dot.error { background: var(--red); }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Loading spinner inside button */
+  .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: none;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f81f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Geolocalizzazione</h1>
+      <p>Lettura e invio coordinate GPS al server</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+
+      <button class="btn btn-primary" id="btn-leggi" onclick="LeggiCoordinate()">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8" opacity=".4"/>
+          <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
+          <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+        </svg>
+        <span id="btn-leggi-text">Visualizza la tua posizione</span>
+        <div class="spinner" id="spinner-leggi"></div>
+      </button>
+
+      <button class="btn" id="btn-invia" onclick="InviaCoordinate()">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+        <span id="btn-invia-text">Invia la tua posizione al server</span>
+        <div class="spinner" id="spinner-invia"></div>
+      </button>
+
+      <div class="divider"></div>
+
+      <div id="result-panel" class="result-panel">
+        <div class="result-row">
+          <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          <span class="result-label">Latitudine</span>
+          <span class="result-value" id="lat-val">—</span>
+        </div>
+        <div class="result-row">
+          <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20" transform="rotate(90 12 12)"/></svg>
+          <span class="result-label">Longitudine</span>
+          <span class="result-value" id="lon-val">—</span>
+        </div>
+        <div class="result-row">
+          <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="result-label">Data / Ora</span>
+          <span class="result-value" id="time-val" style="font-size:11px;">—</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="status-bar">
+      <div class="status-dot idle" id="status-dot"></div>
+      <span id="status-text">In attesa di un'azione...</span>
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+
+    const x = document.getElementById("status-text");
+    const pallino = document.getElementById("status-dot");
+
+  // Funzione d'appoggio per cambiare il testo e il colore del pallino contemporaneamente
+  function aggiornaStato(classe, messaggio) {
+    pallino.className = "status-dot " + classe;
+    x.textContent = messaggio;
+  }
+
+function LeggiCoordinate() {//funzione richiamata alclick del bottone di visualizzazione della posizione
+  try {
+    document.getElementById("spinner-leggi").style.display = "block";
+    aggiornaStato("loading", "Lettura della posizione GPS...");
+    navigator.geolocation.getCurrentPosition(MostraPosizione,function(error) {
+    document.getElementById("spinner-leggi").style.display = "none";
+    aggiornaStato("error", "Permesso negato o GPS non disponibile.");
+  });//connessione al API che mostra la posizione del dispositivo
+  } catch {
+    document.getElementById("spinner-leggi").style.display = "none";
+    aggiornaStato("error", "errore nella visualizzazione");
+  }
+}
+
+function MostraPosizione(pos) {//fuzione ceh tramite il DOM scrive all'interno dei tag
+    document.getElementById("spinner-leggi").style.display = "none";
+
+    document.getElementById('lat-val').textContent = pos.coords.latitude;
+    document.getElementById('lon-val').textContent = pos.coords.longitude;
+    document.getElementById('time-val').textContent = new Date().toLocaleString('it-IT');
+
+    document.getElementById('result-panel').classList.add('visible');
+    aggiornaStato("success", "Posizione letta correttamente.");
+}
+
+function InviaCoordinate() {//funzione richiamata alclick del bottone invio fdati al server
+  try {//viene gestito l'errore tramite la struttura try catch 
+    document.getElementById("spinner-invia").style.display = "block";
+    aggiornaStato("loading", "Recupero coordinate per l'invio...");
+    navigator.geolocation.getCurrentPosition(InviaPosizione, function(error) {
+    document.getElementById("spinner-invia").style.display = "none";
+    aggiornaStato("error", "Impossibile recuperare il GPS per l'invio.");
+  });//connessione al API che mostra la posizione del dispositivo
+  } catch {
+    document.getElementById("spinner-invia").style.display = "none";
+    aggiornaStato("error", "errore nell'invio");
+  }
+}
+function InviaPosizione(pos) {//funzione ceh invia i dati al server tramite l'oogetto XMLHttpRequest
+aggiornaStato("loading", "Invio in corso al server...");
+const oraLocale = new Date();//vado a recuperare l'ora nel quale il client ha premuto il tasto
+let parametri = "latitudine="+pos.coords.latitude+"&longitudine="+pos.coords.longitude+"&dateTime="+encodeURIComponent(oraLocale.toString());//variabile che cotiene la posizine e data e ora 
+alert (parametri)
+const xhttp = new XMLHttpRequest();//creazione di un nuovo oggetto XMLHttpRequest
+xhttp.onload = function() {
+    document.getElementById("spinner-invia").style.display = "none";
+    aggiornaStato("success", "Server: " + this.responseText);//ricevo risposta dal server
+  }
+// Gestione dell'errore di rete (es. server spento)
+xhttp.onerror = function() {
+    document.getElementById("spinner-invia").style.display = "none";
+    aggiornaStato("error", "Errore di rete o server non raggiungibile.");
+};
+//xhttp.open("POST", "ScritturaFile.php",true);
+xhttp.open("POST", "http://localhost/geolocalizzazione/ScritturaFile.php",true);//definisto l'invio dei dati al server tramite POST
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(parametri); //invio effettivo dei dati al server
+
+}
+</script>
+
+</body>
+</html>
